@@ -18,6 +18,8 @@
     "concurrently": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "nodemon": "^1.19.4"
-  }
+    "nodemon": "^1.19.4",
+    "generate": "cd client && plop"
+  },
+  "devDependencies": {}
 }
