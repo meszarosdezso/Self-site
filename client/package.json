@@ -12,7 +12,6 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
-    "trianglify": "^2.0.0",
     "typescript": "3.6.4"
   },
   "scripts": {

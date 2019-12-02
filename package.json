@@ -9,7 +9,8 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client",
+    "generate": "plop"
   },
   "author": "Meszaros Dezso",
   "license": "ISC",
@@ -19,7 +20,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^1.19.4",
-    "generate": "cd client && plop"
+    "plop": "^2.5.3"
   },
   "devDependencies": {}
 }

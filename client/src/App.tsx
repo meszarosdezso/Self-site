@@ -14,11 +14,15 @@ const App: React.FC = () => {
   }, [])
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className='App'>
+      <header className='App-header'>
         <CircularAvatar url={profile.imageUrl} alt={"Profile image"} />
         <br />
-        <h2 style={{ color: "#63a0b1" }}>{profile.name}</h2>
+        <div style={{ color: "#a60035" }}>
+          {profile.name.split(" ").map(word => (
+            <h1 key={word}>{word}</h1>
+          ))}
+        </div>
       </header>
     </div>
   )
