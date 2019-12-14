@@ -1,21 +1,22 @@
-import React, { createContext, useState, useContext } from "react"
+import React, { createContext, useState, useContext, useEffect } from "react"
 import { Theme } from "../Models/Theme"
 
+export const AccentColors = {
+  FUCSIA: "#d50044",
+  AMBER: "#ffcc33",
+  LIME: "#bee10f"
+}
+
 export const Themes = {
-  FUCSIA: {
-    accentColor: "rgb(213, 0, 68)",
+  DARK: {
     primaryColor: "#4E738B",
-    primaryColorDark: "rgb(12, 19, 25)"
+    primaryColorDark: "#111d25",
+    textColor: "#ffffff"
   },
-  AMBER: {
-    accentColor: "rgb(213, 170, 68)",
+  LIGHT: {
     primaryColor: "#4E738B",
-    primaryColorDark: "rgb(12, 19, 25)"
-  },
-  LIME: {
-    accentColor: "rgb(200, 255, 20)",
-    primaryColor: "#4E738B",
-    primaryColorDark: "rgb(12, 19, 25)"
+    primaryColorDark: "#eef5ff",
+    textColor: "#111d25"
   }
 }
 
@@ -29,7 +30,22 @@ export const ThemeContext = createContext<ThemeContextProps>(
 )
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(Themes.FUCSIA)
+  const [theme, setTheme] = useState<Theme>({
+    ...Themes.DARK,
+    accentColor: AccentColors.LIME
+  })
+
+  useEffect(() => {
+    try {
+      setTheme(JSON.parse(localStorage.getItem("theme") || ""))
+    } catch {
+      console.log("LocalStorage has no cart items yet.")
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(theme))
+  }, [theme])
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

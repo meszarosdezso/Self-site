@@ -1,38 +1,33 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import "./Home.scss"
 import CircularAvatar from "../../Components/CircularAvatar/CircularAvatar"
 import { useTheme } from "../../Providers/theme_provider"
 import ThemeSwitcher from "../../Components/ThemeSwitcher/ThemeSwitcher"
+import useFetch from "../../Hooks/useFetch"
+import Loading from "../Loading/Loading"
 
 const Home: React.FC = props => {
-  const [profile, setProfile] = useState({ name: "", imageUrl: "" })
+  const { accentColor, primaryColor, primaryColorDark, textColor } = useTheme()
 
-  useEffect(() => {
-    fetch("https://api.github.com/users/meszarosdezso")
-      .then(res => res.json())
-      .then(data =>
-        setProfile({ imageUrl: data["avatar_url"], name: data["name"] })
-      )
-  }, [])
+  const { data, loading } = useFetch(
+    "https://api.github.com/users/meszarosdezso"
+  )
 
-  const { accentColor, primaryColor, primaryColorDark } = useTheme()
-
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <div className='Home'>
-      <header className='App-header' style={{ background: primaryColorDark }}>
-        <CircularAvatar url={profile.imageUrl} alt={"Profile image"} />
+      <header>
+        <CircularAvatar url={data!["avatar_url"]} alt={"Profile image"} />
+        <h1 style={{ color: accentColor, marginTop: "2rem" }}>
+          {data!["name"]}
+        </h1>
         <br />
-        <h1 style={{ color: accentColor }}>{profile.name}</h1>
-        <br />
-        <br />
-        <h3 style={{ color: primaryColor }}>Colors:</h3>
-        <br />
-        <h2 style={{ color: accentColor }}>Accent color: {accentColor}</h2>
         <h2 style={{ color: primaryColor }}>Primary color: {primaryColor}</h2>
-        <h2 style={{ color: "white" }}>
-          Primary color (dark): {primaryColorDark}
+        <h2 style={{ color: textColor }}>
+          Background color: {primaryColorDark}
         </h2>
-        <br />
+        <h2 style={{ color: accentColor }}>Accent color: {accentColor}</h2>
         <ThemeSwitcher />
       </header>
     </div>

@@ -1,7 +1,15 @@
-.App-header {
+@import url("https://fonts.googleapis.com/css?family=Fira+Code:600|Fira+Sans+Condensed:300,500,700,900|Ubuntu+Mono:700&display=swap&subset=latin-ext");
+
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  font-family: Fira Code, monospace;
+  box-sizing: border-box;
+  transition: all 200ms ease-out;
+}
+
+.App {
   background-color: #1c272d;
-  font-family: Operator Mono;
   font-weight: 100;
-  min-height: 100vh;
-  padding: 3rem;
 }
