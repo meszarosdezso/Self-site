@@ -1,12 +1,14 @@
 import React from "react"
 import "./CircularAvatar.scss"
-import { accentColor } from "../../Themes/Colors"
+import { useTheme } from "../../Providers/theme_provider"
 
 const CircularAvatar: React.FC<CircularAvatarProps> = ({
   url,
   alt,
   size = 200
 }) => {
+  const { accentColor } = useTheme()
+
   return (
     <div
       className='Circular-avatar'

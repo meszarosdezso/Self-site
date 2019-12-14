@@ -3,19 +3,25 @@ module.exports = function(plop) {
     description: "Creating new react components",
     prompts: [
       {
+        type: "input",
+        name: "name"
+      },
+      {
         type: "list",
         name: "input",
         message: "Mit akarsz",
-        choices: ["component", "page"]
-      },
-      {
-        type: "input",
-        name: "name"
+        choices: ["component", "page", "provider"]
       }
     ],
     actions: function(data) {
       const actions = []
-      if (data.input === "component") {
+      if (data.input === "provider") {
+        actions.push({
+          type: "add", //adding file to your propject
+          templateFile: "client/plop_templates/provider.hbs",
+          path: "client/src/Providers/{{lowerCase name}}_provider.tsx"
+        })
+      } else if (data.input === "component") {
         actions.push({
           type: "add", //adding file to your propject
           templateFile: "client/plop_templates/functional_component.hbs",
