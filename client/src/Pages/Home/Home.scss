@@ -1,11 +1,14 @@
 .Home {
-  padding: 3rem;
   height: 100vh;
 
-  .name {
-    margin-top: 3rem;
-    font-size: 4rem;
-    line-height: 4rem;
+  .name-and-texts {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 60%;
+    .name {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
   }
 
   .color-info {
@@ -14,8 +17,6 @@
   }
 
   @media screen and (max-width: 800px) {
-    padding: 2rem;
-
     .color-info {
       bottom: 2rem;
       font-size: 80%;
@@ -23,7 +24,7 @@
   }
 
   .ThemeSwitcher {
-    position: absolute;
+    position: fixed;
     top: 2rem;
     right: 2rem;
   }

@@ -3,32 +3,34 @@ import "./Home.scss"
 import CircularAvatar from "../../Components/CircularAvatar/CircularAvatar"
 import { useTheme } from "../../Providers/theme_provider"
 import ThemeSwitcher from "../../Components/ThemeSwitcher/ThemeSwitcher"
-import useFetch from "../../Hooks/useFetch"
-import Loading from "../Loading/Loading"
 import TextChanger from "../../Components/TextChanger/TextChanger"
+import { useProfile } from "../../Providers/profile_provider"
 
-const Home: React.FC = props => {
+const Home: React.FC = () => {
   const { accentColor, primaryColor, primaryColorDark, textColor } = useTheme()
 
-  const { data, loading } = useFetch(
-    "https://api.github.com/users/meszarosdezso"
-  )
+  const profile = useProfile()
 
-  return loading ? (
-    <Loading />
-  ) : (
-    <div className='Home'>
-      <CircularAvatar url={data!["avatar_url"]} />
+  return (
+    <div className='Home section'>
+      <a
+        href='https://instagram.com/meszarosdezso'
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <CircularAvatar url={profile.imageUrl || "../../Assets/profile.jpg"} />
+      </a>
       <ThemeSwitcher />
-      <h1 className='name' style={{ color: accentColor }}>
-        {data!["name"]}
-      </h1>
-      <TextChanger
-        texts={["Front-end development", "Photography", "Web Design"]}
-        textStyle={{ color: primaryColor, opacity: 0.4 }}
-      />
+      <div className='name-and-texts'>
+        <h1 className='name' style={{ color: accentColor }}>
+          {profile.name || "Dezso Meszaros"}
+        </h1>
+        <TextChanger
+          texts={["Front-end development"]}
+          textStyle={{ color: primaryColor, opacity: 0.4 }}
+        />
+      </div>
       <div className='color-info'>
-        <h2 style={{ color: primaryColor }}>Primary color: {primaryColor}</h2>
         <h2 style={{ color: textColor }}>
           Background color: {primaryColorDark}
         </h2>
