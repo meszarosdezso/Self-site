@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
-const useFetch = (url: string) => {
-  const [state, setState] = useState(() => ({
+function useFetch<T>(url: string): [T, boolean] {
+  const [state, setState] = useState<{ loading: boolean; data: any }>(() => ({
     loading: true,
     data: null
   }))
@@ -9,7 +9,7 @@ const useFetch = (url: string) => {
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
-      .then(data => setState({ loading: false, data: data }))
+      .then(data => setState({ loading: false, data }))
   }, [url])
 
   if (state.data) {
@@ -18,7 +18,7 @@ const useFetch = (url: string) => {
     console.log("Fetching " + url)
   }
 
-  return state
+  return [state.data, state.loading]
 }
 
 export default useFetch

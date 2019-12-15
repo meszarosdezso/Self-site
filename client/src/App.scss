@@ -9,6 +9,14 @@
   transition: all 200ms ease-out;
 }
 
+a {
+  color: inherit;
+  cursor: pointer;
+  &:active {
+    opacity: 0.7;
+  }
+}
+
 .App {
   background-color: #1c272d;
   font-weight: 100;

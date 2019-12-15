@@ -17,6 +17,7 @@ const Home: React.FC = () => {
         href='https://instagram.com/meszarosdezso'
         target='_blank'
         rel='noopener noreferrer'
+        className='avatar'
       >
         <CircularAvatar url={profile.imageUrl || "../../Assets/profile.jpg"} />
       </a>

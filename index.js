@@ -13,6 +13,16 @@ app.get("/api", (req, res) => {
   axios
     .get(`https://api.github.com/users/${user}`)
     .then(response => res.json(response.data))
+    .then(res.json)
+})
+
+app.get("/api/repos", (req, res) => {
+  const user = req.query["user"] || "meszarosdezso"
+
+  axios
+    .get(`https://api.github.com/users/${user}/repos`)
+    .then(response => res.json(response.data))
+    .then(res.json)
 })
 
 if (process.env.NODE_ENV === "production") {
