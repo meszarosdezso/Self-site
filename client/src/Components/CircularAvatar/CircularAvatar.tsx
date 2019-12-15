@@ -11,7 +11,7 @@ const CircularAvatar: React.FC<CircularAvatarProps> = ({
 
   return (
     <div
-      className='Circular-avatar'
+      className='CircularAvatar'
       style={{
         width: size,
         height: size,

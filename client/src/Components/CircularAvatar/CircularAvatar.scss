@@ -1,9 +1,15 @@
-.Circular-avatar {
+.CircularAvatar {
   border-radius: 50%;
   overflow: hidden;
   position: relative;
   animation: avatarAnimation 1s ease-out forwards;
   transform: scale(0);
+
+  @media screen and (max-width: 800px) {
+    width: 70px !important;
+    height: 70px !important;
+    border-width: 3px !important;
+  }
 
   img {
     position: absolute;

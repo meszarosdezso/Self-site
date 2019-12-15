@@ -1,6 +1,31 @@
 .Home {
   padding: 3rem;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+
+  .CircularAvatar {
+    position: absolute;
+  }
+
+  .name {
+    margin: auto 0;
+    font-size: 4rem;
+  }
+
+  .color-info {
+    position: absolute;
+    bottom: 3rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 2rem;
+
+    .color-info {
+      bottom: 2rem;
+      font-size: 80%;
+    }
+  }
 
   .ThemeSwitcher {
     position: absolute;

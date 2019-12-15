@@ -17,19 +17,18 @@ const Home: React.FC = props => {
     <Loading />
   ) : (
     <div className='Home'>
-      <header>
-        <CircularAvatar url={data!["avatar_url"]} alt={"Profile image"} />
-        <h1 style={{ color: accentColor, marginTop: "2rem" }}>
-          {data!["name"]}
-        </h1>
-        <br />
+      <CircularAvatar url={data!["avatar_url"]} alt={"Profile image"} />
+      <ThemeSwitcher />
+      <h1 className='name' style={{ color: accentColor }}>
+        {data!["name"]}
+      </h1>
+      <div className='color-info'>
         <h2 style={{ color: primaryColor }}>Primary color: {primaryColor}</h2>
         <h2 style={{ color: textColor }}>
           Background color: {primaryColorDark}
         </h2>
         <h2 style={{ color: accentColor }}>Accent color: {accentColor}</h2>
-        <ThemeSwitcher />
-      </header>
+      </div>
     </div>
   )
 }
