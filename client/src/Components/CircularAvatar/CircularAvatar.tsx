@@ -1,12 +1,9 @@
 import React from "react"
 import "./CircularAvatar.scss"
 import { useTheme } from "../../Providers/theme_provider"
+import { colorWithOpacity } from "../../Functions"
 
-const CircularAvatar: React.FC<CircularAvatarProps> = ({
-  url,
-  alt,
-  size = 200
-}) => {
+const CircularAvatar: React.FC<CircularAvatarProps> = ({ url, size = 200 }) => {
   const { accentColor } = useTheme()
 
   return (
@@ -15,17 +12,15 @@ const CircularAvatar: React.FC<CircularAvatarProps> = ({
       style={{
         width: size,
         height: size,
-        border: `.5rem solid ${accentColor}`
+        backgroundImage: `url(${url})`,
+        backgroundColor: colorWithOpacity(accentColor, 0.7)
       }}
-    >
-      <img src={url} alt={alt} />
-    </div>
+    ></div>
   )
 }
 
 interface CircularAvatarProps {
   url: string
-  alt: string
   size?: number
 }
 

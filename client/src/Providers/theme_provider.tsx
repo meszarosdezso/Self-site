@@ -2,21 +2,21 @@ import React, { createContext, useState, useContext, useEffect } from "react"
 import { Theme } from "../Models/Theme"
 
 export const AccentColors = {
-  FUCSIA: "#d50044",
-  AMBER: "#ffcc33",
-  LIME: "#bee10f"
+  FUCSIA: "#D50044",
+  AMBER: "#FFCC33",
+  LIME: "#BEE10F"
 }
 
 export const Themes = {
   DARK: {
     primaryColor: "#4E738B",
-    primaryColorDark: "#111d25",
-    textColor: "#ffffff"
+    primaryColorDark: "#111D25",
+    textColor: "#FFFFFF"
   },
   LIGHT: {
     primaryColor: "#4E738B",
-    primaryColorDark: "#eef5ff",
-    textColor: "#111d25"
+    primaryColorDark: "#EEF5FF",
+    textColor: "#111D25"
   }
 }
 
