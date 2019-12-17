@@ -3,9 +3,14 @@ const cors = require("cors")
 const axios = require("axios")
 const path = require("path")
 
+const origin =
+  process.env.NODE_ENV === "production"
+    ? "https://meszarosdezso.herokuapp.com"
+    : "http://localhost:3000"
+
 const app = express()
 
-app.use(cors())
+app.use(cors({ origin }))
 
 app.get("/api", (req, res) => {
   const user = req.query["user"] || "meszarosdezso"
