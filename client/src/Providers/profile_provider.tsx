@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react"
 import useFetch from "../Hooks/useFetch"
 import Loading from "../Pages/Loading/Loading"
 import ProfileImage from "../Assets/profile.jpg"
-import { BASE_URL } from ".."
+import { BASE_URL } from "../index"
 
 interface ProfileProps {
   imageUrl: string
@@ -13,15 +13,9 @@ interface ProfileProps {
 const ProfileContext = createContext<ProfileProps>({} as ProfileProps)
 
 const ProfileProvider: React.FC = ({ children }) => {
-  const [profile, profileLoading] = useFetch(
-    `${BASE_URL}/api`
-    // "https://jsonplaceholder.typicode.com/users/1"
-  )
+  const [profile, profileLoading] = useFetch(`${BASE_URL}/api`)
 
-  const [repos, reposLoading] = useFetch<[]>(
-    `${BASE_URL}/api/repos`
-    // "https://jsonplaceholder.typicode.com/posts?_limit=5"
-  )
+  const [repos, reposLoading] = useFetch<[]>(`${BASE_URL}/api/repos`)
 
   return profileLoading || reposLoading ? (
     <Loading />
