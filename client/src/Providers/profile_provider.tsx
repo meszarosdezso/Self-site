@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react"
+import React, { createContext, useContext } from "react"
 import useFetch from "../Hooks/useFetch"
 import Loading from "../Pages/Loading/Loading"
 import ProfileImage from "../Assets/profile.jpg"
@@ -13,13 +13,13 @@ const ProfileContext = createContext<ProfileProps>({} as ProfileProps)
 
 const ProfileProvider: React.FC = ({ children }) => {
   const [profile, profileLoading] = useFetch(
-    // "http://localhost:8080/api",
-    // "http://localhost:8080/api/repos"
-    "https://jsonplaceholder.typicode.com/users/1"
+    "http://localhost:8080/api"
+    // "https://jsonplaceholder.typicode.com/users/1"
   )
 
   const [repos, reposLoading] = useFetch<[]>(
-    "https://jsonplaceholder.typicode.com/posts?_limit=5"
+    "http://localhost:8080/api/repos"
+    // "https://jsonplaceholder.typicode.com/posts?_limit=5"
   )
 
   return profileLoading || reposLoading ? (
