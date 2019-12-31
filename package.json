@@ -22,5 +22,8 @@
     "nodemon": "^1.19.4",
     "plop": "^2.5.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/cors": "^2.8.6",
+    "dotenv": "^8.2.0"
+  }
 }

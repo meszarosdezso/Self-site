@@ -3,6 +3,8 @@ const cors = require("cors")
 const axios = require("axios")
 const path = require("path")
 
+require("dotenv").config()
+
 const origin =
   process.env.NODE_ENV === "production"
     ? "https://meszarosdezso.herokuapp.com"
@@ -16,18 +18,26 @@ app.get("/api", (req, res) => {
   const user = req.query["user"] || "meszarosdezso"
 
   axios
-    .get(`https://api.github.com/users/${user}`)
+    .get(
+      `https://api.github.com/users/${user}?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
+    )
     .then(response => res.json(response.data))
-    .then(res.json)
+    .catch(err =>
+      res.status(500).send({ message: "Something bad happened...", err })
+    )
 })
 
 app.get("/api/repos", (req, res) => {
   const user = req.query["user"] || "meszarosdezso"
 
   axios
-    .get(`https://api.github.com/users/${user}/repos`)
+    .get(
+      `https://api.github.com/users/${user}/repos?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
+    )
     .then(response => res.json(response.data))
-    .then(res.json)
+    .catch(err =>
+      res.status(500).send({ message: "Something bad happened...", err })
+    )
 })
 
 if (process.env.NODE_ENV === "production") {
@@ -38,6 +48,6 @@ if (process.env.NODE_ENV === "production") {
   })
 }
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8000
 
-app.listen(PORT, () => console.log(`Server listening on ${PORT}`))
+app.listen(PORT, () => console.log(`Server is running on ${PORT}`))

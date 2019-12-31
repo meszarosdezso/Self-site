@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker"
 export const BASE_URL =
   process.env.NODE_ENV === "production"
     ? "https://meszarosdezso.herokuapp.com"
-    : "http://localhost:8080"
+    : "http://localhost:8000"
 
 ReactDOM.render(<App />, document.getElementById("root"))
 

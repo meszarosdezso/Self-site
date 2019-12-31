@@ -27,7 +27,7 @@ const Home: React.FC = () => {
           {profile.name || "Dezso Meszaros"}
         </h1>
         <TextChanger
-          texts={["Front-end development"]}
+          texts={[profile.bio]}
           textStyle={{ color: primaryColor, opacity: 0.4 }}
         />
       </div>

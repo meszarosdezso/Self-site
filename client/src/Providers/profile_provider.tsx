@@ -1,34 +1,29 @@
 import React, { createContext, useContext } from "react"
-import useFetch from "../Hooks/useFetch"
 import Loading from "../Pages/Loading/Loading"
-import ProfileImage from "../Assets/profile.jpg"
 import { BASE_URL } from "../index"
+import useFetch from "../Hooks/useFetch"
 
 interface ProfileProps {
   imageUrl: string
   name: string
-  repos: any[]
+  bio: string
 }
 
 const ProfileContext = createContext<ProfileProps>({} as ProfileProps)
 
 const ProfileProvider: React.FC = ({ children }) => {
-  const [profile, profileLoading] = useFetch(`${BASE_URL}/api`)
+  const [profile, loading] = useFetch<any>(`${BASE_URL}/api`)
 
-  const [repos, reposLoading] = useFetch<[]>(`${BASE_URL}/api/repos`)
+  console.log(profile)
 
-  return profileLoading || reposLoading ? (
+  return loading ? (
     <Loading />
   ) : (
     <ProfileContext.Provider
       value={{
-        imageUrl: profile!["avatar_url"] || ProfileImage,
-        name: profile!["name"] || "Dezso Meszaros",
-        repos: repos.map(repo => ({
-          name: repo["name"],
-          id: repo["id"],
-          url: repo["html_url"]
-        }))
+        imageUrl: profile["avatar_url"],
+        name: profile["name"],
+        bio: profile["bio"]
       }}
     >
       {children}
