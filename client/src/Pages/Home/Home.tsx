@@ -5,6 +5,7 @@ import { useTheme } from "../../Providers/theme_provider"
 import ThemeSwitcher from "../../Components/ThemeSwitcher/ThemeSwitcher"
 import TextChanger from "../../Components/TextChanger/TextChanger"
 import { useProfile } from "../../Providers/profile_provider"
+import Particles from "../../Components/Particles/Particles"
 
 const Home: React.FC = () => {
   const { accentColor, primaryColor, primaryColorDark, textColor } = useTheme()
@@ -12,18 +13,21 @@ const Home: React.FC = () => {
   const profile = useProfile()
 
   return (
-    <div className='Home section'>
+    <div className="Home section">
       <a
-        href='https://instagram.com/meszarosdezso'
-        target='_blank'
-        rel='noopener noreferrer'
-        className='avatar'
+        href="https://instagram.com/meszarosdezso"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="avatar"
       >
         <CircularAvatar url={profile.imageUrl || "../../Assets/profile.jpg"} />
       </a>
       <ThemeSwitcher />
-      <div className='name-and-texts'>
-        <h1 className='name' style={{ color: accentColor }}>
+      <div className="particle-canvas">
+        <Particles />
+      </div>
+      <div className="name-and-texts">
+        <h1 className="name" style={{ color: accentColor }}>
           {profile.name || "Dezso Meszaros"}
         </h1>
         <TextChanger
@@ -31,7 +35,7 @@ const Home: React.FC = () => {
           textStyle={{ color: primaryColor, opacity: 0.4 }}
         />
       </div>
-      <div className='color-info'>
+      <div className="color-info">
         <h2 style={{ color: textColor }}>
           Background color: {primaryColorDark}
         </h2>
