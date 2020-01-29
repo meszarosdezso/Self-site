@@ -3,7 +3,7 @@ const cors = require("cors")
 const axios = require("axios")
 const path = require("path")
 
-require("dotenv").config()
+if (process.env.NODE_ENV != "production") require("dotenv").config()
 
 const origin =
   process.env.NODE_ENV === "production"
