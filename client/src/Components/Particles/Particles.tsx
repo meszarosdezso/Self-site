@@ -33,7 +33,7 @@ const sketch = (p: any, background: string, accentColor: string) => {
     constructor(x?: any, y?: any) {
       this.pos = p.createVector(x || p.random(p.width), y || p.random(p.height))
       this.vel = p.createVector(p.random(-2, 2), p.random(-2, 2))
-      this.size = 5
+      this.size = 4
     }
 
     update() {
