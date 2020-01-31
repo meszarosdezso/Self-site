@@ -21,7 +21,7 @@ const sketch = (p: any, background: string, accentColor: string) => {
     particles.forEach((particle, idx) => {
       particle.update()
       particle.draw()
-      particle.checkParticles(particles.slice(idx))
+      particle.checkParticles(particles.slice(idx + 1))
     })
   }
 

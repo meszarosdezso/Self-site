@@ -2,7 +2,6 @@ import React from "react"
 import "./App.scss"
 import ThemeProvider, { ThemeContext } from "./Providers/theme_provider"
 import Home from "./Pages/Home/Home"
-import WhoDis from "./Components/WhoDis/WhoDis"
 import ProfileProvider from "./Providers/profile_provider"
 
 const App: React.FC = () => {
@@ -12,14 +11,13 @@ const App: React.FC = () => {
         <ThemeContext.Consumer>
           {({ theme }) => (
             <div
-              className='App'
+              className="App"
               style={{
                 background: theme.primaryColorDark,
                 color: theme.textColor
               }}
             >
               <Home />
-              <WhoDis />
             </div>
           )}
         </ThemeContext.Consumer>
