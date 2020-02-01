@@ -11,14 +11,16 @@ export const AccentColors = {
 
 export const Themes = {
   DARK: {
-    primaryColor: "#4E738B",
+    primaryColor: "#6d9ebd",
     primaryColorDark: "#111D25",
-    textColor: "#FFFFFF"
+    textColor: "#FFFFFF",
+    isDark: true
   },
   LIGHT: {
     primaryColor: "#4E738B",
     primaryColorDark: "#EFF7FF",
-    textColor: "#34495e"
+    textColor: "#34495e",
+    isDark: false
   }
 }
 
