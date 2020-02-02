@@ -1,7 +1,7 @@
 const express = require("express")
 const cors = require("cors")
-const axios = require("axios")
 const path = require("path")
+const mongoose = require("mongoose")
 
 if (process.env.NODE_ENV != "production") require("dotenv").config()
 
@@ -13,32 +13,15 @@ const origin =
 const app = express()
 
 app.use(cors({ origin }))
+app.use(express.json())
+app.use("/api", require("./routes/api/me.route"))
+app.use("/api/vote", require("./routes/api/votes.route"))
 
-app.get("/api", (req, res) => {
-  const user = req.query["user"] || "meszarosdezso"
-
-  axios
-    .get(
-      `https://api.github.com/users/${user}?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
-    )
-    .then(response => res.json(response.data))
-    .catch(err =>
-      res.status(500).send({ message: "Something bad happened...", err })
-    )
-})
-
-app.get("/api/repos", (req, res) => {
-  const user = req.query["user"] || "meszarosdezso"
-
-  axios
-    .get(
-      `https://api.github.com/users/${user}/repos?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_CLIENT_SECRET}`
-    )
-    .then(response => res.json(response.data))
-    .catch(err =>
-      res.status(500).send({ message: "Something bad happened...", err })
-    )
-})
+mongoose.connect(
+  process.env.MONGODB_URI,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  err => console.log("\x1b[33m%s\x1b[0m", "Database connection established")
+)
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"))

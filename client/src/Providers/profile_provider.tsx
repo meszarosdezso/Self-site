@@ -12,7 +12,7 @@ interface ProfileProps {
 const ProfileContext = createContext<ProfileProps>({} as ProfileProps)
 
 const ProfileProvider: React.FC = ({ children }) => {
-  const [profile, loading] = useFetch<any>(`${BASE_URL}/api`)
+  const [profile, loading] = useFetch<any>(`${BASE_URL}/api/me`)
 
   console.log(profile)
 
