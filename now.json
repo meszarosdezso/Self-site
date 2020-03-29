@@ -15,7 +15,7 @@
       "src": "/api/(.*)",
       "dest": "/"
     },
-    { "src": ".*", "dest": "/" }
+    { "src": ".*", "dest": "/client/build" }
   ],
   "env": {
     "MONGODB_URI": "@mongodb-uri",
