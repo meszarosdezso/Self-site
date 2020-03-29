@@ -3,12 +3,12 @@ import "./Home.scss"
 import CircularAvatar from "../../Components/CircularAvatar/CircularAvatar"
 import { useTheme } from "../../Providers/theme_provider"
 import ThemeSwitcher from "../../Components/ThemeSwitcher/ThemeSwitcher"
-import TextChanger from "../../Components/TextChanger/TextChanger"
 import { useProfile } from "../../Providers/profile_provider"
 import Particles from "../../Components/Particles/Particles"
+import AC from "../../Components/Ac/Ac"
 
 const Home: React.FC = () => {
-  const { accentColor, primaryColor, primaryColorDark, textColor } = useTheme()
+  const { accentColor, primaryColorDark, textColor } = useTheme()
 
   const profile = useProfile()
 
@@ -27,13 +27,14 @@ const Home: React.FC = () => {
         <Particles />
       </div>
       <div className="name-and-texts">
-        <h1 className="name" style={{ color: accentColor }}>
-          {profile.name || "Dezso Meszaros"}
+        <h1 className="name sans">
+          <AC>{profile.name}</AC>
         </h1>
-        <TextChanger
-          texts={[profile.bio]}
-          textStyle={{ color: primaryColor, opacity: 0.4 }}
-        />
+        <div id="biography">
+          {profile.bio.split(". ").map(line => (
+            <p>{line}</p>
+          ))}
+        </div>
       </div>
       <div className="color-info">
         <h2 style={{ color: textColor }}>

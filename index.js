@@ -3,7 +3,7 @@ const cors = require("cors")
 const path = require("path")
 const mongoose = require("mongoose")
 
-if (process.env.NODE_ENV != "production") require("dotenv").config()
+if (process.env.NODE_ENV !== "production") require("dotenv").config()
 
 const origin =
   process.env.NODE_ENV === "production"
@@ -15,7 +15,6 @@ const app = express()
 app.use(cors({ origin }))
 app.use(express.json())
 app.use("/api", require("./routes/api/me.route"))
-app.use("/api/vote", require("./routes/api/votes.route"))
 
 mongoose.connect(
   process.env.MONGODB_URI,

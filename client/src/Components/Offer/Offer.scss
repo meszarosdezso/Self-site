@@ -4,27 +4,26 @@
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-  box-shadow: inset 0 -3px 10px #0004;
   text-align: center;
 
-  .flexing {
-    opacity: 0.9;
+  #flexing {
+    opacity: 0.8;
   }
 
   h1 {
     font-size: calc(2rem + 2vw);
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .options {
     display: flex;
     h3 {
       font-size: calc(1.4rem + 2vw);
-      text-transform: uppercase;
       margin: 1rem;
       padding: 0.4rem;
       cursor: default;
-      opacity: 0.4;
+      opacity: 0.5;
+
       &.active {
         opacity: 1;
       }

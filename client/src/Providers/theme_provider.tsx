@@ -36,7 +36,8 @@ export const ThemeContext = createContext<ThemeContextProps>(
 const ThemeProvider: React.FC = ({ children }) => {
   const [theme, setTheme] = useState<Theme>({
     ...Themes.DARK,
-    accentColor: AccentColors.LIME
+    accentColor: AccentColors.LIME,
+    isDark: true
   })
 
   useEffect(() => {

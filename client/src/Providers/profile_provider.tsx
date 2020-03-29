@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react"
+import React, { createContext, useContext, useEffect } from "react"
 import Loading from "../Pages/Loading/Loading"
 import { BASE_URL } from "../index"
 import useFetch from "../Hooks/useFetch"
@@ -14,7 +14,11 @@ const ProfileContext = createContext<ProfileProps>({} as ProfileProps)
 const ProfileProvider: React.FC = ({ children }) => {
   const [profile, loading] = useFetch<any>(`${BASE_URL}/api/me`)
 
-  console.log(profile)
+  useEffect(() => {
+    if (!loading) {
+      document.title = profile["name"]
+    }
+  }, [profile, loading])
 
   return loading ? (
     <Loading />
