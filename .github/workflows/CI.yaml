@@ -14,12 +14,3 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm run build
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: amondnet/now-deployment@v2
-        with:
-          zeit-token: ${{ secrets.ZEIT_TOKEN }}
-          now-org-id: ${{ secrets.org-id}}
-          now-project-id: ${{ secrets.project-if}}
