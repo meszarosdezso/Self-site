@@ -10,13 +10,6 @@
       "use": "@now/static-build"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/"
-    },
-    { "src": ".*", "dest": "/client/build" }
-  ],
   "env": {
     "MONGODB_URI": "@mongodb-uri",
     "GITHUB_CLIENT_ID": "@github-id",
