@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "build": "npm install --prefix client && npm run build --prefix client",
-    "now-build": "npm run build && mv client/build dist",
+    "now-build": "mv build dist",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
