@@ -11,17 +11,8 @@
       "src": "/api/(.*)",
       "dest": "/"
     },
-    { "src": "^/static/(.*)", "dest": "/dist/static/$1" },
-    { "src": "^/favicon.ico", "dest": "/dist/favicon.ico" },
-    { "src": "^/asset-manifest.json", "dest": "/dist/asset-manifest.json" },
-    { "src": "^/manifest.json", "dest": "/dist/manifest.json" },
-    {
-      "src": "^/service-worker.js",
-      "headers": { "cache-control": "s-maxage=0" },
-      "dest": "/dist/service-worker.js"
-    },
-    { "src": "^/precache-manifest.(.*)", "dest": "/dist/precache-manifest.$1" },
-    { "src": "^/(.*)", "dest": "/dist/index.html" }
+    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    { "src": ".*", "dest": "/index.html" }
   ],
   "env": {
     "MONGODB_URI": "@mongodb-uri",
