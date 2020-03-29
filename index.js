@@ -23,6 +23,8 @@ mongoose.connect(
 )
 
 if (process.env.NODE_ENV === "production") {
+  console.log("I'm in production")
+
   app.use(express.static("client/build"))
 
   app.get("*", (req, res) => {
