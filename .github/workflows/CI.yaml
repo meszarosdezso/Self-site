@@ -1,4 +1,4 @@
-name: Self site CI
+name: CI
 
 on:
   push:
