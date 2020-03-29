@@ -19,7 +19,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      working-directory: "/client"
+      working-directory: ./client
       - uses: actions/checkout@v2
       - uses: amondnet/now-deployment@v2
         with:
