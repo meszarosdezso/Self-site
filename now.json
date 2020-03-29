@@ -2,8 +2,12 @@
   "version": 2,
   "builds": [
     {
-      "src": "./index.js",
+      "src": "index.js",
       "use": "@now/node-server"
+    },
+    {
+      "src": "client/package.json",
+      "use": "@now/static-build"
     }
   ],
   "routes": [
