@@ -6,12 +6,11 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v1
-      - name: Deploy on Zeit
-        uses: actions/zeit-now@master
-        env:
-          ZEIT_TOKEN: ${{ secrets.ZEIT_TOKEN }}
+      - uses: actions/checkout@v2
+      - uses: amondnet/now-deployment@v2
+        with:
+          zeit-token: ${{ secrets.ZEIT_TOKEN }}
+          now-org-id: ${{ secrets.ORG_ID}}
+          now-project-id: ${{ secrets.PROJECT_ID}}
