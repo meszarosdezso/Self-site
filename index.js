@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config()
 
 const origin =
   process.env.NODE_ENV === "production"
-    ? "https://meszarosdezso.herokuapp.com"
+    ? "https://self-site-o00nxzajh.now.sh/"
     : "http://localhost:3000"
 
 const app = express()
