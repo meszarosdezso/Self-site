@@ -24,7 +24,7 @@ mongoose.connect(
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("dist"))
-
+  console.log("PRODUCTION!!")
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "dist", "index.html"))
   })
