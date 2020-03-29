@@ -11,5 +11,10 @@
       "src": "/api/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+  "env": {
+    "MONGODB_URI": "@mongodb-uri",
+    "GITHUB_CLIENT_ID": "@github-id",
+    "GITHUB_CLIENT_SECRET": "@github-secret"
+  }
 }
