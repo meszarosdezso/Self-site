@@ -11,8 +11,7 @@
       "src": "/api/(.*)",
       "dest": "/"
     },
-    { "src": "^/static/(.*)", "dest": "/static/$1" },
-    { "src": ".*", "dest": "/index.html" }
+    { "src": ".*", "dest": "/" }
   ],
   "env": {
     "MONGODB_URI": "@mongodb-uri",
