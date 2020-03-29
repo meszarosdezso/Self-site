@@ -3,3 +3,4 @@ package-lock.json
 .now
 .env
 .DS_STORE
+dist
