@@ -11,23 +11,17 @@
       "src": "/api/(.*)",
       "dest": "/"
     },
-    { "src": "^/static/(.*)", "dest": "/client/build/static/$1" },
-    { "src": "^/favicon.ico", "dest": "/client/build/favicon.ico" },
-    {
-      "src": "^/asset-manifest.json",
-      "dest": "/client/build/asset-manifest.json"
-    },
-    { "src": "^/manifest.json", "dest": "/client/build/manifest.json" },
+    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    { "src": "^/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "^/asset-manifest.json", "dest": "/asset-manifest.json" },
+    { "src": "^/manifest.json", "dest": "/manifest.json" },
     {
       "src": "^/service-worker.js",
       "headers": { "cache-control": "s-maxage=0" },
-      "dest": "/client/build/service-worker.js"
+      "dest": "/service-worker.js"
     },
-    {
-      "src": "^/precache-manifest.(.*)",
-      "dest": "/client/build/precache-manifest.$1"
-    },
-    { "src": "^/(.*)", "dest": "/client/build/index.html" }
+    { "src": "^/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
+    { "src": "^/(.*)", "dest": "/index.html" }
   ],
   "env": {
     "MONGODB_URI": "@mongodb-uri",
