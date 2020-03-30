@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config()
 
 const origin =
   process.env.NODE_ENV === "production"
-    ? location.href
+    ? "https://self-site.now.sh"
     : "http://localhost:3000"
 
 const app = express()
