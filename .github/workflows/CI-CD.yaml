@@ -17,9 +17,9 @@ jobs:
           node-version: 12
 
       - name: Install dependencies
-        working-diractory: ./client
+        working-directory: ./client
         run: npm ci
 
       - name: Build front-end
-        working-diractory: ./client
+        working-directory: ./client
         run: npm run build
