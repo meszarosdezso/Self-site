@@ -22,6 +22,6 @@ jobs:
 
       - name: Build & deploy client
         env:
-          NOW_TOKEN: ${{ ZEIT_TOKEN }}
+          NOW_TOKEN: ${{ secrets.ZEIT_TOKEN }}
         working-directory: ./client
         run: now --token $NOW_TOKEN
