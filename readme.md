@@ -1,3 +1,3 @@
 # Online portfolio of Meszaros Dezso
 
-### Dezso Meszaros © 2019
+### Dezso Meszaros © 2020
