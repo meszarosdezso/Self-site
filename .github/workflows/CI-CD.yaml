@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: cat >~/api/.netrc <<"EOF
+      - run: cat >~/.netrc <<"EOF
           machine api.heroku.com
           login meszarosdezsodev@gmail.com
           password ${{ secrets.HEROKU_TOKEN }}
@@ -20,6 +20,8 @@ jobs:
           login meszarosdezsodev@gmail.com
           password ${{ secrets.HEROKU_TOKEN }}
           EOF"
+        working-directory: ./api
+
       - uses: akhileshns/heroku-deploy@v3.0.0
         with:
           working-directory: ./api
