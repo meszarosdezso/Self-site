@@ -20,13 +20,6 @@ jobs:
         working-directory: ./client
         run: npm ci
 
-      - name: Build client
+      - name: Build & deploy client
         working-directory: ./client
-        run: npm run build && mv build dist
-      - name: Deploy client
-        uses: amondnet/now-deployment@v2
-        with:
-          zeit-token: ${{ secrets.ZEIT_TOKEN }} # Required
-          now-org-id: ${{ secrets.ORG_ID}} #Required
-          now-project-id: ${{ secrets.PROJECT_ID}} #Required
-          working-directory: ./client
+        run: now
