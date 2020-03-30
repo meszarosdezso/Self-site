@@ -1,0 +1,22 @@
+.ThemeSwitcher {
+  text-align: right;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-end;
+
+  .buttons {
+    display: flex;
+    flex-flow: column wrap;
+    height: 50px;
+    justify-content: center;
+
+    button {
+      letter-spacing: 1px;
+      font-weight: bold;
+      border: none;
+      background: none;
+      cursor: pointer;
+      margin-left: 0.4rem;
+    }
+  }
+}

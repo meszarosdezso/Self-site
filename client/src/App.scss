@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Code:600|Fira+Sans:300,500,700,900&display=swap&subset=latin-ext");
+
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  font-family: Fira Code, monospace;
+  box-sizing: border-box;
+  transition: all 200ms ease-out;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+p {
+  line-height: 170%;
+  font-weight: 100;
+}
+
+.sans {
+  font-family: Fira Sans;
+  font-weight: 400;
+}
+
+.App {
+  background-color: #1c272d;
+  font-weight: 100;
+}
+
+.section {
+  padding: 3rem;
+
+  .title {
+    font-family: Fira Sans;
+  }
+
+  .body {
+    margin: 2rem auto;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 150%;
+    opacity: 0.7;
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 2rem;
+  }
+}

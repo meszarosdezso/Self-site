@@ -1,0 +1,55 @@
+.Home {
+  height: 100vh;
+
+  .name-and-texts {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 60%;
+    z-index: 2;
+    .name {
+      font-size: calc(2rem + 4vw);
+      line-height: 1;
+    }
+
+    #biography {
+      margin-top: 1rem;
+      opacity: 0.7;
+    }
+  }
+
+  .color-info {
+    position: absolute;
+    bottom: 3rem;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 800px) {
+    .color-info {
+      bottom: 2rem;
+      font-size: 80%;
+    }
+  }
+
+  .avatar {
+    position: absolute;
+    z-index: 2;
+  }
+
+  .ThemeSwitcher {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 4;
+  }
+
+  .particle-canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    height: 100vh;
+    overflow: hidden;
+    opacity: 0.4;
+  }
+}

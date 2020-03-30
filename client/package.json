@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@nfront/use-scroll-position": "^1.1.1",
     "@types/jest": "24.0.19",
     "@types/node": "12.11.5",
     "@types/react": "16.9.9",
     "@types/react-dom": "16.9.2",
     "node-sass": "^4.12.0",
+    "p5": "^0.10.2",
+    "plop": "^2.5.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-p5-wrapper": "^2.0.0",
     "react-scripts": "3.2.0",
     "typescript": "3.6.4"
   },
@@ -17,7 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "now-build": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,17 +1,17 @@
-.Circular-avatar {
+.CircularAvatar {
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  animation: avatarAnimation 1s 2s ease-out forwards;
+  animation: avatarAnimation 1s ease-out forwards;
   transform: scale(0);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: luminosity;
 
-  img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
+  @media screen and (max-width: 800px) {
+    width: 60px !important;
+    height: 60px !important;
+    border-width: 3px !important;
   }
 }
 
