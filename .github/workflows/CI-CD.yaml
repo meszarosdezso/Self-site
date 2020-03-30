@@ -13,16 +13,13 @@ jobs:
         with:
           version: 12
       - run: cat >~/.netrc <<EOF
-            machine api.heroku.com
-                login ${email}
-                password ${api_key}
-            machine git.heroku.com
-                login ${email}
-                password ${api_key}
-            EOF
-          with:
-            email: meszarosdezsodev@gmail.com
-            api_key: ${{ secrets.HEROKU_TOKEN }}
+          machine api.heroku.com
+          login meszarosdezsodev@gmail.com
+          password ${{ secrets.HEROKU_TOKEN }}
+          machine git.heroku.com
+          login meszarosdezsodev@gmail.com
+          password ${{ secrets.HEROKU_TOKEN }}
+          EOF
       - uses: akhileshns/heroku-deploy@v3.0.0
         with:
           heroku_api_key: ${{secrets.HEROKU_TOKEN}}
