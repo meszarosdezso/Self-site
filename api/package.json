@@ -6,11 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "build": "npm install --prefix client && npm run build --prefix client",
     "server": "nodemon index.js",
-    "client": "npm run start --prefix client",
+    "client": "npm run start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client",
     "generate": "plop"
   },
   "author": "Meszaros Dezso",
