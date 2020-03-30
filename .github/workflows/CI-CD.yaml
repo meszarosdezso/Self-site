@@ -5,7 +5,34 @@ on:
     branches: [master]
 
 jobs:
+  deploy-api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          version: 12
+      - run: cat >~/.netrc <<EOF
+            machine api.heroku.com
+                login ${email}
+                password ${api_key}
+            machine git.heroku.com
+                login ${email}
+                password ${api_key}
+            EOF
+          with:
+            email: meszarosdezsodev@gmail.com
+            api_key: ${{ secrets.HEROKU_TOKEN }}
+      - uses: akhileshns/heroku-deploy@v3.0.0
+        with:
+          heroku_api_key: ${{secrets.HEROKU_TOKEN}}
+          heroku_app_name: "meszarosdezso"
+          heroku_email: "meszarosdezsodev@gmail.com"
+          usedocker: false
+          working-directory: ./api
+
   deploy-client:
+    needs: [deploy-api]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,11 +42,3 @@ jobs:
           now-org-id: ${{ secrets.ORG_ID}}
           now-project-id: ${{ secrets.PROJECT_ID}}
           working-directory: ./client
-
-  deploy-api:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: "Deploy api"
-        run: git push -f https://heroku:${{ secrets.HEROKU_TOKEN }}@git.heroku.com/meszarosdezso.git origin/master:master
-        working-directory: ./api
