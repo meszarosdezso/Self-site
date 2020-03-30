@@ -30,6 +30,7 @@ jobs:
           heroku_email: "meszarosdezsodev@gmail.com"
           usedocker: false
           branch: "master"
+          appdir: "api"
 
   deploy-client:
     needs: [deploy-api]
