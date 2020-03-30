@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config()
 
 const origin =
   process.env.NODE_ENV === "production"
-    ? "https://self-site-o00nxzajh.now.sh"
+    ? "https://self-site.now.sh"
     : "http://localhost:3000"
 
 const app = express()
@@ -23,8 +23,6 @@ mongoose.connect(
 )
 
 if (process.env.NODE_ENV === "production") {
-  console.log("I'm in production")
-
   app.use(express.static("client/build"))
 
   app.get("*", (req, res) => {
