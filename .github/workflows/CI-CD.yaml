@@ -21,5 +21,7 @@ jobs:
         run: npm ci
 
       - name: Build & deploy client
+        env:
+          NOW_TOKEN: ${{ ZEIT_TOKEN }}
         working-directory: ./client
-        run: now
+        run: now --token $NOW_TOKEN
