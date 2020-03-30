@@ -22,7 +22,7 @@ jobs:
 
       - name: Build client
         working-directory: ./client
-        run: npm run build
+        run: npm run build && mv build dist
       - name: Deploy client
         uses: amondnet/now-deployment@v2
         with:
