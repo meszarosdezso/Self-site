@@ -22,7 +22,7 @@ jobs:
           EOF"
         working-directory: ./api
 
-      - uses: akhileshns/heroku-deploy@v3.0.0
+      - uses: meszarosdezso/heroku-deploy@v3.0.0
         with:
           working-directory: ./api
           heroku_api_key: ${{secrets.HEROKU_TOKEN}}
