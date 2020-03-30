@@ -8,24 +8,25 @@ jobs:
   deploy-client:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: amondnet/now-deployment@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        working-directory: ./client
+        run: npm ci
+
+      - name: Build client
+        working-directory: ./client
+        run: npm run build
+      - name: Deploy client
+        uses: amondnet/now-deployment@v2
         with:
           zeit-token: ${{ secrets.ZEIT_TOKEN }} # Required
           now-org-id: ${{ secrets.ORG_ID}} #Required
           now-project-id: ${{ secrets.PROJECT_ID}} #Required
           working-directory: ./client
-  deploy-api:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Login to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_TOKEN }}
-        run: heroku container:login
-      - name: Deploy to Heroku
-        env:
-          HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
-          HEROKU_APP_NAME: "your-app-name-here"
-        if: github.ref == 'refs/heads/master' && job.status == 'success'
-        run: git push https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git origin/master:master
