@@ -4,7 +4,6 @@ import CircularAvatar from "../../Components/CircularAvatar/CircularAvatar"
 import { useTheme } from "../../Providers/theme_provider"
 import ThemeSwitcher from "../../Components/ThemeSwitcher/ThemeSwitcher"
 import { useProfile } from "../../Providers/profile_provider"
-import Particles from "../../Components/Particles/Particles"
 import AC from "../../Components/Ac/Ac"
 
 const Home: React.FC = () => {
