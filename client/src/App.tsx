@@ -4,6 +4,7 @@ import ThemeProvider, { ThemeContext } from "./Providers/theme_provider"
 import Home from "./Pages/Home/Home"
 import ProfileProvider from "./Providers/profile_provider"
 import Offer from "./Components/Offer/Offer"
+import Particles from "./Components/Particles/Particles"
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,9 @@ const App: React.FC = () => {
                 color: theme.textColor
               }}
             >
+              <div className="particle-canvas">
+                <Particles />
+              </div>
               <Home />
               <Offer />
             </div>

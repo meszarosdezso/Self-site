@@ -22,8 +22,8 @@ const Offer: React.FC = props => {
 
   return (
     <div className="Offer">
-      <h5 id="flexing">
-        Design <AC>&</AC> code by{" "}
+      <h4 id="flexing">
+        design <AC>&</AC> code by{" "}
         <span
           style={{
             textDecoration: clickedMe ? "none" : "underline",
@@ -33,8 +33,9 @@ const Offer: React.FC = props => {
         >
           {!clickedMe ? "this guy" : "THIS guy"}
         </span>
-        {clickedMe ? "  😉" : ""}
-      </h5>
+        {clickedMe ? " 😉" : " 👈"}
+      </h4>
+      <br />
       <br />
       <h1 className="question sans">Do you like this website?</h1>
       <div className="options">

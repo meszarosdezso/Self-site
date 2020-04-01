@@ -7,6 +7,7 @@ interface ProfileProps {
   imageUrl: string
   name: string
   bio: string
+  blogLink: string
 }
 
 const ProfileContext = createContext<ProfileProps>({} as ProfileProps)
@@ -16,7 +17,8 @@ const ProfileProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     if (!loading) {
-      document.title = profile["name"]
+      document.title = profile ? profile["name"] : "API Error"
+      document.body.style.overflow = profile ? "inherit" : "hidden"
     }
   }, [profile, loading])
 
@@ -25,9 +27,14 @@ const ProfileProvider: React.FC = ({ children }) => {
   ) : (
     <ProfileContext.Provider
       value={{
-        imageUrl: profile["avatar_url"],
-        name: profile["name"],
-        bio: profile["bio"]
+        imageUrl: profile ? profile!["avatar_url"] : "",
+        name: profile ? profile["name"] : "API Error):",
+        bio: profile
+          ? profile!["bio"]
+          : `If you see this, there was an issue with the server.
+          I'm probably already working on it, so play with the background while it's being fixed!(;
+          `,
+        blogLink: profile ? profile["blog"] : ""
       }}
     >
       {children}

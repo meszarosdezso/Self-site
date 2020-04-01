@@ -15,23 +15,20 @@ const Home: React.FC = () => {
   return (
     <div className="Home section">
       <a
-        href="https://instagram.com/meszarosdezso"
+        href={profile.blogLink}
         target="_blank"
         rel="noopener noreferrer"
         className="avatar"
       >
-        <CircularAvatar url={profile.imageUrl || "../../Assets/profile.jpg"} />
+        <CircularAvatar url={profile.imageUrl} />
       </a>
       <ThemeSwitcher />
-      <div className="particle-canvas">
-        <Particles />
-      </div>
       <div className="name-and-texts">
         <h1 className="name sans">
           <AC>{profile.name}</AC>
         </h1>
         <div id="biography">
-          {profile.bio.split(". ").map(line => (
+          {profile.bio.split(/\.\s/).map(line => (
             <p>{line}</p>
           ))}
         </div>
@@ -40,7 +37,9 @@ const Home: React.FC = () => {
         <h2 style={{ color: textColor }}>
           Background color: {primaryColorDark}
         </h2>
-        <h2 style={{ color: accentColor }}>Accent color: {accentColor}</h2>
+        <h2>
+          <AC>Accent color: {accentColor}</AC>
+        </h2>
       </div>
     </div>
   )

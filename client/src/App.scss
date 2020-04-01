@@ -32,6 +32,17 @@ p {
   font-weight: 100;
 }
 
+.particle-canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 0;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0.4;
+}
+
 .section {
   padding: 3rem;
 
