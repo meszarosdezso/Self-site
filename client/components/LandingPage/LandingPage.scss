@@ -1,0 +1,44 @@
+.LandingPage {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  padding-left: 10%;
+
+  #avatar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(15%, -15%);
+  }
+
+  #title {
+    font-size: clamp(2rem, 12vw, 5rem);
+
+    width: 50%;
+    line-height: 110%;
+    padding-left: 5%;
+    margin-top: 1rem;
+  }
+
+  #mine {
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+    font-weight: 500;
+
+    #mine-line {
+      content: "";
+      background: white;
+      width: 300%;
+      height: 2px;
+      position: absolute;
+      right: 0%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

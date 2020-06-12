@@ -1,0 +1,19 @@
+.Avatar {
+  overflow: hidden;
+  animation: avatarAnimation 1500ms ease-out forwards;
+  border-radius: 50%;
+  transform-origin: top left;
+  position: relative;
+  background-blend-mode: luminosity;
+  background-size: cover;
+  background-position: bottom;
+}
+
+@keyframes avatarAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

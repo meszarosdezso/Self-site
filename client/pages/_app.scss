@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Code:600|Raleway:300,400,500,700,900&display=swap&subset=latin-ext");
+
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  font-family: Raleway, sans-serif;
+  box-sizing: border-box;
+  transition: all 200ms ease-out;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+p {
+  line-height: 170%;
+}
+
+.canvas-wrapper {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  height: 100vh;
+  opacity: 0.4;
+  * {
+    z-index: -1;
+  }
+}
+
+.light {
+  p {
+    font-weight: 500;
+  }
+}
+
+.dark {
+  p {
+    font-weight: 400;
+  }
+}
+
+.page-content {
+  z-index: 2;
+}
+
+.page-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+#main-background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -2;
+}
+
+.section {
+  z-index: 2;
+}
+
+.mono {
+  font-family: "Fira Code", monospace;
+}
+
+.comment {
+  text-align: center;
+  opacity: 0.4;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

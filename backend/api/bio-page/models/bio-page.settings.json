@@ -1,0 +1,16 @@
+{
+  "kind": "singleType",
+  "collectionName": "bio_pages",
+  "info": {
+    "name": "BioPage"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
