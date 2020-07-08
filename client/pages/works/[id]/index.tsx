@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMoon, faCircle } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 import { LazyLoadImage as Image } from "react-lazy-load-image-component"
+import { sizedImage } from "../../../utils/convert"
 
 const WorkPage: React.FC<{ work: Work; profile: GithubProfile }> = ({
   work,
@@ -60,7 +61,7 @@ const WorkPage: React.FC<{ work: Work; profile: GithubProfile }> = ({
                 ) : (
                   <Image
                     key={img}
-                    src={img}
+                    src={sizedImage(img, 1280)}
                     alt={work.title}
                     className="work-image"
                   />

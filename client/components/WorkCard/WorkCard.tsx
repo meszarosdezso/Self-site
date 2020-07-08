@@ -4,6 +4,7 @@ import AC from "../Ac/Ac"
 import { rangeMap } from "../../utils/math"
 import Link from "next/link"
 import { useTheme } from "../../providers/theme.provider"
+import { sizedImage } from "../../utils/convert"
 
 const WorkCard: React.FC<{
   work: Work
@@ -24,7 +25,7 @@ const WorkCard: React.FC<{
               transform: `translateY(${scrollOffset}px) scale(1.2)`,
               opacity: isDark ? 0.5 : 0.4,
             }}
-            src={work.cover}
+            src={sizedImage(work.cover, 1080)}
             alt=""
           />
         </div>
