@@ -1,4 +1,4 @@
-name: Deploy API
+name: CI/CD for API
 
 on:
   push:
