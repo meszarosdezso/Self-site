@@ -45,6 +45,9 @@
     },
     "uid": {
       "type": "uid"
+    },
+    "link": {
+      "type": "string"
     }
   }
 }

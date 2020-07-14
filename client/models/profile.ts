@@ -17,4 +17,4 @@ export const OFFLINE_GITHUB_PROFILE = {
   email: "meszarosdezsodev@gmail.com",
   bio:
     "Hungarian full-stack web and flutter developer. Also doing photography and filmmaking.",
-} as GithubProfile
+}

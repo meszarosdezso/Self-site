@@ -8,6 +8,7 @@ export const workFromApi = ({
   cover,
   categories,
   uid,
+  link,
 }: any): Work => ({
   title,
   cover: cover.url,
@@ -18,6 +19,7 @@ export const workFromApi = ({
   ),
   categories: categories.split(";").filter((a: string) => a),
   uid,
+  link: link || "",
 })
 
 export const sizedImage = (url: string, width: number) =>
