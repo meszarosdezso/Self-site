@@ -4,7 +4,7 @@ on:
   push:
     branches: [master]
     paths:
-      - "backend/**"
+      - "api/**"
       - ".github/workflows/DeployApi.yaml"
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
           login meszarosdezsodev@gmail.com
           password ${{ secrets.HEROKU_TOKEN }}
           EOF"
-        working-directory: ./backend
+        working-directory: ./api
 
       - uses: akhileshns/heroku-deploy@v3.0.5 # This is the action
         with:
