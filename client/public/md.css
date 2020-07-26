@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css?family=Jost:300,600,900&display=swap&subset=latin-ext");
+
+:root {
+  --primary-color: #0040ff;
+}
+
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  font-family: Raleway, sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+button {
+  border-radius: 0.3rem;
+  background: black;
+  border: none;
+  color: white;
+  transition: transform 100ms ease-out;
+}
+
+button:active {
+  transform: scale(0.95);
+  opacity: 0.5;
+}
+
+p {
+  line-height: 170%;
+  color: #444;
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
