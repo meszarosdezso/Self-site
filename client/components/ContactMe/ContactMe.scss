@@ -1,0 +1,121 @@
+.ContactMe {
+  position: relative;
+  .contact-header {
+    height: 14rem;
+    width: 70%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-blend-mode: luminosity;
+    opacity: 0.5;
+  }
+
+  h1 {
+    position: absolute;
+    right: 20%;
+    white-space: nowrap;
+    font-size: clamp(2.5rem, 12vw, 3rem);
+    top: 8rem;
+  }
+
+  .social-links {
+    height: 4rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 0 10%;
+    margin: 2rem 0;
+
+    .social {
+      text-align: center;
+      opacity: 0.6;
+      margin: auto;
+      padding: 0.5rem;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      .value {
+        margin: 0.5rem;
+        white-space: nowrap;
+        width: 130px;
+      }
+    }
+  }
+
+  .contact-form {
+    width: 90%;
+    max-width: 500px;
+    margin: 2rem auto;
+    form {
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: stretch;
+
+      input,
+      textarea {
+        margin-bottom: 1rem;
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        padding: 1rem;
+        background: none;
+        border: 2px solid;
+        color: inherit;
+        position: relative;
+
+        &::placeholder {
+          opacity: 0.5;
+          color: white;
+          font-weight: 500;
+        }
+      }
+
+      button {
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: clamp(1rem, 2vw, 1.3rem);
+        font-weight: 500;
+        font-family: Fira Code;
+        width: max-content;
+        max-width: 100%;
+        margin: auto;
+
+        svg {
+          margin-right: 0.8rem;
+          transform: translateX(-30%);
+        }
+
+        &:active {
+          transform: scale(0.95);
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .contact-header {
+      width: 100%;
+      opacity: 0.3;
+    }
+    h1 {
+      right: 0;
+      text-align: center;
+      width: 100%;
+      top: 10%;
+    }
+
+    .social-links {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+  }
+}

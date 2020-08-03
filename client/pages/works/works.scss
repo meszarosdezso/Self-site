@@ -1,0 +1,29 @@
+.WorksPage {
+  padding-bottom: 1.5rem;
+  .field-selector {
+    min-height: 20vh;
+    margin: auto;
+    text-align: center;
+
+    .field-chip {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+      text-align: center;
+      width: max-content;
+      margin: 0.6rem;
+      opacity: 0.7;
+      text-transform: uppercase;
+      white-space: nowrap;
+      cursor: default;
+
+      &:active {
+        opacity: 0.5;
+        transform: scale(0.95);
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+.WorkPage {
+  min-height: 100vh;
+
+  .WorkPageHeader {
+    position: fixed;
+    max-width: 40%;
+    h1 {
+      font-size: 1.4rem;
+    }
+    h3 {
+      opacity: 0.3;
+      font-size: 1rem;
+    }
+    padding: 5rem;
+  }
+
+  .content {
+    height: 100%;
+
+    .description {
+      position: fixed;
+      opacity: 0;
+      width: 30%;
+      left: 5rem;
+      top: 50%;
+      transform: translateY(0%);
+      animation: descAnim 500ms ease-out 200ms forwards;
+      z-index: 2;
+      mix-blend-mode: exclusion;
+      max-height: 60vh;
+      overflow: hidden;
+
+      @keyframes descAnim {
+        from {
+          opacity: 0;
+          transform: translateY(0%);
+        }
+        to {
+          opacity: 0.7;
+          transform: translateY(-50%);
+        }
+      }
+
+      p {
+        font-size: clamp(1rem, 5vh, 2rem);
+        color: white;
+        margin-bottom: 1.5rem;
+        font-weight: 100;
+        letter-spacing: 1px;
+      }
+    }
+
+    .images {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      padding: 2rem;
+      margin-left: auto;
+      margin-right: 2rem;
+      width: 70%;
+      z-index: 0;
+      justify-content: center;
+      align-items: center;
+
+      .work-image {
+        max-width: 100%;
+        padding: 2rem 0;
+        margin: auto;
+        object-fit: contain;
+        object-position: center;
+        animation: fade 350ms ease-out forwards;
+      }
+    }
+
+    .comment {
+      position: relative;
+      top: -3rem;
+    }
+  }
+
+  .work-page-toggle {
+    position: fixed;
+    bottom: 5rem;
+    top: unset;
+    right: unset;
+    left: 5rem;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .WorkPageHeader {
+      position: relative;
+      max-width: 70%;
+      h1 {
+        font-size: 1.7rem;
+      }
+      padding: 2rem;
+    }
+
+    .content {
+      padding: 3rem;
+
+      .description {
+        max-width: 380px;
+        width: 100%;
+        position: relative;
+        left: 0;
+        margin: auto;
+        text-align: center;
+        animation: none;
+        opacity: 0.7;
+        margin-bottom: 4rem;
+      }
+
+      .images {
+        width: 100%;
+        padding: 0;
+
+        .work-image {
+          width: 100%;
+          height: unset;
+          padding: unset;
+        }
+      }
+
+      .comment {
+        top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+    .work-page-toggle {
+      top: 2rem;
+      right: 2rem;
+      left: unset;
+    }
+  }
+}
