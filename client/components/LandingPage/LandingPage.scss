@@ -37,7 +37,7 @@
   }
 
   #name-hero {
-    font-size: 8vw;
+    font-size: clamp(3rem, 15vw, 5rem);
     line-height: 0.9;
     text-transform: uppercase;
 
@@ -46,7 +46,7 @@
       width: 0px;
       height: 2px;
       background: var(--text-color);
-      left: calc(50% - 1vw - 4px);
+      left: calc(50% - 1vw - 3px);
       top: 50%;
       opacity: 0.2;
       transform: translate(-50%, -50%) rotateZ(-61deg);
@@ -57,7 +57,7 @@
           width: 0;
         }
         to {
-          width: 30vw;
+          width: clamp(10rem, 30vw, 50vw);
         }
       }
     }
@@ -79,12 +79,31 @@
       opacity: 0.2;
       font-size: clamp(1.5rem, 5vw, 5rem);
       white-space: nowrap;
+      font-style: italic;
+      padding-right: 1rem;
+
+      &:nth-child(1) {
+        left: 10%;
+        top: 20%;
+      }
+      &:nth-child(2) {
+        right: 10%;
+        top: 65%;
+      }
+      &:nth-child(3) {
+        left: 5%;
+        bottom: 15%;
+      }
+      &:nth-child(4) {
+        right: 20%;
+        top: 10%;
+      }
     }
   }
 
   #imadethese {
     position: absolute;
-    bottom: 3rem;
+    bottom: clamp(2rem, 7vw, 3rem);
     text-transform: uppercase;
     letter-spacing: 2px;
 
