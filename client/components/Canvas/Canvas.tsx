@@ -3,11 +3,24 @@ import "./Canvas.scss"
 import dynamic from "next/dynamic"
 import { isBrowser } from "../../utils/window"
 
-const sketch = (p: any, filled: boolean) => {
+const sketch = (p: typeof import("p5"), filled: boolean) => {
   const particles: Particle[] = []
+
+  let startX: number, startY: number
+  let offsetX: number, offsetY: number
 
   p.setup = function () {
     if (window) p.createCanvas(window.innerWidth, window.innerHeight)
+  }
+
+  p.mouseMoved = function () {
+    if (!startX || !startY) {
+      startX = p.mouseX
+      startY = p.mouseY
+    }
+
+    offsetX = (p.mouseX - startX) / -10
+    offsetY = (p.mouseY - startY) / -10
   }
 
   p.mousePressed = function () {
@@ -25,6 +38,10 @@ const sketch = (p: any, filled: boolean) => {
   }
 
   p.draw = function () {
+    if (offsetX) {
+      p.translate(offsetX, offsetY)
+    }
+
     if (!filled) {
       p.background(0, 0)
     } else {
@@ -91,7 +108,7 @@ const Canvas: React.FC = () => {
     ssr: false,
   })
 
-  const filled = Math.random() < 0.5
+  const filled = window.innerWidth > 700 ? Math.random() < 0.5 : false
 
   return <P5Wrapper sketch={(p: any) => sketch(p, filled)} />
 }

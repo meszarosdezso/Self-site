@@ -6,3 +6,10 @@ export const useWindow = () => {
     innerHeight: isBrowser() ? innerHeight : 0,
   }
 }
+
+export const isMobile = () =>
+  isBrowser()
+    ? /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    : false

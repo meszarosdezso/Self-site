@@ -1,52 +1,41 @@
 import "./LandingPage.scss"
 import { useEffect, useState } from "react"
 import { isBrowser } from "../../utils/window"
-
-// const fields = ["ui/ux", "ios/android", "photography", "front-end"]
+import Nav from "../Nav/Nav"
 
 const LandingPage: React.FC = () => {
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 })
+  const [{ dx, dy }, setOffset] = useState({ dx: 0, dy: 0 })
 
   useEffect(() => {
     let startX: number, startY: number
+
+    function handleMouseMove({ clientX, clientY }: MouseEvent) {
+      if (!startX || !startY) {
+        startX = clientX
+        startY = clientY
+      } else {
+        setOffset((_) => ({ dx: clientX - startX, dy: clientY - startY }))
+      }
+    }
+
     if (isBrowser()) {
-      window.addEventListener("mousemove", ({ clientX, clientY }) => {
-        if (!startX || !startY) {
-          startX = clientX
-          startY = clientY
-        } else {
-          setMouseOffset((_) => ({ x: clientX - startX, y: clientY - startY }))
-        }
-      })
+      window.addEventListener("mousemove", handleMouseMove)
+
+      window.addEventListener("touchstart", (_) =>
+        window.removeEventListener("mousemove", handleMouseMove)
+      )
     }
   }, [typeof window === "undefined"])
 
   return (
     <div id="LandingPage">
-      <div id="logo">
-        <img src="/logo240.png" alt="logo" />
-      </div>
-
-      <div id="contact-btn">
-        <h4>Contact</h4>
-      </div>
-
-      {/* <div className="fields">
-        {fields.map((field) => {
-          return (
-            <span className="field" key={field}>
-              {field}
-            </span>
-          )
-        })}
-      </div> */}
-
+      <Nav />
       <h1
         style={{
           transform: `translate(
-            ${mouseOffset.x / -20}px,
-            ${mouseOffset.y / -20}px
-          )`,
+            ${dx / -20}px,
+            ${dy / -20}px
+            )`,
         }}
         id="name-hero"
       >
@@ -55,12 +44,11 @@ const LandingPage: React.FC = () => {
         <br />
         Meszaros
       </h1>
-
       <h4
         style={{
           transform: `translate(
             0,
-            ${mouseOffset.y / 40}px
+            ${dy / 40}px
         )`,
         }}
         id="imadethese"

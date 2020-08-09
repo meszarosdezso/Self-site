@@ -7,35 +7,6 @@
   text-align: center;
   position: relative;
 
-  #logo {
-    width: 4rem;
-    height: 4rem;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-
-    img {
-      width: 100%;
-      filter: invert(1);
-    }
-  }
-
-  #contact-btn {
-    position: absolute;
-    right: 3rem;
-    top: 1rem;
-
-    &::after {
-      content: "";
-      background: var(--text-color);
-      position: absolute;
-      height: 2px;
-      width: 3rem;
-      top: 50%;
-      left: 111%;
-    }
-  }
-
   #name-hero {
     font-size: clamp(3rem, 15vw, 5rem);
     line-height: 0.9;

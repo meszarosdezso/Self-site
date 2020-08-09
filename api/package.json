@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "description": "API for meszarosdezso.com",
   "scripts": {
-    "develop": "concurrently \"strapi develop\" \"cd ../client && npm run dev\"",
+    "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"

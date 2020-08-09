@@ -6,15 +6,41 @@
   --body-color: #444444;
 }
 
+html[data-theme="dark"] {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --body-color: #eaeaea;
+
+  .canvas-wrapper {
+    filter: invert(1);
+  }
+
+  #logo {
+    filter: invert(1);
+  }
+}
+
 * {
   outline: none;
   box-sizing: border-box;
 }
 
 body {
-  background: var(--bg-color);
+  background-color: var(--bg-color);
   color: var(--text-color);
   font-family: DM Serif Display, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 200ms ease-out;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 100;
 }
 
 a {
@@ -56,9 +82,11 @@ code {
   left: 0;
   top: 0;
   right: 0;
+  overflow: hidden;
   z-index: -1;
   height: 100vh;
   opacity: 0.3;
+
   * {
     z-index: -1;
   }

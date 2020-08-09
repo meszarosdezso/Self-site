@@ -1,0 +1,28 @@
+#nav {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  #logo {
+    width: 4rem;
+    height: 4rem;
+
+    img {
+      width: 100%;
+      filter: invert(1);
+    }
+  }
+
+  #contact-btn {
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+
+  #LightSwitch {
+    margin-right: 1rem;
+  }
+}
