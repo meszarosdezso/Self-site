@@ -1,31 +1,12 @@
 import "./LandingPage.scss"
-import { useEffect, useState } from "react"
-import { isBrowser } from "../../utils/window"
 import Nav from "../Nav/Nav"
+import { useMouse } from "../../utils/useMouse"
+import { useScroll } from "../../providers/scroll"
+import { rangeMap } from "../../utils/math"
 
 const LandingPage: React.FC = () => {
-  const [{ dx, dy }, setOffset] = useState({ dx: 0, dy: 0 })
-
-  useEffect(() => {
-    let startX: number, startY: number
-
-    function handleMouseMove({ clientX, clientY }: MouseEvent) {
-      if (!startX || !startY) {
-        startX = clientX
-        startY = clientY
-      } else {
-        setOffset((_) => ({ dx: clientX - startX, dy: clientY - startY }))
-      }
-    }
-
-    if (isBrowser()) {
-      window.addEventListener("mousemove", handleMouseMove)
-
-      window.addEventListener("touchstart", (_) =>
-        window.removeEventListener("mousemove", handleMouseMove)
-      )
-    }
-  }, [typeof window === "undefined"])
+  const { dx, dy } = useMouse()
+  const { scrollPercent } = useScroll()
 
   return (
     <div id="LandingPage">
@@ -44,12 +25,20 @@ const LandingPage: React.FC = () => {
         <br />
         Meszaros
       </h1>
+
+      <h3>
+        Front end
+        <br />
+        developer
+      </h3>
+
       <h4
         style={{
           transform: `translate(
             0,
             ${dy / 40}px
         )`,
+          opacity: rangeMap(scrollPercent, 0, 50, 1, 0),
         }}
         id="imadethese"
       >

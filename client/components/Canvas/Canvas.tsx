@@ -75,7 +75,11 @@ const sketch = (p: typeof import("p5"), filled: boolean) => {
 
     draw() {
       p.noStroke()
-      p.fill(filled ? 0 : 188, filled ? 30 : 255)
+      if (filled) {
+        p.fill(0, 200, 150, 30)
+      } else {
+        p.fill(188, 255)
+      }
       p.circle(this.pos.x, this.pos.y, this.size * 2)
     }
 
@@ -93,7 +97,11 @@ const sketch = (p: typeof import("p5"), filled: boolean) => {
       particlesToCheck.forEach((other) => {
         const d = this.pos.dist(other.pos)
         if (d < 200) {
-          p.stroke(filled ? 0 : 188, filled ? 20 : 255)
+          if (filled) {
+            p.stroke(0, 255, 242, 50)
+          } else {
+            p.stroke(188, 255)
+          }
           p.line(this.pos.x, this.pos.y, other.pos.x, other.pos.y)
         }
       })

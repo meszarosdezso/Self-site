@@ -1,40 +1,35 @@
 import React from "react"
-import ProfileProvider from "../providers/profile.provider"
 import { GetStaticProps } from "next"
-import { GithubProfile } from "../models/profile"
 import Layout from "../components/Layout/Layout"
-import { fetchProfile, fetchInstagram } from "../utils/api"
+import { fetchInstagram } from "../utils/api"
 import { InstagramPost } from "../models/instagram"
 import LandingPage from "../components/LandingPage/LandingPage"
 import Canvas from "../components/Canvas/Canvas"
+import Instagram from "../components/Instagram/Instagram"
 
 const IndexPage: React.FC<{
-  profile: GithubProfile
   posts: InstagramPost[]
-}> = ({ profile }) => {
+}> = ({ posts }) => {
   return (
-    <ProfileProvider {...profile}>
-      <Layout title="Home" description={profile.bio}>
-        {process.env.NODE_ENV === "development" && (
-          <div className="canvas-wrapper">
-            <Canvas />
-          </div>
-        )}
-        <LandingPage />
-      </Layout>
-    </ProfileProvider>
+    <Layout title="Home" description={""}>
+      {process.env.NODE_ENV === "development" && (
+        <div className="canvas-wrapper">
+          <Canvas />
+        </div>
+      )}
+      <LandingPage />
+      <Instagram posts={posts} />
+    </Layout>
   )
 }
 
 export default IndexPage
 
 export const getStaticProps: GetStaticProps = async (_) => {
-  const profile = await fetchProfile()
   const posts = await fetchInstagram()
 
   return {
     props: {
-      profile,
       posts,
     },
   }

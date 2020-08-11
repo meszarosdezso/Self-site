@@ -3,6 +3,7 @@ import { workFromApi } from "./convert"
 import { GithubProfile, OFFLINE_GITHUB_PROFILE } from "../models/profile"
 import { Work } from "../models/work"
 import { InstagramPost, InstagramResponse } from "../models/instagram"
+import { readFileSync, existsSync, writeFileSync } from "fs"
 
 export const fetchBioPage = async () => {
   const { data } = await axios.get(`${process.env.API_URL}/bio-page`)
@@ -36,15 +37,18 @@ export const fetchProfile = async (): Promise<GithubProfile> => {
 }
 
 export const fetchInstagram = async (): Promise<InstagramPost[]> => {
-  const postIds =
-    process.env.NODE_ENV === "production"
-      ? await axios
-          .get<InstagramResponse>(
-            `https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&limit=6`
-          )
-          .then((data) => data.data)
-          .catch(console.log)
-      : ({ data: [] } as InstagramResponse)
+  const hasCached = existsSync("data/post_cache.json")
+
+  if (hasCached) {
+    return JSON.parse(readFileSync("data/post_cache.json").toString())
+  }
+
+  const postIds = await axios
+    .get<InstagramResponse>(
+      `https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&limit=6`
+    )
+    .then((data) => data.data)
+    .catch(console.log)
 
   if (!postIds) return []
 
@@ -53,11 +57,13 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
       async ({ id }) =>
         (
           await axios.get<InstagramPost>(
-            `https://graph.instagram.com/${id}?fields=id,media_url,media_type,username,timestamp,thumbnail_url,caption&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`
+            `https://graph.instagram.com/${id}?fields=id,media_url,media_type,username,timestamp,thumbnail_url,permalink,caption&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`
           )
         ).data
     )
   )
+
+  writeFileSync("data/post_cache.json", JSON.stringify(posts, null, 2), "utf8")
 
   return posts
 }

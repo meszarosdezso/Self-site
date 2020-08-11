@@ -5,6 +5,7 @@ export type InstagramPost = {
   username?: string
   timestamp: string
   caption: string
+  permalink: string
   thumbnail_url?: string
 }
 
