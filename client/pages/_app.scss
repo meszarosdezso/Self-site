@@ -1,14 +1,15 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Code:600|DM+Serif+Display&display=swap&subset=latin-ext");
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Fira+Code:600|DM+Serif+Display&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
 
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
   --body-color: #444444;
   --accent-color: #00fff2;
+  --sans-font: 'Work Sans';
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --bg-color: #000000;
   --text-color: #ffffff;
   --body-color: #eaeaea;
@@ -33,6 +34,8 @@ html[data-theme="dark"] {
 * {
   outline: none;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -60,6 +63,10 @@ a {
   &:active {
     opacity: 0.7;
   }
+
+  &:hover {
+    color: var(--accent-color);
+  }
 }
 
 p {
@@ -72,11 +79,11 @@ p {
 }
 
 code {
-  font-family: "Fira Code", monospace;
+  font-family: 'Fira Code', monospace;
 }
 
 .sans {
-  font-family: Lato;
+  font-family: var(--sans-font);
   font-weight: 400;
 }
 

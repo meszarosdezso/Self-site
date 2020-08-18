@@ -11,9 +11,14 @@ export const fetchBioPage = async () => {
 }
 
 export const fetchWorks = async (): Promise<Work[]> => {
-  const { data } = await axios.get(`${process.env.API_URL}/works`)
+  try {
+    const { data } = await axios.get(`${process.env.API_URL}/works`)
 
-  return data.map(workFromApi)
+    return data.map(workFromApi)
+  } catch (e) {
+    console.error(e.message)
+    return []
+  }
 }
 
 export const fetchWork = async (id: string): Promise<Work> => {

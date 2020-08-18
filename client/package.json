@@ -9,32 +9,32 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.28",
-    "@fortawesome/free-brands-svg-icons": "^5.13.0",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/react-fontawesome": "^0.1.10",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@types/nodemailer": "^6.4.0",
-    "@types/react-lazy-load-image-component": "^1.5.0",
+    "@types/react-lazy-load-image-component": "^1.5.1",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.2",
-    "googleapis": "^52.1.0",
+    "googleapis": "^59.0.0",
     "next": "latest",
     "node-sass": "^4.14.1",
-    "nodemailer": "^6.4.10",
-    "p5": "^1.0.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "nodemailer": "^6.4.11",
+    "p5": "^1.1.9",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
     "react-lazy-load-image-component": "^1.5.0",
     "react-markdown": "^4.3.1",
-    "react-p5-wrapper": "^2.0.0"
+    "react-p5-wrapper": "^2.3.0"
   },
   "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
-    "typescript": "3.7.3"
+    "@types/node": "^14.6.0",
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
+    "typescript": "3.9.7"
   },
   "license": "ISC"
 }
