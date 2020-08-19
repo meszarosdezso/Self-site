@@ -17,37 +17,36 @@
   }
 
   #ContactForm {
-    width: 80%;
-    display: flex;
-    flex-flow: column wrap;
-    justify-items: center;
-    align-items: stretch;
     margin: auto;
+    line-height: 3;
+
+    label {
+      margin-right: 0.5rem;
+    }
 
     input,
     textarea {
       border: none;
-      padding: 1rem;
+      margin: 0;
+      border-bottom: 1px solid var(--text-color);
       font-size: 1rem;
-      margin: 0.5rem 0;
       font-family: var(--sans-font);
       background-color: var(--bg-color);
-      color: var(--text-color);
-      border-radius: 0.25rem;
       transition: all 100ms ease-out;
-
-      &::placeholder {
-        color: var(--text-color);
-        opacity: 0.6;
-        letter-spacing: 1px;
-        transition: all 100ms ease-out;
-      }
+      resize: none;
+      padding-bottom: 0.25rem;
 
       &:focus {
         &::placeholder {
           color: var(--accent-color);
         }
       }
+    }
+
+    textarea {
+      margin-top: 2rem;
+      width: 100%;
+      border-bottom: none;
     }
   }
 }

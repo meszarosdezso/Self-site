@@ -38,38 +38,39 @@ const Contact: React.FC<Props> = () => {
 
   return (
     <div className="Contact">
-      <h3 className="sans">/// &nbsp;and of course,</h3>
+      <h3 className="sans">and of course</h3>
       <h1> the contact form</h1>
       <Social />
 
-      <form id="ContactForm" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} id="ContactForm">
+        <label htmlFor="fullName">Hey, my name is </label>
         <input
           onChange={handleChange}
           value={state.fullName}
           type="text"
           name="fullName"
-          placeholder="Your full name"
         />
+        ,&nbsp;<label htmlFor="email">my email is </label>
         <input
           onChange={handleChange}
           value={state.email}
-          type="text"
+          type="email"
           name="email"
-          placeholder="Your email"
         />
+        <label htmlFor="subject"> and I'm wrinting in connection of a</label>
         <input
           onChange={handleChange}
           value={state.subject}
           type="text"
           name="subject"
-          placeholder="Topic of your message"
         />
+        .<br />
         <textarea
           onChange={handleChange}
           value={state.message}
           name="message"
           rows={5}
-          placeholder="Your message"
+          placeholder="Type your message here..."
         ></textarea>
         <SubmitButton state={submitState} />
       </form>
