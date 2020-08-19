@@ -1,0 +1,53 @@
+.Contact {
+  width: 90%;
+  max-width: 800px;
+  margin: 5rem auto;
+
+  h3 {
+    margin: 0rem;
+    letter-spacing: 0.2rem;
+  }
+
+  h1 {
+    margin: 0;
+    line-height: 1;
+    margin-bottom: 3rem;
+    font-size: 4rem;
+    letter-spacing: -0.1rem;
+  }
+
+  #ContactForm {
+    width: 80%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-items: center;
+    align-items: stretch;
+    margin: auto;
+
+    input,
+    textarea {
+      border: none;
+      padding: 1rem;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      font-family: var(--sans-font);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      border-radius: 0.25rem;
+      transition: all 100ms ease-out;
+
+      &::placeholder {
+        color: var(--text-color);
+        opacity: 0.6;
+        letter-spacing: 1px;
+        transition: all 100ms ease-out;
+      }
+
+      &:focus {
+        &::placeholder {
+          color: var(--accent-color);
+        }
+      }
+    }
+  }
+}

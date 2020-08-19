@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Code:600|DM+Serif+Display&display=swap&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:600|DM+Serif+Display&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap');
 
 :root {
   --bg-color: #ffffff;
@@ -7,6 +7,7 @@
   --body-color: #444444;
   --accent-color: #00fff2;
   --sans-font: 'Work Sans';
+  --mono-font: 'Inconsolata';
 }
 
 html[data-theme='dark'] {
@@ -34,8 +35,6 @@ html[data-theme='dark'] {
 * {
   outline: none;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -79,7 +78,7 @@ p {
 }
 
 code {
-  font-family: 'Fira Code', monospace;
+  font-family: var(--mono-font), monospace;
 }
 
 .sans {
@@ -91,6 +90,13 @@ code {
   background: var(--accent-color);
   color: black;
   padding: 0 0.2rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  align-items: center;
 }
 
 @keyframes fade {

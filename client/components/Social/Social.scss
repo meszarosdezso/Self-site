@@ -1,0 +1,27 @@
+.Social {
+  margin: auto;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 400px;
+
+  .social {
+    text-align: center;
+    padding: 0.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .value {
+      margin: 0.5rem;
+      white-space: nowrap;
+      width: 130px;
+    }
+  }
+}

@@ -23,13 +23,18 @@
     list-style: none;
     margin-left: auto;
     margin-right: 2rem;
-
     display: flex;
 
     li {
       margin-right: 2rem;
       position: relative;
       transition: transform 150ms ease-out;
+
+      a {
+        &:hover {
+          color: inherit;
+        }
+      }
 
       .icon {
         position: absolute;
@@ -41,7 +46,7 @@
       }
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         width: 0%;
         height: 2px;

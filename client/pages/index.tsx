@@ -8,6 +8,7 @@ import Canvas from '../components/Canvas/Canvas'
 import Instagram from '../components/Instagram/Instagram'
 import { Work } from '../models/work'
 import Works from '../components/Works/Works'
+import Contact from '../components/Contact/Contact'
 
 type Props = {
   posts: InstagramPost[]
@@ -26,6 +27,7 @@ const IndexPage: React.FC<Props> = ({ posts, works }) => {
 
       <Works {...works} />
       <Instagram posts={posts} />
+      <Contact />
     </Layout>
   )
 }

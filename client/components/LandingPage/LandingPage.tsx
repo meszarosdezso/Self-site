@@ -1,8 +1,8 @@
-import "./LandingPage.scss"
-import Nav from "../Nav/Nav"
-import { useMouse } from "../../utils/useMouse"
-import { useScroll } from "../../providers/scroll"
-import { rangeMap } from "../../utils/math"
+import './LandingPage.scss'
+import Nav from '../Nav/Nav'
+import { useMouse } from '../../utils/useMouse'
+import { useScroll } from '../../providers/scroll'
+import { rangeMap } from '../../utils/math'
 
 const LandingPage: React.FC = () => {
   const { dx, dy } = useMouse()
@@ -27,9 +27,11 @@ const LandingPage: React.FC = () => {
       </h1>
 
       <h3>
-        Front end
-        <br />
-        developer
+        <code>
+          Front end
+          <br />
+          developer
+        </code>
       </h3>
 
       <h4

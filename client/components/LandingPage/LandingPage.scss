@@ -42,11 +42,10 @@
 
   h3 {
     opacity: 0.3;
-    font-family: monospace;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
     position: absolute;
-    top: 30vh;
+    top: 25vh;
     font-size: 1rem;
   }
 
@@ -57,7 +56,7 @@
     letter-spacing: 2px;
 
     &::after {
-      content: "";
+      content: '';
       background: var(--text-color);
       position: absolute;
       height: 10rem;
