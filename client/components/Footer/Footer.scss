@@ -1,0 +1,14 @@
+#Footer {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row wrap;
+  width: 100%;
+
+  #copyright {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.4;
+  }
+}

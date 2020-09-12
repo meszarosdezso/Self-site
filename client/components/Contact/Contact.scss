@@ -2,15 +2,17 @@
   width: 90%;
   max-width: 800px;
   margin: 5rem auto;
+  overflow: hidden;
 
   h3 {
     margin: 0rem;
     letter-spacing: 0.2rem;
+    margin-bottom: 0.5rem;
   }
 
   h1 {
     margin: 0;
-    line-height: 1;
+    line-height: 0.85;
     margin-bottom: 3rem;
     font-size: 4rem;
     letter-spacing: -0.1rem;
@@ -35,6 +37,9 @@
       transition: all 100ms ease-out;
       resize: none;
       padding-bottom: 0.25rem;
+      width: 55%;
+      max-width: 180px;
+      color: var(--text-color);
 
       &:focus {
         &::placeholder {
@@ -45,8 +50,17 @@
 
     textarea {
       margin-top: 2rem;
+      max-width: unset;
       width: 100%;
       border-bottom: none;
+    }
+
+    .error {
+      width: 80%;
+      margin: auto;
+      line-height: 1.6;
+      color: var(--error);
+      text-align: center;
     }
   }
 }

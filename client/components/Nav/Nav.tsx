@@ -1,20 +1,20 @@
-import "./Nav.scss"
-import LightSwitch from "../LightSwitch/LightSwitch"
-import { Mail, User } from "react-feather"
-import NavItem, { NavItemType } from "./NavItem"
-import Link from "next/link"
+import './Nav.scss'
+import LightSwitch from '../LightSwitch/LightSwitch'
+import { Mail, User } from 'react-feather'
+import NavItem, { NavItemType } from './NavItem'
+import Link from 'next/link'
 
 const NAV_ITEMS: NavItemType[] = [
   {
-    id: "bio",
-    title: "Bio",
-    link: "/bio",
+    id: 'bio',
+    title: 'Bio',
+    link: '/bio',
     icon: User,
   },
   {
-    id: "contact",
-    title: "Contact",
-    link: "/contact",
+    id: 'contact',
+    title: 'Contact',
+    link: '#contact',
     icon: Mail,
   },
 ]

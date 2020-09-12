@@ -16,9 +16,11 @@ const SubmitButton: React.FC<Props> = ({ state }) => {
     >
       <Send />
       {state === 'SENT'
-        ? 'Antal egy buzi'
+        ? 'Thanks for your message!'
         : state === 'READY'
         ? 'Make it fly'
+        : state === 'ERROR'
+        ? 'ERROR'
         : ''}
     </button>
   )

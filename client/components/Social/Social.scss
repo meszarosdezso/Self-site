@@ -6,6 +6,10 @@
   justify-content: space-evenly;
   max-width: 400px;
 
+  @media screen and (max-width: 600px) {
+    flex-flow: column wrap;
+  }
+
   .social {
     text-align: center;
     padding: 0.5rem;

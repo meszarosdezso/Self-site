@@ -2,6 +2,13 @@ import './Contact.scss'
 import { useState } from 'react'
 import SubmitButton, { SubmitState } from '../SubmitButton/SubmitButton'
 import Social from '../Social/Social'
+import { isEmailValid } from '../../utils/validation'
+import {
+  INVALID_EMAIL,
+  INVALID_NAME,
+  NO_SUBJECT,
+  NO_MESSAGE,
+} from '../../constants/error'
 
 type Props = {}
 
@@ -14,6 +21,7 @@ type FormState = {
 
 const Contact: React.FC<Props> = () => {
   const [submitState, setSubmitState] = useState<SubmitState>('READY')
+  const [error, setError] = useState<string>('')
 
   const [state, setState] = useState<FormState>({
     fullName: '',
@@ -22,22 +30,53 @@ const Contact: React.FC<Props> = () => {
     message: '',
   })
 
+  const isFormValid = () => {
+    if (!isEmailValid(state.email)) {
+      setError(INVALID_EMAIL)
+      return false
+    }
+
+    if (!state.fullName.trim()) {
+      setError(INVALID_NAME)
+      return false
+    }
+
+    if (!state.subject.trim()) {
+      setError(NO_SUBJECT)
+      return false
+    }
+
+    if (!state.message.trim()) {
+      setError(NO_MESSAGE)
+      return false
+    }
+
+    return true
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitState('SENDING')
-    await new Promise((res) => setTimeout(res, 5000))
+
+    if (!isFormValid()) return setSubmitState('ERROR')
+
+    await new Promise((res) => setTimeout(res, 2000))
+
+    // TODO Send email
+
     setSubmitState('SENT')
   }
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    console.log(e.target.name)
+    setError('')
+    setSubmitState('READY')
     setState({ ...state, [e.target.name]: e.target.value })
   }
 
   return (
-    <div className="Contact">
+    <div id="contact" className="Contact">
       <h3 className="sans">and of course</h3>
       <h1> the contact form</h1>
       <Social />
@@ -50,7 +89,7 @@ const Contact: React.FC<Props> = () => {
           type="text"
           name="fullName"
         />
-        ,&nbsp;<label htmlFor="email">my email is </label>
+        , &nbsp;<label htmlFor="email">my email is </label>
         <input
           onChange={handleChange}
           value={state.email}
@@ -69,9 +108,10 @@ const Contact: React.FC<Props> = () => {
           onChange={handleChange}
           value={state.message}
           name="message"
-          rows={5}
+          rows={3}
           placeholder="Type your message here..."
         ></textarea>
+        <h4 className="error sans">{error}&nbsp;</h4>
         <SubmitButton state={submitState} />
       </form>
     </div>

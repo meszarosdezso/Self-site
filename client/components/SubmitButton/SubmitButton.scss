@@ -73,6 +73,10 @@
     }
   }
 
+  &.ERROR {
+    color: var(--error);
+  }
+
   &:active:not(:disabled) {
     transform: scale(0.95);
     color: var(--bg-color);
