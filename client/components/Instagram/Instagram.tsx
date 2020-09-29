@@ -1,6 +1,7 @@
-import "./Instagram.scss"
-import { InstagramPost } from "../../models/instagram"
-import { ExternalLink } from "react-feather"
+import './Instagram.scss'
+import { InstagramPost } from '../../models/instagram'
+import { ExternalLink } from 'react-feather'
+import InstagramCaption from './Caption'
 
 const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
   return (
@@ -14,7 +15,7 @@ const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
 
       <div className="posts">
         {posts.map((post, i) => (
-          <div key={post.id} className={`post ${i % 2 ? "right" : "left"}`}>
+          <div key={post.id} className={`post ${i % 2 ? 'right' : 'left'}`}>
             <div className="image">
               <img
                 src={post.thumbnail_url || post.media_url}
@@ -24,9 +25,9 @@ const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
 
             <div className="caption sans">
               <p>
-                {post.caption.split(/\.\n/)[0]}
+                <InstagramCaption>{post.caption}</InstagramCaption>
                 <br />
-                <br />
+                {/* 👆 Please don't tell my boss */}
                 <a
                   target="_blank"
                   rel="noopener noreferrer"

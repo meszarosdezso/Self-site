@@ -1,15 +1,15 @@
-import { useMouse } from "../../utils/useMouse"
-import { useRef, MutableRefObject } from "react"
-import Link from "next/link"
+import { useMouse } from '../../utils/useMouse'
+import { useRef, MutableRefObject } from 'react'
+import Link from 'next/link'
 
 export type NavItemType = {
   id: string
   title: string
   link: string
-  icon: React.FC
+  Icon: React.FC
 }
 
-const NavItem: React.FC<NavItemType> = ({ title, id, link, icon: Icon }) => {
+const NavItem: React.FC<NavItemType> = ({ title, id, link, Icon }) => {
   const ref = useRef<HTMLLIElement>()
   const { x } = useMouse(ref)
 
@@ -20,8 +20,8 @@ const NavItem: React.FC<NavItemType> = ({ title, id, link, icon: Icon }) => {
       : 100)
 
   return (
-    <li id={id} ref={ref as MutableRefObject<HTMLLIElement>}>
-      <Link href={link}>
+    <li id={`${id}-link`} ref={ref as MutableRefObject<HTMLLIElement>}>
+      <Link scroll={false} href={`${link}`}>
         <a>
           <h4>{title}</h4>
           <span

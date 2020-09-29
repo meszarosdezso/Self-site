@@ -1,5 +1,5 @@
-import { createContext, useContext, useState, useEffect } from "react"
-import { isBrowser } from "../utils/window"
+import { createContext, useContext, useState, useEffect } from 'react'
+import { isBrowser } from '../utils/window'
 
 type Props = {
   scrollPx: number
@@ -11,23 +11,29 @@ const ScrollContext = createContext<Props>({ scrollPercent: 0, scrollPx: 0 })
 const ScrollProvider: React.FC = ({ children }) => {
   const [scrollPx, setScrollPx] = useState(0)
 
+  const handler = (_: Event) => {
+    setScrollPx(window.scrollY)
+  }
+
   useEffect(() => {
     if (isBrowser()) {
-      window.addEventListener("scroll", (_) => {
-        setScrollPx(window.scrollY)
-      })
+      window.addEventListener('scroll', handler)
     }
+    return () => window.removeEventListener('scroll', handler)
   }, [])
+
+  const calcScrollPercent = () =>
+    isBrowser()
+      ? (scrollY /
+          (document.documentElement.scrollHeight - window.innerHeight)) *
+        100
+      : 0
 
   return (
     <ScrollContext.Provider
       value={{
         scrollPx,
-        scrollPercent: isBrowser()
-          ? (scrollY /
-              (document.documentElement.scrollHeight - window.innerHeight)) *
-            100
-          : 0,
+        scrollPercent: calcScrollPercent(),
       }}
     >
       {children}
@@ -36,4 +42,5 @@ const ScrollProvider: React.FC = ({ children }) => {
 }
 
 export const useScroll = () => useContext(ScrollContext)
+
 export default ScrollProvider

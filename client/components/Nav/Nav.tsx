@@ -9,13 +9,13 @@ const NAV_ITEMS: NavItemType[] = [
     id: 'bio',
     title: 'Bio',
     link: '/bio',
-    icon: User,
+    Icon: User,
   },
   {
     id: 'contact',
     title: 'Contact',
     link: '#contact',
-    icon: Mail,
+    Icon: Mail,
   },
 ]
 
@@ -31,7 +31,7 @@ const Nav: React.FC = () => {
       </Link>
 
       <ul id="nav-items">
-        {NAV_ITEMS.map((item) => (
+        {NAV_ITEMS.map(item => (
           <NavItem key={item.id} {...item} />
         ))}
       </ul>

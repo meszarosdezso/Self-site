@@ -3,6 +3,8 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { fetchWorks, fetchWork } from '../../../utils/api'
 import { Work } from '../../../models/work'
 import LightSwitch from '../../../components/LightSwitch/LightSwitch'
+import React from 'react'
+import Link from 'next/link'
 
 type Props = {
   work: Work
@@ -20,14 +22,16 @@ const WorkPage: React.FC<Props> = ({ work }) => {
       <p className="sans">{work.description}</p>
 
       <div className="images">
-        {work.images.map((url) => (
+        {work.images.map(url => (
           <div key={url} className="image">
             <img src={url} alt={work.title} />
           </div>
         ))}
       </div>
 
-      <button className="sans go-back">Go back</button>
+      <Link href="/">
+        <a className="sans go-back">Go back</a>
+      </Link>
     </div>
   )
 }
@@ -35,7 +39,7 @@ const WorkPage: React.FC<Props> = ({ work }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const works = await fetchWorks()
 
-  const paths = works.map((work) => ({ params: { workId: work.uid } }))
+  const paths = works.map(work => ({ params: { workId: work.uid } }))
 
   return {
     paths,

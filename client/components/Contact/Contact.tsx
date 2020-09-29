@@ -60,7 +60,7 @@ const Contact: React.FC<Props> = () => {
 
     if (!isFormValid()) return setSubmitState('ERROR')
 
-    await new Promise((res) => setTimeout(res, 2000))
+    await new Promise(res => setTimeout(res, 2000))
 
     // TODO Send email
 
@@ -76,8 +76,10 @@ const Contact: React.FC<Props> = () => {
   }
 
   return (
-    <div id="contact" className="Contact">
-      <h3 className="sans">and of course</h3>
+    <div className="Contact">
+      <h3 id="contact" className="sans">
+        and of course
+      </h3>
       <h1> the contact form</h1>
       <Social />
 
