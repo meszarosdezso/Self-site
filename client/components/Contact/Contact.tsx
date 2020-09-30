@@ -18,6 +18,7 @@ type FormState = {
   email: string
   subject: string
   message: string
+  comeAtMeBots: string
 }
 
 const Contact: React.FC<Props> = () => {
@@ -29,9 +30,12 @@ const Contact: React.FC<Props> = () => {
     email: '',
     subject: '',
     message: '',
+    comeAtMeBots: '',
   })
 
   const isFormValid = () => {
+    if (state.comeAtMeBots.length > 0) return false
+
     if (!isEmailValid(state.email)) {
       setError(INVALID_EMAIL)
       return false
@@ -127,6 +131,13 @@ const Contact: React.FC<Props> = () => {
           rows={3}
           placeholder="Type your message here..."
         ></textarea>
+        <input
+          type="text"
+          onChange={handleChange}
+          value={state.comeAtMeBots}
+          name="comeAtMeBots"
+          style={{ display: 'none' }}
+        />
         <h4 className="error sans">{error}&nbsp;</h4>
         <SubmitButton state={submitState} />
       </form>
