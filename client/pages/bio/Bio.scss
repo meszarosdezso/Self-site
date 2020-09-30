@@ -1,0 +1,41 @@
+#BioPage {
+  padding: 2rem;
+  text-align: center;
+
+  #bio-title {
+    font-size: 3rem;
+  }
+
+  .content {
+    max-width: 700px;
+    margin: 6rem auto;
+    position: relative;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      width: 100%;
+
+      li {
+        margin: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 0.3rem;
+        background-color: var(--bg-light);
+        font-family: var(--mono-font);
+      }
+    }
+
+    code {
+      padding: 0.2rem 0.4rem;
+      background-color: var(--bg-light);
+      font-family: var(--mono-font);
+    }
+
+    p {
+      font-family: var(--sans-font);
+    }
+  }
+}

@@ -3,6 +3,7 @@
 
 :root {
   --bg-color: #ffffff;
+  --bg-light: #eeeeee;
   --text-color: #000000;
   --body-color: #444444;
   --accent-color: #00fff2;
@@ -13,6 +14,7 @@
 
 html[data-theme='dark'] {
   --bg-color: #000000;
+  --bg-light: #333333;
   --text-color: #ffffff;
   --body-color: #eaeaea;
 

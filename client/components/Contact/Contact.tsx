@@ -9,6 +9,7 @@ import {
   NO_SUBJECT,
   NO_MESSAGE,
 } from '../../constants/error'
+import axios from 'axios'
 
 type Props = {}
 
@@ -62,7 +63,20 @@ const Contact: React.FC<Props> = () => {
 
     await new Promise(res => setTimeout(res, 2000))
 
-    // TODO Send email
+    try {
+      await axios.post(
+        '/api/send',
+        { ...state },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+    } catch (e) {
+      setSubmitState('ERROR')
+      return setError('Oops, something really bad happened...')
+    }
 
     setSubmitState('SENT')
   }

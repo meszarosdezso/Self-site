@@ -1,49 +1,31 @@
 import './Works.scss'
 import { Work } from '../../models/work'
-import { MutableRefObject, useMemo, useRef } from 'react'
+import { MutableRefObject, useRef } from 'react'
 import { useScroll } from '../../providers/scroll'
 import { isBrowser } from '../../utils/window'
-import { rangeMap } from '../../utils/math'
 import Link from 'next/link'
 
 const WorkTile: React.FC<{
   work: Work
-}> = ({ work }) => {
-  const tileRef = useRef<HTMLDivElement>()
-
-  const tileHeight = useMemo(
-    () => (isBrowser() ? window.innerHeight * 0.8 : 0),
-    [typeof window]
-  )
-
-  const { scrollPx } = useScroll()
-
-  const tileScrollPercent = tileRef.current
-    ? rangeMap(scrollPx - tileRef.current.offsetTop, 0, tileHeight, 0, 100)
-    : 0
-
+  firstRef?: MutableRefObject<HTMLDivElement> | null
+  visible: boolean
+  scrollTop: number
+}> = ({ work, firstRef, visible, scrollTop }) => {
   return (
     <div
-      ref={tileRef as MutableRefObject<HTMLDivElement>}
-      className={`${
-        tileScrollPercent > -30 && tileScrollPercent < 50 ? 'visible ' : ''
-      }WorkTile`}
+      ref={firstRef}
+      className={`${visible ? 'WorkTile visible' : 'WorkTile'}`}
     >
       <div className="image">
         <img
           style={{
-            transform: `translateY(${tileScrollPercent}px) scale(1.2)`,
+            transform: `translateY(${scrollTop / 3}px) scale(1.2)`,
           }}
           src={work.cover}
           alt={work.title}
         />
       </div>
-      <div
-        style={{
-          transform: `translateY(${tileScrollPercent * 1.5}px) `,
-        }}
-        className="details"
-      >
+      <div className="details">
         <h1 className="title">{work.title}</h1>
         <p className="sans description">{work.description}</p>
 
@@ -58,11 +40,42 @@ const WorkTile: React.FC<{
 }
 
 const Works: React.FC<Work[]> = works => {
+  const { scrollPx } = useScroll()
+  const firstTileRef = useRef<HTMLDivElement>()
+  const { offsetTop } = firstTileRef.current || { offsetTop: 1000 }
+
+  const getTileVisibility = (index: number): boolean => {
+    if (isBrowser()) {
+      const top = scrollPx - offsetTop
+
+      const isVisible =
+        Math.floor(
+          (top + window.innerHeight * 0.4) / (window.innerHeight * 0.9)
+        ) === index
+
+      return isVisible
+    } else return false
+  }
+
   return (
     <div id="Works">
-      {Object.values(works).map(work => (
-        <WorkTile key={work.uid} work={work} />
-      ))}
+      {Object.values(works).map((work, i) => {
+        const ref = i === 0 ? firstTileRef : null
+        const scrollTop =
+          !isBrowser() || scrollPx < offsetTop - window.innerHeight
+            ? 0
+            : scrollPx - offsetTop - i * (window.innerHeight * 0.9)
+
+        return (
+          <WorkTile
+            firstRef={ref as MutableRefObject<HTMLDivElement>}
+            key={work.uid}
+            visible={getTileVisibility(i)}
+            work={work}
+            scrollTop={scrollTop}
+          />
+        )
+      })}
     </div>
   )
 }

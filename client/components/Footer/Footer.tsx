@@ -1,20 +1,27 @@
 import './Footer.scss'
 import { GitHub } from 'react-feather'
 
-type Props = {}
+type Props = {
+  centered?: boolean
+}
 
-const Footer: React.FC<Props> = () => {
+const Footer: React.FC<Props> = ({ centered }) => {
   return (
-    <footer id="Footer">
+    <footer
+      style={{ justifyContent: centered ? 'center' : 'space-between' }}
+      id="Footer"
+    >
       <p id="copyright">All rights reserved © Dezso Meszaros</p>
-      <a
-        title="Edit this page on Github"
-        href="https://github.com/meszarosdezso/Self-site.git"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <GitHub />
-      </a>
+      {!centered && (
+        <a
+          title="Edit this page on Github"
+          href="https://github.com/meszarosdezso/Self-site.git"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GitHub />
+        </a>
+      )}
     </footer>
   )
 }

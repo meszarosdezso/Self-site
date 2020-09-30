@@ -1,33 +1,43 @@
 import './Social.scss'
 import { GitHub, Instagram, Phone } from 'react-feather'
 
-type Props = {}
+type Props = {
+  showLabels?: boolean
+}
 
-const Social: React.FC<Props> = () => {
+const SOCIALS = [
+  {
+    label: 'meszarosdezso',
+    link: 'https://github.com/meszarosdezso',
+    Icon: GitHub,
+  },
+  {
+    label: 'meszarosdezso',
+    link: 'https://instagram.com/meszarosdezso',
+    Icon: Instagram,
+  },
+  {
+    label: '+36 30 839 6751',
+    link: 'tel:+36308396751',
+    Icon: Phone,
+  },
+]
+
+const Social: React.FC<Props> = ({ showLabels = true }) => {
   return (
     <div className="Social sans">
-      <a
-        className="social"
-        href="https://github.com/meszarosdezso"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <GitHub />
-        <span className="value">meszarosdezso</span>
-      </a>
-      <a
-        className="social"
-        href="https://instagram.com/meszarosdezso"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Instagram />
-        <span className="value">meszarosdezso</span>
-      </a>
-      <a className="social">
-        <Phone />
-        <span className="value">+36 30 839 6751</span>
-      </a>
+      {SOCIALS.map(({ label, link, Icon }) => (
+        <a
+          key={link}
+          className="social"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon />
+          {showLabels && <span className="value">{label}</span>}
+        </a>
+      ))}
     </div>
   )
 }
