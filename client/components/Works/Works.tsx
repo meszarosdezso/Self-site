@@ -4,6 +4,7 @@ import { MutableRefObject, useRef } from 'react'
 import { useScroll } from '../../providers/scroll'
 import { isBrowser } from '../../utils/window'
 import Link from 'next/link'
+import { sizedImage } from '../../utils/convert'
 
 const WorkTile: React.FC<{
   work: Work
@@ -21,15 +22,18 @@ const WorkTile: React.FC<{
           style={{
             transform: `translateY(${scrollTop / 3}px) scale(1.2)`,
           }}
-          src={work.cover}
+          src={sizedImage(work.cover, 1080)}
           alt={work.title}
         />
       </div>
       <div className="details">
+        <span className="tag">
+          {work.year} <div className="line" /> {work.categories[0]}
+        </span>
         <h1 className="title">{work.title}</h1>
         <p className="sans description">{work.description}</p>
 
-        <Link as={`/works/${work.uid}`} href="/works/:workId">
+        <Link href={`/works/${work.uid}`}>
           <a>
             <code>Read more</code>
           </a>

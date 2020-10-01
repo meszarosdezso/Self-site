@@ -17,6 +17,7 @@ const ScrollProvider: React.FC = ({ children }) => {
 
   useEffect(() => {
     if (isBrowser()) {
+      console.log('HEY')
       window.addEventListener('scroll', handler)
     }
     return () => window.removeEventListener('scroll', handler)

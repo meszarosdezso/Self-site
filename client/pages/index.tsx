@@ -34,7 +34,7 @@ const IndexPage: React.FC<Props> = ({ posts, works }) => {
 
 export default IndexPage
 
-export const getStaticProps: GetStaticProps<Props> = async (_) => {
+export const getStaticProps: GetStaticProps<Props> = async _ => {
   const posts = await fetchInstagram()
   const works = await fetchWorks()
 

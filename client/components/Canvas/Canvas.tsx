@@ -1,9 +1,9 @@
-import React from "react"
-import "./Canvas.scss"
-import dynamic from "next/dynamic"
-import { isBrowser } from "../../utils/window"
+import React from 'react'
+import './Canvas.scss'
+import dynamic from 'next/dynamic'
+import { isBrowser } from '../../utils/window'
 
-const sketch = (p: typeof import("p5"), filled: boolean) => {
+const sketch = (p: typeof import('p5'), filled: boolean) => {
   const particles: Particle[] = []
 
   let startX: number, startY: number
@@ -11,6 +11,14 @@ const sketch = (p: typeof import("p5"), filled: boolean) => {
 
   p.setup = function () {
     if (window) p.createCanvas(window.innerWidth, window.innerHeight)
+
+    for (let i = 0; i < 10; i++) {
+      const { x, y } = {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+      }
+      particles.push(new Particle(x, y))
+    }
   }
 
   p.mouseMoved = function () {
@@ -94,7 +102,7 @@ const sketch = (p: typeof import("p5"), filled: boolean) => {
     }
 
     checkParticles(particlesToCheck: Particle[]) {
-      particlesToCheck.forEach((other) => {
+      particlesToCheck.forEach(other => {
         const d = this.pos.dist(other.pos)
         if (d < 200) {
           if (filled) {
@@ -112,7 +120,7 @@ const sketch = (p: typeof import("p5"), filled: boolean) => {
 const Canvas: React.FC = () => {
   if (!isBrowser()) return null
 
-  const P5Wrapper: any = dynamic(import("react-p5-wrapper"), {
+  const P5Wrapper: any = dynamic(import('react-p5-wrapper'), {
     ssr: false,
   })
 

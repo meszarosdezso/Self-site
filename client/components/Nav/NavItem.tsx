@@ -21,7 +21,7 @@ const NavItem: React.FC<NavItemType> = ({ title, id, link, Icon }) => {
 
   return (
     <li id={`${id}-link`} ref={ref as MutableRefObject<HTMLLIElement>}>
-      <Link scroll={false} href={`${link}`}>
+      <Link scroll={false} href={link}>
         <a>
           <h4>{title}</h4>
           <span

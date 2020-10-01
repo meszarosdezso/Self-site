@@ -1,12 +1,9 @@
 import './LandingPage.scss'
 import Nav from '../Nav/Nav'
 import { useMouse } from '../../utils/useMouse'
-import { useScroll } from '../../providers/scroll'
-import { rangeMap } from '../../utils/math'
 
 const LandingPage: React.FC = () => {
   const { dx, dy } = useMouse()
-  const { scrollPercent } = useScroll()
 
   return (
     <div id="LandingPage">
@@ -36,11 +33,7 @@ const LandingPage: React.FC = () => {
 
       <h4
         style={{
-          transform: `translate(
-            0,
-            ${dy / 40}px
-        )`,
-          opacity: rangeMap(scrollPercent, 0, 50, 1, 0),
+          transform: `translate(0, ${dy / 40}px)`,
         }}
         id="imadethese"
       >
