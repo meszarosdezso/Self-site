@@ -17,7 +17,7 @@ type Props = {
 
 const IndexPage: React.FC<Props> = ({ posts, works }) => {
   return (
-    <Layout title="Home" description={''}>
+    <Layout title="Home">
       {process.env.NODE_ENV === 'production' && (
         <div className="canvas-wrapper">
           <Canvas />

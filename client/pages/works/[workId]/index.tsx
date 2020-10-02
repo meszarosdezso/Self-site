@@ -5,6 +5,7 @@ import { Work } from '../../../models/work'
 import LightSwitch from '../../../components/LightSwitch/LightSwitch'
 import React from 'react'
 import Link from 'next/link'
+import Head from 'next/head'
 
 type Props = {
   work: Work
@@ -12,26 +13,40 @@ type Props = {
 
 const WorkPage: React.FC<Props> = ({ work }) => {
   return (
-    <div className="WorkPage">
-      <LightSwitch />
+    <div className="page">
+      <Head>
+        <title>{work.title} | Dezso Meszaros - Front-end developer 👨🏽‍💻</title>
+        <meta name="description" content={work.description} />
+        <meta name="og:title" content={work.title} />
+        <meta name="og:description" content={work.description} />
+        <meta
+          name="og:url"
+          content={`https://meszarosdezso.com/works/${work.uid}`}
+        />
+        <meta name="og:image" content={work.cover} />
+        <link rel="icon" type="image/png" href="/logo120.png" />
+      </Head>
+      <div className="WorkPage">
+        <LightSwitch />
 
-      <h1 className="title">{work.title}</h1>
+        <h1 className="title">{work.title}</h1>
 
-      <h2 className="date">{work.year}</h2>
+        <h2 className="date">{work.year}</h2>
 
-      <p className="sans">{work.description}</p>
+        <p className="sans">{work.description}</p>
 
-      <div className="images">
-        {work.images.map(url => (
-          <div key={url} className="image">
-            <img src={url} alt={work.title} />
-          </div>
-        ))}
+        <div className="images">
+          {work.images.map(url => (
+            <div key={url} className="image">
+              <img src={url} alt={work.title} />
+            </div>
+          ))}
+        </div>
+
+        <Link href="/">
+          <a className="sans go-back">Go back</a>
+        </Link>
       </div>
-
-      <Link href="/">
-        <a className="sans go-back">Go back</a>
-      </Link>
     </div>
   )
 }
