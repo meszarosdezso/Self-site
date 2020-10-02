@@ -1,39 +1,43 @@
-import { InstagramPost } from "../../models/instagram"
-import "./Instagram.scss"
-import InstagramCaption from "./Caption"
-import { parseISO8601 } from "../../utils/date"
-import { useTheme } from "../../providers/theme.provider"
-import { LazyLoadImage as Image } from "react-lazy-load-image-component"
+import './Instagram.scss'
+import { InstagramPost } from '../../models/instagram'
+import { ExternalLink } from 'react-feather'
+import InstagramCaption from './Caption'
 
-type Props = {
-  posts: InstagramPost[]
-}
-
-const Instagram: React.FC<Props> = ({ posts }) => {
-  const { isDark } = useTheme()
-
+const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
   return (
-    <div
-      className="Instagram"
-      style={{ backgroundColor: isDark ? "#0003" : "#fff7" }}
-    >
+    <div id="Instagram">
       <br />
-      <h2 className="title">My latest posts on Instagram</h2>
-      <br />
-      <div id="insta-grid">
-        {posts.map((post) => (
-          <div key={post.id} className="InstagramPost">
-            <Image
-              src={
-                post.media_type === "VIDEO"
-                  ? post.thumbnail_url
-                  : post.media_url
-              }
-              loading="lazy"
-              alt={post.timestamp}
-            />
-            <InstagramCaption>{post.caption}</InstagramCaption>
-            <h4 className="post-date mono">{parseISO8601(post.timestamp)}</h4>
+      <h1>
+        Latest posts on
+        <br />
+        <span className="accent-bg">Instagram</span>
+      </h1>
+
+      <div className="posts">
+        {posts.map((post, i) => (
+          <div key={post.id} className={`post ${i % 2 ? 'right' : 'left'}`}>
+            <div className="image">
+              <img
+                src={post.thumbnail_url || post.media_url}
+                alt={post.caption}
+              />
+            </div>
+
+            <div className="caption sans">
+              <p>
+                <InstagramCaption>{post.caption}</InstagramCaption>
+                <br />
+                <br />
+                {/* 👆 Please don't tell my boss */}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={post.permalink}
+                >
+                  <ExternalLink />
+                </a>
+              </p>
+            </div>
           </div>
         ))}
       </div>

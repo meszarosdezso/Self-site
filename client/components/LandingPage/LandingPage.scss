@@ -1,44 +1,68 @@
-.LandingPage {
+#LandingPage {
   height: 100vh;
-  position: relative;
-  overflow: hidden;
   display: flex;
+  flex-flow: column wrap;
   justify-content: center;
-  width: 100%;
   align-items: center;
-  padding-left: 10%;
+  text-align: center;
+  position: relative;
 
-  #avatar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(15%, -15%);
-  }
+  #name-hero {
+    font-size: clamp(3rem, 15vw, 5rem);
+    line-height: 0.9;
+    text-transform: uppercase;
 
-  #title {
-    font-size: clamp(2rem, 12vw, 5rem);
-
-    width: 50%;
-    line-height: 110%;
-    padding-left: 5%;
-    margin-top: 1rem;
-  }
-
-  #mine {
-    position: absolute;
-    right: 10%;
-    bottom: 10%;
-    font-weight: 500;
-
-    #mine-line {
-      content: "";
-      background: white;
-      width: 300%;
-      height: 2px;
+    #cross-line {
       position: absolute;
-      right: 0%;
+      width: 0px;
+      height: 2px;
+      background: var(--text-color);
+      left: calc(50% - 1vw - 3px);
       top: 50%;
-      transform: translate(-50%, -50%);
+      opacity: 0.2;
+      transform: translate(-50%, -50%) rotateZ(-61deg);
+      animation: openLine 500ms ease-out forwards;
+
+      @keyframes openLine {
+        from {
+          width: 0;
+        }
+        to {
+          width: clamp(10rem, 30vw, 50vw);
+        }
+      }
+    }
+
+    #z {
+      opacity: 0.1;
+      display: inline;
+      position: relative;
+    }
+  }
+
+  h3 {
+    opacity: 0.3;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    position: absolute;
+    top: 25vh;
+    font-size: 1rem;
+  }
+
+  #imadethese {
+    position: absolute;
+    bottom: clamp(2rem, 7vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    &::after {
+      content: '';
+      background: var(--text-color);
+      position: absolute;
+      height: 10rem;
+      width: 2px;
+      top: 2rem;
+      left: 50%;
     }
   }
 }

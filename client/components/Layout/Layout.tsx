@@ -1,50 +1,34 @@
-import Head from "next/head"
-import { useProfile } from "../../providers/profile.provider"
-import { ReactNode } from "react"
-import Footer from "../Footer/Footer"
-import { useTheme } from "../../providers/theme.provider"
+import Head from 'next/head'
+import { ReactNode } from 'react'
+import Footer from '../Footer/Footer'
 
 type Props = {
   title: string
-  description: string
+  description?: string
   children: ReactNode
-  bodyClass?: string
-  noFooter?: boolean
 }
 
 const Layout: React.FC<Props> = ({
   title,
-  description,
+  description = 'I am a Budapest based Hungarian developer, creating web and cross platform mobile apps, user interfaces and experiences.',
   children,
-  bodyClass,
-  noFooter,
 }) => {
-  const { name, avatar_url } = useProfile()
-  const { backgroundColor } = useTheme()
-
   return (
     <div className="page">
       <Head>
-        <title>
-          {title} | {name}
-        </title>
+        <title>{title} | Dezso Meszaros - Front-end developer 👨🏽‍💻</title>
         <meta name="description" content={description} />
-        <meta name="og:title" content={name} />
+        <meta name="og:title" content="Dezso Meszaros" />
         <meta name="og:description" content={description} />
-        <meta name="og:url" content={"https://self-site.now.sh/"} />
-        <meta name="og:image" content={avatar_url} />
+        <meta name="og:url" content={'https://meszarosdezso.com/'} />
+        <meta
+          name="og:image"
+          content={'https://meszarosdezso.com/littler_me.jpg'}
+        />
         <link rel="icon" type="image/png" href="/logo120.png" />
       </Head>
-      <div className={`body ${bodyClass}`}>
-        <div
-          style={{
-            background: backgroundColor,
-          }}
-          id="main-background"
-        ></div>
-        {children}
-      </div>
-      {!noFooter && <Footer />}
+      <div className="body">{children}</div>
+      <Footer />
     </div>
   )
 }

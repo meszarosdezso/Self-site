@@ -1,52 +1,47 @@
-import React from "react"
-import LandingPage from "../components/LandingPage/LandingPage"
-import ProfileProvider from "../providers/profile.provider"
-import { GetStaticProps } from "next"
-import { GithubProfile } from "../models/profile"
-import Canvas from "../components/Canvas/Canvas"
-import AboutMe from "../components/About/About"
-import ImDoing from "../components/ImDoing/ImDoing"
-import ContactMe from "../components/ContactMe/ContactMe"
-import Instagram from "../components/Instagram/Instagram"
-import { InstagramPost } from "../models/instagram"
-import Layout from "../components/Layout/Layout"
-import { fetchProfile, fetchInstagram } from "../utils/api"
+import React from 'react'
+import { GetStaticProps } from 'next'
+import Layout from '../components/Layout/Layout'
+import { fetchInstagram, fetchWorks } from '../utils/api'
+import { InstagramPost } from '../models/instagram'
+import LandingPage from '../components/LandingPage/LandingPage'
+import Canvas from '../components/Canvas/Canvas'
+import Instagram from '../components/Instagram/Instagram'
+import { Work } from '../models/work'
+import Works from '../components/Works/Works'
+import Contact from '../components/Contact/Contact'
 
-const IndexPage: React.FC<{
-  profile: GithubProfile
+type Props = {
   posts: InstagramPost[]
-}> = ({ profile, posts }) => {
-  return (
-    <ProfileProvider {...profile}>
-      <Layout title="Home" description={profile.bio}>
-        <div className="IndexPage">
-          <div className="canvas-wrapper">
-            {process.env.NODE_ENV === "production" && <Canvas />}
-          </div>
+  works: Work[]
+}
 
-          <div className="page-content" style={{ zIndex: 10 }}>
-            <LandingPage />
-            <AboutMe />
-            <ImDoing />
-            <ContactMe />
-            {posts.length ? <Instagram posts={posts} /> : null}
-          </div>
+const IndexPage: React.FC<Props> = ({ posts, works }) => {
+  return (
+    <Layout title="Home">
+      {process.env.NODE_ENV === 'production' && (
+        <div className="canvas-wrapper">
+          <Canvas />
         </div>
-      </Layout>
-    </ProfileProvider>
+      )}
+      <LandingPage />
+
+      <Works {...works} />
+      <Instagram posts={posts} />
+      <Contact />
+    </Layout>
   )
 }
 
 export default IndexPage
 
-export const getStaticProps: GetStaticProps = async (_) => {
-  const profile = await fetchProfile()
+export const getStaticProps: GetStaticProps<Props> = async _ => {
   const posts = await fetchInstagram()
+  const works = await fetchWorks()
 
   return {
     props: {
-      profile,
       posts,
+      works,
     },
   }
 }

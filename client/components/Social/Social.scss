@@ -1,0 +1,28 @@
+.Social {
+  margin: auto;
+  margin-bottom: 3rem;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 400px;
+
+  @media screen and (max-width: 600px) {
+    flex-flow: column wrap;
+  }
+
+  .social {
+    text-align: center;
+    padding: 0.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    .value {
+      margin: 0.5rem;
+      white-space: nowrap;
+      width: 130px;
+      color: var(--text-color);
+    }
+  }
+}

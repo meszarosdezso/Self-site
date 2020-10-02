@@ -1,42 +1,44 @@
-import Avatar from "../Avatar/Avatar"
-import AC from "../Ac/Ac"
-import "./LandingPage.scss"
-import { useProfile } from "../../providers/profile.provider"
-import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher"
-import { useTheme, AccentColors } from "../../providers/theme.provider"
-import { colorWithOpacity } from "../../utils/colors"
-import MyName from "../MyName/MyName"
+import './LandingPage.scss'
+import Nav from '../Nav/Nav'
+import { useMouse } from '../../utils/useMouse'
 
 const LandingPage: React.FC = () => {
-  const { name, avatar_url } = useProfile()
-
-  const { isDark } = useTheme()
+  const { dx, dy } = useMouse()
 
   return (
-    <div className="LandingPage section">
-      <div id="avatar">
-        <Avatar url={avatar_url} size={300} />
-      </div>
-      <div className="name-and-texts">
-        <MyName name={name} />
-        <h1 className="mono" id="title">
-          <AC>The most useless website ever</AC>
-        </h1>
-        <div id="mine">
-          <span
-            id="mine-line"
-            style={{
-              background: isDark
-                ? colorWithOpacity("#FFFFFF", 0.3)
-                : AccentColors["ORANGE"],
-            }}
-          ></span>
-          Mine.
-        </div>
-      </div>
-      <ThemeSwitcher
-        style={{ position: "absolute", left: "2rem", bottom: "2rem" }}
-      />
+    <div id="LandingPage">
+      <Nav />
+      <h1
+        style={{
+          transform: `translate(
+            ${dx / -20}px,
+            ${dy / -20}px
+            )`,
+        }}
+        id="name-hero"
+      >
+        <div id="cross-line"></div>
+        Dezso <span id="z">Z</span>
+        <br />
+        Meszaros
+      </h1>
+
+      <h3>
+        <code>
+          Front end
+          <br />
+          developer
+        </code>
+      </h3>
+
+      <h4
+        style={{
+          transform: `translate(0, ${dy / 40}px)`,
+        }}
+        id="imadethese"
+      >
+        I've made these
+      </h4>
     </div>
   )
 }

@@ -1,31 +1,32 @@
-import AC from "../Ac/Ac"
+import React from 'react'
 
 const InstagramCaption: React.FC = ({ children }) => {
   return (
-    <p className="caption">
+    <>
       {parseCaption(children!.toString())
-        .split(" ")
+        .split(' ')
         .map((w, i) => {
-          if (w.includes("@")) {
+          if (w.startsWith('@')) {
             return (
               <a
                 key={w + i}
                 className="ig-username"
-                href={`https://instagram.com/${w.replace("@", "")}`}
+                href={`https://instagram.com/${w.replace('@', '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{ color: 'var(--accent-color', fontWeight: 500 }}
               >
-                <AC>{w} </AC>
+                {w}{' '}
               </a>
             )
-          } else return w + " "
+          } else return w + ' '
         })}
-    </p>
+    </>
   )
 }
 
 const parseCaption = (text: string) => {
-  return text.replace(/#(\w+)/g, "").replace(/\.\n/g, " ")
+  return text.replace(/#(\w+)/g, '').replace(/\.\n/g, ' ')
 }
 
 export default InstagramCaption

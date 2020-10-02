@@ -1,0 +1,76 @@
+#nav {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  #logo {
+    width: 4rem;
+    height: 4rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  #nav-items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-left: auto;
+    margin-right: 2rem;
+    display: flex;
+
+    li {
+      margin-right: 2rem;
+      position: relative;
+      transition: transform 150ms ease-out;
+
+      a {
+        &:hover {
+          color: inherit;
+        }
+      }
+
+      .icon {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        opacity: 0;
+        transition: opacity 200ms ease-out, top 100ms ease-out;
+        pointer-events: none;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: var(--accent-color);
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1rem;
+        transition: width 100ms ease-out;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+        .icon {
+          top: 20%;
+          opacity: 1;
+        }
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  #LightSwitch {
+    margin-right: 1rem;
+  }
+}

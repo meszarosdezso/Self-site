@@ -1,23 +1,29 @@
-import AC from "../Ac/Ac"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub } from "@fortawesome/free-brands-svg-icons"
-import "./Footer.scss"
+import './Footer.scss'
+import { GitHub } from 'react-feather'
 
-export default function Footer() {
+type Props = {
+  centered?: boolean
+}
+
+const Footer: React.FC<Props> = ({ centered }) => {
   return (
-    <footer id="Footer">
-      <h4>
-        Design <AC>&</AC> code by... guess one
-      </h4>
-      <a
-        title="Edit this page on GitHub"
-        href="https://github.com/meszarosdezso/Self-site.git"
-      >
-        <FontAwesomeIcon size="2x" icon={faGithub} />
-      </a>
-      <h4>
-        All rights reserved <AC>©</AC> 2020
-      </h4>
+    <footer
+      style={{ justifyContent: centered ? 'center' : 'space-between' }}
+      id="Footer"
+    >
+      <p id="copyright">Design, code and rights reserved by Dezso Meszaros</p>
+      {!centered && (
+        <a
+          title="Edit this page on Github"
+          href="https://github.com/meszarosdezso/Self-site.git"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GitHub />
+        </a>
+      )}
     </footer>
   )
 }
+
+export default Footer

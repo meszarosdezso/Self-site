@@ -1,19 +1,14 @@
 #Footer {
-  padding: 1.5rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background-color: #0003;
-  opacity: 0.5;
+  flex-flow: row wrap;
+  width: 100%;
 
-  @media screen and (max-width: 768px) {
-    flex-flow: column wrap;
-    padding: 0;
-    h4 {
-      margin: 2rem;
-    }
+  #copyright {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.4;
   }
 }

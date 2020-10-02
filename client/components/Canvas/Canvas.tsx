@@ -1,35 +1,62 @@
-import React from "react"
-import "./Canvas.scss"
-import { useTheme } from "../../providers/theme.provider"
-import { HEX2RGB } from "../../utils/colors"
-import dynamic from "next/dynamic"
-import { isBrowser } from "../../utils/window"
+import React from 'react'
+import './Canvas.scss'
+import dynamic from 'next/dynamic'
+import { isBrowser } from '../../utils/window'
 
-const sketch = (
-  p: any,
-  background: string,
-  accentColor: string,
-  filled: boolean
-) => {
+const sketch = (p: typeof import('p5'), filled: boolean) => {
   const particles: Particle[] = []
+
+  let startX: number, startY: number
+  let offsetX: number, offsetY: number
 
   p.setup = function () {
     if (window) p.createCanvas(window.innerWidth, window.innerHeight)
+
+    for (let i = 0; i < 10; i++) {
+      const { x, y } = {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+      }
+      particles.push(new Particle(x, y))
+    }
+  }
+
+  p.mouseMoved = function () {
+    if (!startX || !startY) {
+      startX = p.mouseX
+      startY = p.mouseY
+    }
+
+    offsetX = (p.mouseX - startX) / -10
+    offsetY = (p.mouseY - startY) / -10
   }
 
   p.mousePressed = function () {
-    particles.push(new Particle(p.mouseX, p.mouseY))
-    if (particles.length > 32) {
-      particles.splice(0, 1)
+    if (
+      p.mouseX > 0 &&
+      p.mouseX < p.width &&
+      p.mouseY > 0 &&
+      p.mouseY < p.height
+    ) {
+      particles.push(new Particle(p.mouseX, p.mouseY))
+      if (particles.length > 32) {
+        particles.splice(0, 1)
+      }
     }
   }
 
   p.draw = function () {
-    if (!filled) {
-      p.background(...HEX2RGB(background))
-    } else {
-      p.background(...HEX2RGB(background), 0)
+    if (offsetX) {
+      p.translate(offsetX, offsetY)
     }
+
+    if (!filled) {
+      p.background(0, 0)
+    } else {
+      p.background(0, 0)
+    }
+
+    p.background(255, filled ? 0 : 255)
 
     particles.forEach((particle, idx) => {
       particle.update()
@@ -47,7 +74,7 @@ const sketch = (
     constructor(x?: any, y?: any) {
       this.pos = p.createVector(x || p.random(p.width), y || p.random(p.height))
       this.vel = p.createVector(p.random(-2, 2), p.random(-2, 2))
-      this.size = filled ? 1 : 3
+      this.size = filled ? 1 : 2
     }
 
     update() {
@@ -56,7 +83,11 @@ const sketch = (
 
     draw() {
       p.noStroke()
-      p.fill(...HEX2RGB(accentColor), filled ? 30 : 255)
+      if (filled) {
+        p.fill(0, 200, 150, 30)
+      } else {
+        p.fill(188, 255)
+      }
       p.circle(this.pos.x, this.pos.y, this.size * 2)
     }
 
@@ -71,10 +102,14 @@ const sketch = (
     }
 
     checkParticles(particlesToCheck: Particle[]) {
-      particlesToCheck.forEach((other) => {
+      particlesToCheck.forEach(other => {
         const d = this.pos.dist(other.pos)
         if (d < 200) {
-          p.stroke(...HEX2RGB(accentColor), filled ? 30 : 255)
+          if (filled) {
+            p.stroke(0, 255, 242, 50)
+          } else {
+            p.stroke(188, 255)
+          }
           p.line(this.pos.x, this.pos.y, other.pos.x, other.pos.y)
         }
       })
@@ -83,20 +118,15 @@ const sketch = (
 }
 
 const Canvas: React.FC = () => {
-  if (!isBrowser()) return <div></div>
+  if (!isBrowser()) return null
 
-  const P5Wrapper: any = dynamic(import("react-p5-wrapper"), {
+  const P5Wrapper: any = dynamic(import('react-p5-wrapper'), {
     ssr: false,
   })
 
-  const { backgroundColor, accentColor } = useTheme()
-  const filled = Math.random() < 0.5
+  const filled = window.innerWidth > 700 ? Math.random() < 0.5 : false
 
-  return (
-    <P5Wrapper
-      sketch={(p: any) => sketch(p, backgroundColor, accentColor, filled)}
-    />
-  )
+  return <P5Wrapper sketch={(p: any) => sketch(p, filled)} />
 }
 
 export default Canvas
