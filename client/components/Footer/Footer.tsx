@@ -11,7 +11,7 @@ const Footer: React.FC<Props> = ({ centered }) => {
       style={{ justifyContent: centered ? 'center' : 'space-between' }}
       id="Footer"
     >
-      <p id="copyright">All rights reserved © Dezso Meszaros</p>
+      <p id="copyright">Design, code and rights reserved by Dezso Meszaros</p>
       {!centered && (
         <a
           title="Edit this page on Github"

@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.0",
     "@fortawesome/free-solid-svg-icons": "^5.15.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
+    "@n8tb1t/use-scroll-position": "^1.0.47",
     "@types/nodemailer": "^6.4.0",
     "@types/react-lazy-load-image-component": "^1.5.1",
     "@zeit/next-css": "^1.0.1",
@@ -20,6 +21,7 @@
     "axios": "^0.20.0",
     "googleapis": "^60.0.1",
     "next": "latest",
+    "node-sass": "^4.14.1",
     "nodemailer": "^6.4.12",
     "p5": "^1.1.9",
     "react": "^16.13.1",
@@ -28,7 +30,6 @@
     "react-lazy-load-image-component": "^1.5.0",
     "react-markdown": "^4.3.1",
     "react-p5-wrapper": "^2.3.0",
-    "react-visibility-sensor": "^5.1.1",
     "sass": "^1.26.11"
   },
   "devDependencies": {

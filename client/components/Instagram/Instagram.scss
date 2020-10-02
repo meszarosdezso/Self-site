@@ -12,9 +12,10 @@
   .posts {
     margin-top: 2rem;
     padding-top: 0.5rem;
+
     .post {
       position: relative;
-      width: calc(50% - 1.5rem);
+      width: calc(50% - 1.6rem);
       margin: 1rem;
 
       &:not(:first-child) {

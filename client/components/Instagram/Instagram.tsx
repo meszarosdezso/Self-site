@@ -27,6 +27,7 @@ const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
               <p>
                 <InstagramCaption>{post.caption}</InstagramCaption>
                 <br />
+                <br />
                 {/* 👆 Please don't tell my boss */}
                 <a
                   target="_blank"

@@ -1,10 +1,10 @@
 import './Works.scss'
 import { Work } from '../../models/work'
-import { MutableRefObject, useRef } from 'react'
-import { useScroll } from '../../providers/scroll'
+import { MutableRefObject, useRef, useState } from 'react'
 import { isBrowser } from '../../utils/window'
 import Link from 'next/link'
 import { sizedImage } from '../../utils/convert'
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 const WorkTile: React.FC<{
   work: Work
@@ -26,25 +26,26 @@ const WorkTile: React.FC<{
           alt={work.title}
         />
       </div>
-      <div className="details">
+      <div className="details" style={{ top: `${40 + scrollTop * 0.8}px` }}>
         <span className="tag">
           {work.year} <div className="line" /> {work.categories[0]}
         </span>
-        <h1 className="title">{work.title}</h1>
-        <p className="sans description">{work.description}</p>
-
-        <Link href={`/works/${work.uid}`}>
+        <Link href={work.uid === 'self-site' ? '/' : `/works/${work.uid}`}>
           <a>
-            <code>Read more</code>
+            <h1 className="title">{work.title}</h1>
           </a>
         </Link>
+        <p className="sans description">{work.description}</p>
       </div>
     </div>
   )
 }
 
 const Works: React.FC<Work[]> = works => {
-  const { scrollPx } = useScroll()
+  const [scrollPx, setScrollPx] = useState(0)
+
+  useScrollPosition(({ currPos: { y } }) => setScrollPx(-y), [scrollPx])
+
   const firstTileRef = useRef<HTMLDivElement>()
   const { offsetTop } = firstTileRef.current || { offsetTop: 1000 }
 

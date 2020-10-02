@@ -3,17 +3,20 @@
   margin: 10vh 5%;
   width: 90%;
   position: relative;
+  text-align: center;
+  overflow: hidden;
 
   &.visible {
     .image {
       img {
-        filter: brightness(0.3);
+        opacity: 0.3;
+        filter: saturate(0);
       }
     }
 
     .details {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, 0);
     }
   }
 
@@ -21,22 +24,24 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    border-radius: 0.5rem;
     overflow: hidden;
+    background-color: rgb(18, 26, 30);
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: all 100ms ease-out;
     }
   }
 
   .details {
     padding: 0 2rem;
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 0;
     width: 100%;
+    max-width: 600px;
     height: 100%;
     display: flex;
     flex-flow: column wrap;
@@ -46,8 +51,8 @@
     z-index: 2;
     color: white;
     opacity: 0;
-    transform: translateY(100px);
-    transition: all 250ms ease-out;
+    transform: translate(-50%, 100px);
+    transition: translate 250ms ease-out, opacity 100ms ease-out;
 
     .tag {
       text-transform: uppercase;
