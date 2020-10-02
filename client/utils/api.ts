@@ -7,7 +7,6 @@ import { readFileSync, existsSync, writeFileSync } from 'fs'
 
 export const fetchBioPage = async () => {
   const { data } = await axios.get(`${process.env.API_URL}/bio-page`)
-  console.log(data)
   return data
 }
 
