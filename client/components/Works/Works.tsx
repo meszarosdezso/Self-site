@@ -35,7 +35,7 @@ const WorkTile: React.FC<{
             <h1 className="title">{work.title}</h1>
           </a>
         </Link>
-        <p className="sans description">{work.description}</p>
+        <p className="sans description">{work.short_description}</p>
       </div>
     </div>
   )

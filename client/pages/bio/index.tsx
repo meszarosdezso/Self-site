@@ -5,6 +5,7 @@ import React from 'react'
 import { ArrowLeft } from 'react-feather'
 import ReactMarkdown from 'react-markdown'
 import Footer from '../../components/Footer/Footer'
+import LightSwitch from '../../components/LightSwitch/LightSwitch'
 import Social from '../../components/Social/Social'
 import { fetchBioPage } from '../../utils/api'
 import './Bio.scss'
@@ -35,6 +36,7 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
         <link rel="icon" type="image/png" href="/logo120.png" />
       </Head>
       <div id="BioPage">
+        <LightSwitch />
         <Link href="/">
           <a>
             <ArrowLeft />

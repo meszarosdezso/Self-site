@@ -27,9 +27,13 @@
     font-size: 1.2rem;
     color: var(--body-color);
     width: 30%;
-    margin: auto;
+    margin: 1rem auto;
     min-width: 300px;
     text-align: center;
+
+    a {
+      color: var(--accent-color);
+    }
   }
 
   .images {

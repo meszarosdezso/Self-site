@@ -6,6 +6,7 @@ import LightSwitch from '../../../components/LightSwitch/LightSwitch'
 import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import ReactMarkdown from 'react-markdown'
 
 type Props = {
   work: Work
@@ -16,9 +17,9 @@ const WorkPage: React.FC<Props> = ({ work }) => {
     <div className="page">
       <Head>
         <title>{work.title} | Dezso Meszaros - Front-end developer 👨🏽‍💻</title>
-        <meta name="description" content={work.description} />
+        <meta name="description" content={work.short_description} />
         <meta name="og:title" content={work.title} />
-        <meta name="og:description" content={work.description} />
+        <meta name="og:description" content={work.short_description} />
         <meta
           name="og:url"
           content={`https://meszarosdezso.com/works/${work.uid}`}
@@ -33,7 +34,9 @@ const WorkPage: React.FC<Props> = ({ work }) => {
 
         <h2 className="date">{work.year}</h2>
 
-        <p className="sans">{work.description}</p>
+        <ReactMarkdown className="sans description">
+          {work.long_description}
+        </ReactMarkdown>
 
         <div className="images">
           {work.images.map(url => (

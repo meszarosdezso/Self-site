@@ -37,7 +37,7 @@
     "date": {
       "type": "date"
     },
-    "description": {
+    "short_description": {
       "type": "text"
     },
     "categories": {
@@ -48,6 +48,9 @@
     },
     "link": {
       "type": "string"
+    },
+    "long_description": {
+      "type": "richtext"
     }
   }
 }

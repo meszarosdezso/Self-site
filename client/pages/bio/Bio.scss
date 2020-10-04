@@ -2,6 +2,12 @@
   padding: 2rem;
   text-align: center;
 
+  #LightSwitch {
+    position: fixed;
+    right: 2rem;
+    top: 2rem;
+  }
+
   #bio-title {
     font-size: 3rem;
   }
