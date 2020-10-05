@@ -42,6 +42,11 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
             <ArrowLeft />
           </a>
         </Link>
+        <div className="images">
+          <img src="littler_me.jpg" alt="Little me" id="little-me" />
+          <img src="me.jpg" alt="Me" id="big-me" />
+        </div>
+
         <h1 id="bio-title">For now, this is just my CV</h1>
         <h4 className="sans">I swear, I will update it later.</h4>
 

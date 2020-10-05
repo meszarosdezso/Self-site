@@ -34,7 +34,7 @@ const WorkPage: React.FC<Props> = ({ work }) => {
 
         <h2 className="date">{work.year}</h2>
 
-        <ReactMarkdown className="sans description">
+        <ReactMarkdown linkTarget="_blank" className="sans description">
           {work.long_description}
         </ReactMarkdown>
 
