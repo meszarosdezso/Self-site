@@ -1,13 +1,14 @@
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import React from 'react'
-import { ArrowLeft } from 'react-feather'
+import React, { useState } from 'react'
+import { ChevronDown } from 'react-feather'
 import ReactMarkdown from 'react-markdown'
 import Footer from '../../components/Footer/Footer'
-import LightSwitch from '../../components/LightSwitch/LightSwitch'
 import Social from '../../components/Social/Social'
 import { fetchBioPage } from '../../utils/api'
+import { rangeMap } from '../../utils/math'
 import './Bio.scss'
 
 type BioProps = {
@@ -15,6 +16,16 @@ type BioProps = {
 }
 
 const BioPage: React.FC<BioProps> = ({ rawBio }) => {
+  const [headerOpacity, setHeaderOpacity] = useState(1)
+
+  useScrollPosition(
+    ({ currPos: { y } }) => {
+      if (-y <= window.innerHeight / 2)
+        setHeaderOpacity(1 - -y / (window.innerHeight / 2))
+    },
+    [headerOpacity]
+  )
+
   return (
     <div className="page">
       <Head>
@@ -35,25 +46,44 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
         />
         <link rel="icon" type="image/png" href="/logo120.png" />
       </Head>
+
       <div id="BioPage">
-        <LightSwitch />
-        <Link href="/">
-          <a>
-            <ArrowLeft />
-          </a>
-        </Link>
-        <div className="images">
-          <img src="littler_me.jpg" alt="Little me" id="little-me" />
-          <img src="me.jpg" alt="Me" id="big-me" />
+        <div
+          style={{
+            opacity: rangeMap(headerOpacity, 1, 0, 0.4, 0.2),
+          }}
+          className="background"
+        >
+          <img src="me.jpg" alt="Me" />
         </div>
 
-        <h1 id="bio-title">For now, this is just my CV</h1>
-        <h4 className="sans">I swear, I will update it later.</h4>
+        <Link href="/">
+          <img src="logo240.png" alt="Logo" id="logo" />
+        </Link>
 
-        <ReactMarkdown className="content">{rawBio}</ReactMarkdown>
+        <div className="content">
+          <header
+            style={{
+              position: 'fixed',
+              opacity: headerOpacity,
+              transform: `scale(${rangeMap(headerOpacity, 1, 0, 1, 0.8)})`,
+            }}
+          >
+            <h1>Biography</h1>
 
-        <Social showLabels={false} />
-        <Footer centered />
+            <h2>A little bit about me</h2>
+
+            <ChevronDown id="scrollIcon" color={'white'} />
+          </header>
+          <div
+            style={{ opacity: rangeMap(headerOpacity, 1, 0, 0, 1) }}
+            className="text"
+          >
+            <ReactMarkdown linkTarget="_blank">{rawBio}</ReactMarkdown>
+          </div>
+          <Social showLabels={false} />
+          <Footer centered />
+        </div>
       </div>
     </div>
   )
