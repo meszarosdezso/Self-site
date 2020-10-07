@@ -63,9 +63,11 @@ const Contact: React.FC<Props> = () => {
     e.preventDefault()
     setSubmitState('SENDING')
 
-    if (!isFormValid()) return setSubmitState('ERROR')
+    await new Promise(res => setTimeout(res, 1000))
 
-    await new Promise(res => setTimeout(res, 2000))
+    if (!isFormValid()) {
+      return setSubmitState('ERROR')
+    }
 
     try {
       await axios.post(

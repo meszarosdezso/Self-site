@@ -11,11 +11,11 @@ import Works from '../components/Works/Works'
 import Contact from '../components/Contact/Contact'
 
 type Props = {
-  posts: InstagramPost[]
   works: Work[]
+  posts: InstagramPost[]
 }
 
-const IndexPage: React.FC<Props> = ({ posts, works }) => {
+const IndexPage: React.FC<Props> = ({ works, posts }) => {
   return (
     <Layout title="Home">
       {process.env.NODE_ENV === 'production' && (
@@ -35,13 +35,13 @@ const IndexPage: React.FC<Props> = ({ posts, works }) => {
 export default IndexPage
 
 export const getStaticProps: GetStaticProps<Props> = async _ => {
-  const posts = await fetchInstagram()
   const works = await fetchWorks()
+  const posts = await fetchInstagram()
 
   return {
     props: {
-      posts,
       works,
+      posts,
     },
   }
 }
