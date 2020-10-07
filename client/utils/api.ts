@@ -6,8 +6,12 @@ import { InstagramPost, InstagramResponse } from '../models/instagram'
 import { readFileSync, existsSync, writeFileSync } from 'fs'
 
 export const fetchBioPage = async () => {
-  const { data } = await axios.get(`${process.env.API_URL}/bio-page`)
-  return data
+  try {
+    const { data } = await axios.get(`${process.env.API_URL}/bio-page`)
+    return data
+  } catch {
+    return { content: 'Failed to load bio page' }
+  }
 }
 
 export const fetchWorks = async (): Promise<Work[]> => {
@@ -50,7 +54,7 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
 
   const postIds = await axios
     .get<InstagramResponse>(
-      `https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&limit=6`
+      `https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&limit=8`
     )
     .then(data => data.data)
     .catch(console.log)
