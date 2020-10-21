@@ -39,9 +39,6 @@ export const getStaticProps: GetStaticProps<Props> = async _ => {
   const posts = await fetchInstagram()
 
   return {
-    props: {
-      works,
-      posts,
-    },
+    props: { works, posts },
   }
 }
