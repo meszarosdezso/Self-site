@@ -12,19 +12,16 @@
   .posts {
     margin-top: 2rem;
     padding-top: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    justify-content: center;
+    padding: 0 1rem;
 
     .post {
       position: relative;
-      width: calc(50% - 1.6rem);
-      margin: 1rem;
-
-      &:not(:first-child) {
-        margin-top: calc(-30.5%);
-      }
-
-      &.right {
-        margin-left: auto;
-      }
+      width: 100%;
+      margin: 0.8rem 0;
 
       &:hover {
         .caption {
@@ -32,10 +29,8 @@
         }
       }
 
-      .image {
-        img {
-          width: 100%;
-        }
+      img {
+        width: 100%;
       }
 
       .caption {
