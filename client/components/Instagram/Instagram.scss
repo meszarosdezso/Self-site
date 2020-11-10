@@ -3,20 +3,25 @@
   max-width: 800px;
   position: relative;
   margin: auto;
+  margin-top: 7rem;
 
   h1 {
-    margin: 2rem 1rem;
+    margin: 1rem 1rem;
     font-size: 2rem;
   }
 
   .posts {
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding-top: 0.5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     justify-content: center;
     padding: 0 1rem;
+
+    .right {
+      margin-top: -8rem;
+    }
 
     .post {
       position: relative;
