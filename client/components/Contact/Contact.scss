@@ -55,6 +55,51 @@
       border-bottom: none;
     }
 
+    .iamarobot {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      &:active {
+        #robot-checkbox {
+          transform: scale(0);
+        }
+      }
+
+      code {
+        user-select: none;
+        -webkit-user-select: none;
+      }
+
+      #robot-checkbox {
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 2px solid var(--text-color);
+        border-radius: 0.3rem;
+        margin-right: 0.75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 200ms ease-out;
+        color: var(--bg-color);
+
+        svg {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &.checked {
+          color: var(--text-color);
+          opacity: 1;
+          border: none;
+
+          svg {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
     .error {
       width: 80%;
       margin: auto;

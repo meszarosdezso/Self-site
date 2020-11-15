@@ -18,7 +18,8 @@ const send = async (
   name: string,
   email: string,
   message: string,
-  subject: string
+  subject: string,
+  comeAtMeBots: string
 ) => {
   const mailOptions: Mail.Options = {
     from: name,
@@ -29,6 +30,8 @@ const send = async (
     <h3>${name} (${email})</h3>
     
     <p>${message}</p>
+
+    <em>${comeAtMeBots}</em>
     `,
   }
 
@@ -59,10 +62,10 @@ const send = async (
 }
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
-  const { fullName, message, email, subject } = req.body
+  const { fullName, message, email, subject, comeAtMeBots } = req.body
 
   try {
-    const response = await send(fullName, email, message, subject)
+    const response = await send(fullName, email, message, subject, comeAtMeBots)
     return res.send({ statusCode: 200, response })
   } catch (e) {
     console.log({ fullName, message, email, subject })

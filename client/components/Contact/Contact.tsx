@@ -8,8 +8,10 @@ import {
   INVALID_NAME,
   NO_SUBJECT,
   NO_MESSAGE,
+  NO_BOTS,
 } from '../../constants/error'
 import axios from 'axios'
+import { Check } from 'react-feather'
 
 type Props = {}
 
@@ -24,6 +26,7 @@ type FormState = {
 const Contact: React.FC<Props> = () => {
   const [submitState, setSubmitState] = useState<SubmitState>('READY')
   const [error, setError] = useState<string>('')
+  const [isRobot, setIsRobot] = useState<boolean>(true)
 
   const [state, setState] = useState<FormState>({
     fullName: '',
@@ -34,6 +37,11 @@ const Contact: React.FC<Props> = () => {
   })
 
   const isFormValid = () => {
+    if (isRobot) {
+      setError(NO_BOTS)
+      return false
+    }
+
     if (state.comeAtMeBots.length > 0) return false
 
     if (!isEmailValid(state.email)) {
@@ -140,6 +148,19 @@ const Contact: React.FC<Props> = () => {
           name="comeAtMeBots"
           style={{ display: 'none' }}
         />
+        <div
+          onClick={_ => {
+            setError('')
+            setIsRobot(!isRobot)
+            setSubmitState('READY')
+          }}
+          className="iamarobot"
+        >
+          <div className={isRobot ? 'checked' : ''} id="robot-checkbox">
+            <Check width="16" strokeWidth="4" />
+          </div>
+          <code> I am a robot</code>
+        </div>
         <h4 className="error sans">{error}&nbsp;</h4>
         <SubmitButton state={submitState} />
       </form>
