@@ -54,7 +54,7 @@ const WorkPage: React.FC<Props> = ({ work }) => {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async _ => {
   const works = await fetchWorks()
 
   const paths = works.map(work => ({ params: { workId: work.uid } }))
