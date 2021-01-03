@@ -4,7 +4,7 @@
   "version": "0.2.0",
   "description": "API for meszarosdezso.com",
   "scripts": {
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
@@ -13,17 +13,17 @@
     "concurrently": "^5.3.0"
   },
   "dependencies": {
-    "strapi": "^3.3.2",
-    "strapi-admin": "3.3.2",
-    "strapi-connector-mongoose": "3.3.2",
-    "strapi-plugin-content-manager": "3.3.2",
-    "strapi-plugin-content-type-builder": "3.3.2",
-    "strapi-plugin-email": "3.3.2",
-    "strapi-plugin-graphql": "^3.3.2",
-    "strapi-plugin-upload": "^3.3.2",
-    "strapi-plugin-users-permissions": "3.3.2",
-    "strapi-provider-upload-cloudinary": "^3.3.2",
-    "strapi-utils": "3.3.2"
+    "strapi": "^3.4.1",
+    "strapi-admin": "3.4.1",
+    "strapi-connector-mongoose": "3.4.1",
+    "strapi-plugin-content-manager": "3.4.1",
+    "strapi-plugin-content-type-builder": "3.4.1",
+    "strapi-plugin-email": "3.4.1",
+    "strapi-plugin-graphql": "^3.4.1",
+    "strapi-plugin-upload": "^3.4.1",
+    "strapi-plugin-users-permissions": "3.4.1",
+    "strapi-provider-upload-cloudinary": "^3.4.1",
+    "strapi-utils": "3.4.1"
   },
   "author": {
     "name": "A Strapi developer"

@@ -57,7 +57,7 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
       `https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&limit=8`
     )
     .then(data => data.data)
-    .catch(console.log)
+    .catch(_ => console.log(`Did you forget to update your instagram token?`))
 
   if (!postIds) return []
 
