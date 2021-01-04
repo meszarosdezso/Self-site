@@ -2,6 +2,7 @@ import './Instagram.scss'
 import { InstagramPost } from '../../models/instagram'
 import { ExternalLink } from 'react-feather'
 import InstagramCaption from './Caption'
+import { useEffect, useState } from 'react'
 
 const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
   return (
@@ -41,9 +42,17 @@ const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
 }
 
 const Post: React.FC<{ post: InstagramPost }> = ({ post }) => {
-  return (
+  const [imageSrc, setImageSrc] = useState<string | null>(null)
+
+  useEffect(() => {
+    setImageSrc(post.thumbnail_url || post.media_url)
+  }, [post])
+
+  return !imageSrc ? (
+    <></>
+  ) : (
     <div id={`ig-${post.id}`} key={post.id} className={`post`}>
-      <img src={post.thumbnail_url || post.media_url} alt={post.caption} />
+      <img src={imageSrc} alt={post.caption} />
 
       <div className="caption sans">
         <p>
