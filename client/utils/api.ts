@@ -16,9 +16,9 @@ export const fetchBioPage = async () => {
 
 export const fetchWorks = async (): Promise<Work[]> => {
   try {
-    const { data } = await axios.get(`${process.env.API_URL}/works`)
+    const { data } = await axios.get<any[]>(`${process.env.API_URL}/works`)
 
-    return data.map(workFromApi)
+    return data.map(workFromApi).sort((a, b) => b.year.localeCompare(a.year))
   } catch (e) {
     console.error(e.message)
     return []

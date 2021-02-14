@@ -13,17 +13,17 @@
     "concurrently": "^5.3.0"
   },
   "dependencies": {
-    "strapi": "^3.4.1",
-    "strapi-admin": "3.4.1",
-    "strapi-connector-mongoose": "3.4.1",
-    "strapi-plugin-content-manager": "3.4.1",
-    "strapi-plugin-content-type-builder": "3.4.1",
-    "strapi-plugin-email": "3.4.1",
-    "strapi-plugin-graphql": "^3.4.1",
-    "strapi-plugin-upload": "^3.4.1",
-    "strapi-plugin-users-permissions": "3.4.1",
-    "strapi-provider-upload-cloudinary": "^3.4.1",
-    "strapi-utils": "3.4.1"
+    "strapi": "^3.4.6",
+    "strapi-admin": "3.4.6",
+    "strapi-connector-mongoose": "3.4.6",
+    "strapi-plugin-content-manager": "3.4.6",
+    "strapi-plugin-content-type-builder": "3.4.6",
+    "strapi-plugin-email": "3.4.6",
+    "strapi-plugin-graphql": "^3.4.6",
+    "strapi-plugin-upload": "^3.4.6",
+    "strapi-plugin-users-permissions": "3.4.6",
+    "strapi-provider-upload-cloudinary": "^3.4.6",
+    "strapi-utils": "3.4.6"
   },
   "author": {
     "name": "A Strapi developer"
