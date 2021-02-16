@@ -126,7 +126,7 @@ const Contact: React.FC<Props> = () => {
           type="email"
           name="email"
         />
-        <label htmlFor="subject"> and I'm wrinting in connection of a</label>
+        <label htmlFor="subject"> and I'm writing in connection of a</label>
         <input
           onChange={handleChange}
           value={state.subject}
