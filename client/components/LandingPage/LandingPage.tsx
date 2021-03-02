@@ -1,4 +1,4 @@
-import './LandingPage.scss'
+import styles from './LandingPage.module.scss'
 import Nav from '../Nav/Nav'
 import { useMouse } from '../../utils/useMouse'
 
@@ -6,7 +6,7 @@ const LandingPage: React.FC = () => {
   const { dx, dy } = useMouse()
 
   return (
-    <div id="LandingPage">
+    <div id={styles.LandingPage}>
       <Nav />
       <h1
         style={{
@@ -15,9 +15,9 @@ const LandingPage: React.FC = () => {
             ${dy / -20}px
             )`,
         }}
-        id="name-hero"
+        id={styles['name-hero']}
       >
-        <div id="cross-line"></div>
+        <div id={styles['cross-line']}></div>
         Dezso <span id="z">Z</span>
         <br />
         Meszaros
@@ -35,7 +35,7 @@ const LandingPage: React.FC = () => {
         style={{
           transform: `translate(0, ${dy / 40}px)`,
         }}
-        id="imadethese"
+        id={styles['imadethese']}
       >
         I've made these
       </h4>

@@ -1,4 +1,4 @@
-import './SubmitButton.scss'
+import styles from './SubmitButton.module.scss'
 import { Send } from 'react-feather'
 
 export type SubmitState = 'SENDING' | 'READY' | 'ERROR' | 'SENT'
@@ -11,7 +11,7 @@ const SubmitButton: React.FC<Props> = ({ state }) => {
   return (
     <button
       disabled={state !== 'READY'}
-      className={`SubmitButton sans ${state}`}
+      className={`${styles.SubmitButton} sans ${styles[state]}`}
       type="submit"
     >
       <Send />

@@ -1,4 +1,4 @@
-import './Instagram.scss'
+import styles from './Instagram.module.scss'
 import { InstagramPost } from '../../models/instagram'
 import { ExternalLink } from 'react-feather'
 import InstagramCaption from './Caption'
@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
   return (
-    <div id="Instagram">
+    <div id={styles.Instagram}>
       <br />
       <h1>
         Latest posts on
@@ -20,8 +20,8 @@ const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
         </a>
       </h1>
 
-      <div className="posts">
-        <div className="left">
+      <div className={styles.posts}>
+        <div className={styles.left}>
           {posts
             .filter((_, i) => !(i % 2))
             .map(post => (
@@ -29,7 +29,7 @@ const Instagram: React.FC<{ posts: InstagramPost[] }> = ({ posts }) => {
             ))}
         </div>
 
-        <div className="right">
+        <div className={styles.right}>
           {posts
             .filter((_, i) => i % 2)
             .map(post => (
@@ -51,10 +51,10 @@ const Post: React.FC<{ post: InstagramPost }> = ({ post }) => {
   return !imageSrc ? (
     <></>
   ) : (
-    <div id={`ig-${post.id}`} key={post.id} className={`post`}>
+    <div id={`ig-${post.id}`} key={post.id} className={styles.post}>
       <img src={imageSrc} alt={post.caption} />
 
-      <div className="caption sans">
+      <div className={`${styles.caption} sans`}>
         <p>
           <InstagramCaption>{post.caption}</InstagramCaption>
           <br />

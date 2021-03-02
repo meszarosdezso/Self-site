@@ -1,4 +1,4 @@
-import './Social.scss'
+import styles from './Social.module.scss'
 import { GitHub, Instagram, Phone } from 'react-feather'
 
 type Props = {
@@ -25,17 +25,17 @@ const SOCIALS = [
 
 const Social: React.FC<Props> = ({ showLabels = true }) => {
   return (
-    <div className="Social sans">
+    <div className={`${styles.Social} sans`}>
       {SOCIALS.map(({ label, link, Icon }) => (
         <a
           key={link}
-          className="social"
+          className={styles.social}
           href={link}
           target="_blank"
           rel="noopener noreferrer"
         >
           <Icon />
-          {showLabels && <span className="value">{label}</span>}
+          {showLabels && <span className={styles.value}>{label}</span>}
         </a>
       ))}
     </div>

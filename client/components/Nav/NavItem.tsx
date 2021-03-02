@@ -1,6 +1,7 @@
 import { useMouse } from '../../utils/useMouse'
 import { useRef, MutableRefObject } from 'react'
 import Link from 'next/link'
+import styles from './Nav.module.scss'
 
 export type NavItemType = {
   id: string
@@ -28,7 +29,7 @@ const NavItem: React.FC<NavItemType> = ({ title, id, link, Icon }) => {
             style={{
               left: `calc(50% + ${leftOffset}px)`,
             }}
-            className="icon"
+            className={styles.icon}
           >
             <Icon />
           </span>

@@ -16,26 +16,24 @@
     "@n8tb1t/use-scroll-position": "^2.0.3",
     "@types/nodemailer": "^6.4.0",
     "@types/react-lazy-load-image-component": "^1.5.1",
-    "@zeit/next-css": "^1.0.1",
-    "@zeit/next-sass": "^1.0.1",
     "axios": "^0.21.1",
-    "googleapis": "^67.0.0",
-    "next": "^10.0.6",
-    "node-sass": "^5.0.0",
-    "nodemailer": "^6.4.18",
+    "googleapis": "^67.1.1",
+    "next": "^10.0.7",
+    "nodemailer": "^6.5.0",
     "p5": "^1.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-feather": "^2.0.9",
     "react-lazy-load-image-component": "^1.5.1",
     "react-markdown": "^5.0.3",
-    "react-p5-wrapper": "^2.3.0"
+    "react-p5-wrapper": "^2.3.0",
+    "sass": "^1.32.8"
   },
   "devDependencies": {
-    "@types/node": "^14.14.27",
+    "@types/node": "^14.14.31",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
-    "typescript": "4.1.5"
+    "typescript": "4.2.2"
   },
   "license": "ISC"
 }

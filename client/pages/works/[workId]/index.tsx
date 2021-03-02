@@ -1,4 +1,4 @@
-import './Work.scss'
+import styles from './Work.module.scss'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { fetchWorks, fetchWork } from '../../../utils/api'
 import { Work } from '../../../models/work'
@@ -27,27 +27,30 @@ const WorkPage: React.FC<Props> = ({ work }) => {
         <meta name="og:image" content={work.cover} />
         <link rel="icon" type="image/png" href="/logo120.png" />
       </Head>
-      <div className="WorkPage">
-        <LightSwitch />
+      <div className={styles.WorkPage}>
+        <LightSwitch id={styles.LightSwitch} />
 
-        <h1 className="title">{work.title}</h1>
+        <h1 className={styles.title}>{work.title}</h1>
 
-        <h2 className="date">{work.year}</h2>
+        <h2 className={styles.date}>{work.year}</h2>
 
-        <ReactMarkdown linkTarget="_blank" className="sans description">
+        <ReactMarkdown
+          linkTarget="_blank"
+          className={`sans ${styles.description}`}
+        >
           {work.long_description}
         </ReactMarkdown>
 
-        <div className="images">
+        <div className={styles.images}>
           {work.images.map(url => (
-            <div key={url} className="image">
+            <div key={url} className={styles.image}>
               <img src={url} alt={work.title} />
             </div>
           ))}
         </div>
 
         <Link href="/">
-          <a className="sans go-back">Go back</a>
+          <a className={`sans ${styles['go-back']}`}>Go back</a>
         </Link>
       </div>
     </div>

@@ -9,7 +9,7 @@ import Footer from '../../components/Footer/Footer'
 import Social from '../../components/Social/Social'
 import { fetchBioPage } from '../../utils/api'
 import { rangeMap } from '../../utils/math'
-import './Bio.scss'
+import styles from './Bio.module.scss'
 
 type BioProps = {
   rawBio: string
@@ -47,12 +47,12 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
         <link rel="icon" type="image/png" href="/logo120.png" />
       </Head>
 
-      <div id="BioPage">
+      <div id={styles.BioPage}>
         <div
           style={{
             opacity: rangeMap(headerOpacity, 1, 0, 0.4, 0.2),
           }}
-          className="background"
+          className={styles.background}
         >
           <img src="me.jpg" alt="Me" />
         </div>
@@ -61,7 +61,7 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
           <img src="logo240.png" alt="Logo" id="logo" />
         </Link>
 
-        <div className="content">
+        <div className={styles.content}>
           <header
             style={{
               position: 'fixed',
@@ -73,11 +73,11 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
 
             <h2>A little bit about me</h2>
 
-            <ChevronDown id="scrollIcon" color={'white'} />
+            <ChevronDown id={styles.scrollIcon} color={'white'} />
           </header>
           <div
             style={{ opacity: rangeMap(headerOpacity, 1, 0, 0, 1) }}
-            className="text"
+            className={styles.text}
           >
             <ReactMarkdown linkTarget="_blank">{rawBio}</ReactMarkdown>
           </div>

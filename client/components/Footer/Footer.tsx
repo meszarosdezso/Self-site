@@ -1,4 +1,4 @@
-import './Footer.scss'
+import styles from './Footer.module.scss'
 import { GitHub } from 'react-feather'
 
 type Props = {
@@ -9,9 +9,11 @@ const Footer: React.FC<Props> = ({ centered }) => {
   return (
     <footer
       style={{ justifyContent: centered ? 'center' : 'space-between' }}
-      id="Footer"
+      id={styles.Footer}
     >
-      <p id="copyright">Design, code and rights reserved by Dezso Meszaros</p>
+      <p id={styles.copyright}>
+        Design, code and rights reserved by Dezso Meszaros
+      </p>
       {!centered && (
         <a
           title="Edit this page on Github"

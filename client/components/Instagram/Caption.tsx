@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './Instagram.module.scss'
 
 const InstagramCaption: React.FC = ({ children }) => {
   return (
@@ -10,7 +11,7 @@ const InstagramCaption: React.FC = ({ children }) => {
             return (
               <a
                 key={w + i}
-                className="ig-username"
+                className={styles['ig-username']}
                 href={`https://instagram.com/${w.replace('@', '')}`}
                 target="_blank"
                 rel="noopener noreferrer"

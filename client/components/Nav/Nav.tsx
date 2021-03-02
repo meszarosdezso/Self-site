@@ -1,4 +1,4 @@
-import './Nav.scss'
+import styles from './Nav.module.scss'
 import LightSwitch from '../LightSwitch/LightSwitch'
 import { Mail, User } from 'react-feather'
 import NavItem, { NavItemType } from './NavItem'
@@ -21,16 +21,16 @@ const NAV_ITEMS: NavItemType[] = [
 
 const Nav: React.FC = () => {
   return (
-    <nav id="nav">
+    <nav id={styles.Nav}>
       <Link href="/">
         <a>
-          <div id="logo">
+          <div id={styles.logo}>
             <img src="/logo240.png" alt="logo" />
           </div>
         </a>
       </Link>
 
-      <ul id="nav-items">
+      <ul id={styles.navItems}>
         {NAV_ITEMS.map(item => (
           <NavItem key={item.id} {...item} />
         ))}

@@ -1,4 +1,4 @@
-import './Contact.scss'
+import styles from './Contact.module.scss'
 import { useState } from 'react'
 import SubmitButton, { SubmitState } from '../SubmitButton/SubmitButton'
 import Social from '../Social/Social'
@@ -104,14 +104,14 @@ const Contact: React.FC<Props> = () => {
   }
 
   return (
-    <div className="Contact">
+    <div className={styles.Contact}>
       <h3 id="contact" className="sans">
         and of course
       </h3>
       <h1> the contact form</h1>
       <Social />
 
-      <form onSubmit={handleSubmit} id="ContactForm">
+      <form onSubmit={handleSubmit} id={styles.ContactForm}>
         <label htmlFor="fullName">Hey, my name is </label>
         <input
           onChange={handleChange}
@@ -154,14 +154,17 @@ const Contact: React.FC<Props> = () => {
             setIsRobot(!isRobot)
             setSubmitState('READY')
           }}
-          className="iamarobot"
+          className={styles.iamarobot}
         >
-          <div className={isRobot ? 'checked' : ''} id="robot-checkbox">
+          <div
+            className={isRobot ? styles.checked : ''}
+            id={styles['robot-checkbox']}
+          >
             <Check width="16" strokeWidth="4" />
           </div>
           <code> I am a robot</code>
         </div>
-        <h4 className="error sans">{error}&nbsp;</h4>
+        <h4 className={`${styles.error} sans`}>{error}&nbsp;</h4>
         <SubmitButton state={submitState} />
       </form>
     </div>

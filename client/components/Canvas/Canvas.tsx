@@ -1,5 +1,4 @@
 import React from 'react'
-import './Canvas.scss'
 import dynamic from 'next/dynamic'
 import { isBrowser } from '../../utils/window'
 

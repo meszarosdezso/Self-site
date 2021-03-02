@@ -1,30 +1,32 @@
-import { Moon, Sun } from "react-feather"
-import "./LightSwitch.scss"
-import { useState, useEffect } from "react"
+import { Moon, Sun } from 'react-feather'
+import styles from './LightSwitch.module.scss'
+import { useState, useEffect, DetailedHTMLProps, HTMLAttributes } from 'react'
 
-const LightSwitch: React.FC = () => {
-  const [state, setState] = useState<"dark" | "light">("light")
+const LightSwitch: React.FC<
+  DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+> = ({ id }) => {
+  const [state, setState] = useState<'dark' | 'light'>('light')
 
   useEffect(() => {
-    const newState = localStorage.getItem("md-theme-mode")
+    const newState = localStorage.getItem('md-theme-mode')
 
-    if (newState === "dark") {
+    if (newState === 'dark') {
       setState(newState)
-      document.documentElement.setAttribute("data-theme", newState)
+      document.documentElement.setAttribute('data-theme', newState)
     }
   }, [])
 
   const handleChange = (_: React.MouseEvent) => {
-    const newState = state === "dark" ? "light" : "dark"
+    const newState = state === 'dark' ? 'light' : 'dark'
 
     setState(newState)
-    document.documentElement.setAttribute("data-theme", newState)
-    localStorage.setItem("md-theme-mode", newState)
+    document.documentElement.setAttribute('data-theme', newState)
+    localStorage.setItem('md-theme-mode', newState)
   }
 
   return (
-    <div id="LightSwitch" onClick={handleChange}>
-      {state === "dark" ? <Moon /> : <Sun />}
+    <div id={id || styles.LightSwitch} onClick={handleChange}>
+      {state === 'dark' ? <Moon /> : <Sun />}
     </div>
   )
 }

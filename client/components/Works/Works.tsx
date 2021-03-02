@@ -1,4 +1,4 @@
-import './Works.scss'
+import styles from './Works.module.scss'
 import { Work } from '../../models/work'
 import { MutableRefObject, useRef, useState } from 'react'
 import { isBrowser } from '../../utils/window'
@@ -15,9 +15,11 @@ const WorkTile: React.FC<{
   return (
     <div
       ref={firstRef}
-      className={`${visible ? 'WorkTile visible' : 'WorkTile'}`}
+      className={`${
+        visible ? `${styles.WorkTile} ${styles.visible}` : styles.WorkTile
+      }`}
     >
-      <div className="image">
+      <div className={styles.image}>
         <img
           style={{
             transform: `translateY(${scrollTop / 3}px) scale(1.2)`,
@@ -26,16 +28,19 @@ const WorkTile: React.FC<{
           alt={work.title}
         />
       </div>
-      <div className="details" style={{ top: `${40 + scrollTop * 0.8}px` }}>
-        <span className="tag">
-          {work.year} <div className="line" /> {work.categories[0]}
+      <div
+        className={styles.details}
+        style={{ top: `${40 + scrollTop * 0.8}px` }}
+      >
+        <span className={styles.tag}>
+          {work.year} <div className={styles.line} /> {work.categories[0]}
         </span>
         <Link href={work.uid === 'self-site' ? '/' : `/works/${work.uid}`}>
           <a>
-            <h1 className="title">{work.title}</h1>
+            <h1 className={styles.title}>{work.title}</h1>
           </a>
         </Link>
-        <p className="sans description">{work.short_description}</p>
+        <p className={`sans ${styles.description}`}>{work.short_description}</p>
       </div>
     </div>
   )
@@ -63,7 +68,7 @@ const Works: React.FC<Work[]> = works => {
   }
 
   return (
-    <div id="Works">
+    <div id={styles.Works}>
       {Object.values(works).map((work, i) => {
         const ref = i === 0 ? firstTileRef : null
         const scrollTop =
