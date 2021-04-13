@@ -58,7 +58,7 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
         </div>
 
         <Link href="/">
-          <img src="logo240.png" alt="Logo" id="logo" />
+          <img src="logo240.png" alt="Logo" id={styles.logo} />
         </Link>
 
         <div className={styles.content}>
@@ -71,7 +71,7 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
           >
             <h1>Biography</h1>
 
-            <h2>A little bit about me</h2>
+            <h2 className={styles.subtitle}>A little bit about me</h2>
 
             <ChevronDown id={styles.scrollIcon} color={'white'} />
           </header>

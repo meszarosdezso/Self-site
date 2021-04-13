@@ -18,7 +18,7 @@ const LandingPage: React.FC = () => {
         id={styles['name-hero']}
       >
         <div id={styles['cross-line']}></div>
-        Dezso <span id="z">Z</span>
+        Dezso <span id={styles.z}>Z</span>
         <br />
         Meszaros
       </h1>
