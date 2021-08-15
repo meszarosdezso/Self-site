@@ -1,4 +1,5 @@
-import { AppPropsType } from 'next/dist/next-server/lib/utils'
+import { AppPropsType } from 'next/dist/shared/lib/utils'
+
 import './_app.scss'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 
