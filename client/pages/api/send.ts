@@ -68,8 +68,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const response = await send(fullName, email, message, subject, comeAtMeBots)
     return res.send({ statusCode: 200, response })
   } catch (e) {
-    console.log({ fullName, message, email, subject })
-    console.log(e)
-    return res.status(500).send({ statusCode: 500, error: e.message })
+    if (e instanceof Error) {
+      return res.status(500).send({ statusCode: 500, error: e.message })
+    }
+    return res.status(500).send({ statusCode: 500, error: JSON.stringify(e) })
   }
 }

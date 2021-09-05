@@ -20,7 +20,9 @@ export const fetchWorks = async (): Promise<Work[]> => {
 
     return data.map(workFromApi).sort((a, b) => b.year.localeCompare(a.year))
   } catch (e) {
-    console.error(e.message)
+    if (e instanceof Error) {
+      console.error(e.message)
+    }
     return []
   }
 }
