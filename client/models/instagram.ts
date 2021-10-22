@@ -1,5 +1,6 @@
 export type InstagramPost = {
   id: string
+  local_url: string
   media_type?: string
   media_url: string
   username?: string

@@ -74,3 +74,11 @@
     margin-right: 1rem;
   }
 }
+
+html[data-theme='dark'] {
+  #logo {
+    img {
+      filter: invert(1);
+    }
+  }
+}

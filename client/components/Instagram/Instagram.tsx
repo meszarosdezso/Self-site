@@ -45,7 +45,7 @@ const Post: React.FC<{ post: InstagramPost }> = ({ post }) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null)
 
   useEffect(() => {
-    setImageSrc(post.thumbnail_url || post.media_url)
+    setImageSrc(post.local_url || post.thumbnail_url || post.media_url)
   }, [post])
 
   return !imageSrc ? (

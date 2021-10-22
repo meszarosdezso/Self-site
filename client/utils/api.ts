@@ -3,7 +3,7 @@ import { workFromApi } from './convert'
 import { GithubProfile, OFFLINE_GITHUB_PROFILE } from '../models/profile'
 import { Work } from '../models/work'
 import { InstagramPost, InstagramResponse } from '../models/instagram'
-import { readFileSync, existsSync, writeFileSync } from 'fs'
+import { readFileSync, existsSync, writeFileSync, createWriteStream } from 'fs'
 
 export const fetchBioPage = async () => {
   try {
@@ -63,15 +63,42 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
 
   if (!postIds) return []
 
+  const fields = [
+    'id',
+    'media_url',
+    'media_type',
+    'username',
+    'timestamp',
+    'thumbnail_url',
+    'permalink',
+    'caption',
+  ]
+
+  const access_token = process.env.INSTAGRAM_ACCESS_TOKEN
+
+  if (!access_token) throw new Error('Missing Instagram token.')
+
+  const params = new URLSearchParams({ fields: fields.join(','), access_token })
+
   const posts = await Promise.all(
-    postIds.data.map(
-      async ({ id }) =>
-        (
-          await axios.get<InstagramPost>(
-            `https://graph.instagram.com/${id}?fields=id,media_url,media_type,username,timestamp,thumbnail_url,permalink,caption&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}`
-          )
-        ).data
-    )
+    postIds.data.map(async ({ id }, i) => {
+      const { data: post } = await axios.get<InstagramPost>(
+        `https://graph.instagram.com/${id}?${params}`
+      )
+
+      const localUrl = `/assets/instagram_${i}.jpg`
+
+      post.local_url = localUrl
+
+      const stream = createWriteStream(`public/${localUrl}`)
+      const { data } = await axios.get(post.media_url, {
+        responseType: 'stream',
+      })
+
+      data.pipe(stream)
+
+      return post
+    })
   )
 
   writeFileSync('data/post_cache.json', JSON.stringify(posts, null, 2), 'utf8')
