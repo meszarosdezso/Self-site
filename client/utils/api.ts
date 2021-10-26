@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { workFromApi } from './convert'
-import { GithubProfile, OFFLINE_GITHUB_PROFILE } from '../models/profile'
 import { Work } from '../models/work'
 import { InstagramPost, InstagramResponse } from '../models/instagram'
 import { readFileSync, existsSync, writeFileSync, createWriteStream } from 'fs'
@@ -31,20 +30,6 @@ export const fetchWork = async (id: string): Promise<Work> => {
   const { data } = await axios.get(`${process.env.API_URL}/works/${id}`)
 
   return workFromApi(data)
-}
-
-export const fetchProfile = async (): Promise<GithubProfile> => {
-  if (process.env.NODE_ENV === 'development') return OFFLINE_GITHUB_PROFILE
-
-  const { data } = await axios.get(
-    `https://api.github.com/users/meszarosdezso`,
-    {
-      headers: {
-        Authorization: process.env.GITHUB_ACCESS_TOKEN,
-      },
-    }
-  )
-  return data
 }
 
 export const fetchInstagram = async (): Promise<InstagramPost[]> => {

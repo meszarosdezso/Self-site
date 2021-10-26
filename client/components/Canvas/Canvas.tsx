@@ -2,6 +2,11 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { isBrowser } from '../../utils/window'
 
+const ReactP5Wrapper: any = dynamic(import('react-p5-wrapper'), {
+  ssr: false,
+  loading: () => <div className="sketch-holder">Loading...</div>,
+})
+
 const sketch = (p: typeof import('p5'), filled: boolean) => {
   const particles: Particle[] = []
 
@@ -117,15 +122,11 @@ const sketch = (p: typeof import('p5'), filled: boolean) => {
 }
 
 const Canvas: React.FC = () => {
-  if (!isBrowser()) return null
-
-  const P5Wrapper: any = dynamic(import('react-p5-wrapper'), {
-    ssr: false,
-  })
+  if (!isBrowser()) return <span>Loading...</span>
 
   const filled = window.innerWidth > 700 ? Math.random() < 0.5 : false
 
-  return <P5Wrapper sketch={(p: any) => sketch(p, filled)} />
+  return <ReactP5Wrapper sketch={(p: any) => sketch(p, filled)} />
 }
 
 export default Canvas
