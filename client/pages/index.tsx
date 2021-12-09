@@ -25,7 +25,7 @@ const IndexPage: React.FC<Props> = ({ works, posts }) => {
       )}
       <LandingPage />
 
-      <Works {...works} />
+      <Works works={works} />
       <Instagram posts={posts} />
       <Contact />
     </Layout>

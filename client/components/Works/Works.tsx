@@ -46,7 +46,7 @@ const WorkTile: React.FC<{
   )
 }
 
-const Works: React.FC<Work[]> = works => {
+const Works: React.FC<{ works: Work[] }> = ({ works }) => {
   const [scrollPx, setScrollPx] = useState(0)
 
   useScrollPosition(({ currPos: { y } }) => setScrollPx(-y), [scrollPx])
@@ -69,7 +69,7 @@ const Works: React.FC<Work[]> = works => {
 
   return (
     <div id={styles.Works}>
-      {Object.values(works).map((work, i) => {
+      {works.map((work, i) => {
         const ref = i === 0 ? firstTileRef : null
         const scrollTop =
           !isBrowser() || scrollPx < offsetTop - window.innerHeight
