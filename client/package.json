@@ -17,27 +17,27 @@
     "@types/nodemailer": "^6.4.4",
     "@types/react-lazy-load-image-component": "^1.5.2",
     "axios": "^0.24.0",
-    "googleapis": "^89.0.0",
+    "googleapis": "^92.0.0",
     "next": "^12.0.7",
-    "nodemailer": "^6.7.0",
+    "nodemailer": "^6.7.2",
     "p5": "^1.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
     "react-lazy-load-image-component": "^1.5.1",
-    "react-markdown": "^7.1.0",
-    "react-p5-wrapper": "^2.4.1",
-    "sass": "^1.43.3"
+    "react-markdown": "^7.1.2",
+    "react-p5-wrapper": "^3.0.2",
+    "sass": "^1.45.2"
   },
   "devDependencies": {
-    "@types/node": "^16.11.6",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "typescript": "4.4.4"
+    "@types/node": "^17.0.8",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "typescript": "4.5.4"
   },
   "license": "ISC",
   "volta": {
-    "node": "15.14.0",
-    "npm": "7.13.0"
+    "node": "16.13.1",
+    "npm": "8.3.0"
   }
 }

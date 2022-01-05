@@ -10,7 +10,7 @@
     "strapi": "strapi"
   },
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^7.0.0"
   },
   "dependencies": {
     "strapi": "^3.6.8",
@@ -32,12 +32,12 @@
     "uuid": "c965368e-1426-4bf0-bbad-3eab47c39868"
   },
   "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+    "node": "14.18.2",
+    "npm": "6.14.15"
   },
   "license": "MIT",
   "volta": {
-    "node": "14.17.0",
-    "npm": "6.14.13"
+    "node": "14.18.2",
+    "npm": "6.14.15"
   }
 }
