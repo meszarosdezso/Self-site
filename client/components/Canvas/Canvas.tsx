@@ -1,13 +1,9 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 import { isBrowser } from '../../utils/window'
+import P5 from 'p5'
 
-const ReactP5Wrapper: any = dynamic(import('react-p5-wrapper'), {
-  ssr: false,
-  loading: () => <div className="sketch-holder">Loading...</div>,
-})
-
-const sketch = (p: typeof import('p5'), filled: boolean) => {
+const sketch = (filled: boolean) => (p: P5) => {
   const particles: Particle[] = []
 
   let startX: number, startY: number
@@ -106,7 +102,7 @@ const sketch = (p: typeof import('p5'), filled: boolean) => {
     }
 
     checkParticles(particlesToCheck: Particle[]) {
-      particlesToCheck.forEach(other => {
+      particlesToCheck.forEach((other) => {
         const d = this.pos.dist(other.pos)
         if (d < 200) {
           if (filled) {
@@ -122,11 +118,21 @@ const sketch = (p: typeof import('p5'), filled: boolean) => {
 }
 
 const Canvas: React.FC = () => {
-  if (!isBrowser()) return <span>Loading...</span>
+  if (!isBrowser()) return <span></span>
+
+  const ReactP5Wrapper: any = dynamic(
+    import('react-p5-wrapper').then(({ ReactP5Wrapper }) => ReactP5Wrapper),
+    {
+      ssr: false,
+      loading: () => <div className="sketch-holder"></div>,
+    }
+  )
 
   const filled = window.innerWidth > 700 ? Math.random() < 0.5 : false
 
-  return <ReactP5Wrapper sketch={(p: any) => sketch(p, filled)} />
+  const s = sketch(filled)
+
+  return <ReactP5Wrapper sketch={s} />
 }
 
 export default Canvas

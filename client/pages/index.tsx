@@ -18,7 +18,7 @@ type Props = {
 const IndexPage: React.FC<Props> = ({ works, posts }) => {
   return (
     <Layout title="Home">
-      {process.env.NODE_ENV === 'production' && (
+      {(process.env.NODE_ENV === 'production' || true) && (
         <div className="canvas-wrapper">
           <Canvas />
         </div>
@@ -34,7 +34,7 @@ const IndexPage: React.FC<Props> = ({ works, posts }) => {
 
 export default IndexPage
 
-export const getStaticProps: GetStaticProps<Props> = async _ => {
+export const getStaticProps: GetStaticProps<Props> = async (_) => {
   const works = await fetchWorks()
   const posts = await fetchInstagram()
 
