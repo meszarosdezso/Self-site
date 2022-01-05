@@ -54,6 +54,7 @@
     bottom: clamp(2rem, 7vw, 3rem);
     text-transform: uppercase;
     letter-spacing: 2px;
+    cursor: pointer;
 
     &::after {
       content: '';

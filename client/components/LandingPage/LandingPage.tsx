@@ -17,7 +17,15 @@ const LandingPage: React.FC = () => {
         }}
         id={styles['name-hero']}
       >
-        <div id={styles['cross-line']}></div>
+        <div
+          style={{
+            transform: `translate(
+            ${-50 - dx / 80}%,
+            ${-50 + dy / 100}%
+            ) rotateZ(-61deg)`,
+          }}
+          id={styles['cross-line']}
+        ></div>
         Dezso <span id={styles.z}>Z</span>
         <br />
         Meszaros
@@ -34,6 +42,9 @@ const LandingPage: React.FC = () => {
       <h4
         style={{
           transform: `translate(0, ${dy / 40}px)`,
+        }}
+        onClick={() => {
+          window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
         }}
         id={styles['imadethese']}
       >
