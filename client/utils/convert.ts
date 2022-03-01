@@ -1,4 +1,4 @@
-import Vizualization from '../models/viz'
+import Visualization from '../models/viz'
 import { Work } from '../models/work'
 
 export const workFromApi = ({
@@ -25,11 +25,11 @@ export const workFromApi = ({
   link: link || '',
 })
 
-export function vizFromApi(viz: any): Vizualization {
+export function vizFromApi(viz: any): Visualization {
   return {
     ...viz,
     preview: viz.preview.map((img: any) => img.url),
-  } as Vizualization
+  } as Visualization
 }
 
 export const sizedImage = (url: string, width: number) =>

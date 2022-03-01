@@ -1,4 +1,4 @@
-export default interface Vizualization {
+export default interface Visualization {
   title: string
   slug: string
   description: string

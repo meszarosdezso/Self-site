@@ -3,9 +3,9 @@ import { vizFromApi, workFromApi } from './convert'
 import { Work } from '../models/work'
 import { InstagramPost, InstagramResponse } from '../models/instagram'
 import { readFileSync, existsSync, writeFileSync, createWriteStream } from 'fs'
-import Vizualization from '../models/viz'
+import Visualization from '../models/viz'
 
-export async function fetchVizualizations(): Promise<Vizualization[]> {
+export async function fetchVisualizations(): Promise<Visualization[]> {
   try {
     const { data } = await axios.get(`${process.env.API_URL}/vizualizations`)
     return data.map(vizFromApi)
@@ -15,7 +15,7 @@ export async function fetchVizualizations(): Promise<Vizualization[]> {
   }
 }
 
-export async function fetchViz(slug: string): Promise<Vizualization | null> {
+export async function fetchViz(slug: string): Promise<Visualization | null> {
   try {
     const { data } = await axios.get(
       `${process.env.API_URL}/vizualizations/${slug}`
