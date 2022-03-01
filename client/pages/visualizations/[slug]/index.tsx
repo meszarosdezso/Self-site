@@ -26,7 +26,10 @@ const WorkPage: React.FC<Props> = ({ viz }) => {
           name="og:url"
           content={`https://meszarosdezso.com/visualizations/${viz.slug}`}
         />
-        <meta name="og:image" content={viz.preview} />
+        <meta
+          name="og:image"
+          content={`/assets/visualizations/${viz.slug}.png`}
+        />
         <link rel="icon" type="image/png" href="/logo120.png" />
       </Head>
       <div className={styles.VizPage}>
