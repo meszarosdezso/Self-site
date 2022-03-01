@@ -1,8 +1,31 @@
 import axios from 'axios'
-import { workFromApi } from './convert'
+import { vizFromApi, workFromApi } from './convert'
 import { Work } from '../models/work'
 import { InstagramPost, InstagramResponse } from '../models/instagram'
 import { readFileSync, existsSync, writeFileSync, createWriteStream } from 'fs'
+import Visualization from '../models/viz'
+
+export async function fetchVisualizations(): Promise<Visualization[]> {
+  try {
+    const { data } = await axios.get(`${process.env.API_URL}/vizualizations`)
+    return data.map(vizFromApi)
+  } catch (e) {
+    console.log(e)
+    return []
+  }
+}
+
+export async function fetchViz(slug: string): Promise<Visualization | null> {
+  try {
+    const { data } = await axios.get(
+      `${process.env.API_URL}/vizualizations/${slug}`
+    )
+    return vizFromApi(data)
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}
 
 export const fetchBioPage = async () => {
   try {
