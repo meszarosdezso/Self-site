@@ -9,7 +9,7 @@ import Link from 'next/link'
 const meta = {
   title: 'Vizualizations',
   description:
-    "Generative vizualizations based on Budapest's public transport database.",
+    "Generative illustrations based on Budapest's public transport database.",
 }
 
 interface Props {
