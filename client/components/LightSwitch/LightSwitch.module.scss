@@ -1,9 +1,9 @@
 #LightSwitch {
   transform: translateY(2px);
   svg {
+    cursor: pointer;
     &:hover {
       opacity: 0.6;
-      cursor: pointer;
     }
   }
 }
