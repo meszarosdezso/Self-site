@@ -19,7 +19,11 @@ const NAV_ITEMS: NavItemType[] = [
   },
 ]
 
-const Nav: React.FC = () => {
+interface Props {
+  hideMenu?: boolean
+}
+
+const Nav: React.FC<Props> = ({ hideMenu = false }) => {
   return (
     <nav id={styles.Nav}>
       <Link href="/">
@@ -31,9 +35,9 @@ const Nav: React.FC = () => {
       </Link>
 
       <ul id={styles.navItems}>
-        {NAV_ITEMS.map(item => (
-          <NavItem key={item.id} {...item} />
-        ))}
+        {!hideMenu
+          ? NAV_ITEMS.map(item => <NavItem key={item.id} {...item} />)
+          : null}
       </ul>
 
       <LightSwitch />
