@@ -1,0 +1,54 @@
+.VizPage {
+  text-align: center;
+  padding-bottom: 3rem;
+
+  #LightSwitch {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  header {
+    margin: 6rem 2rem;
+    h1.title {
+      font-size: calc(1rem + 5vw);
+      line-height: 0.95;
+    }
+
+    p {
+      font-size: 1rem;
+      color: var(--body-color);
+      margin: 1rem auto;
+      text-align: center;
+    }
+  }
+
+  .preview {
+    position: relative;
+    width: 90%;
+    margin: 2rem auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      offset-position: center;
+    }
+  }
+
+  .go-back {
+    font-weight: 400;
+    font-family: var(--display-font);
+    font-size: 1rem;
+  }
+}
+
+html[data-theme='dark'] {
+  .VizPage {
+    .preview {
+      img {
+        filter: invert(1);
+      }
+    }
+  }
+}

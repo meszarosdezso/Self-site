@@ -8,10 +8,22 @@ import Vizualization from '../models/viz'
 export async function fetchVizualizations(): Promise<Vizualization[]> {
   try {
     const { data } = await axios.get(`${process.env.API_URL}/vizualizations`)
-    return data.map(vizFromApi) // data
+    return data.map(vizFromApi)
   } catch (e) {
     console.log(e)
     return []
+  }
+}
+
+export async function fetchViz(slug: string): Promise<Vizualization | null> {
+  try {
+    const { data } = await axios.get(
+      `${process.env.API_URL}/vizualizations/${slug}`
+    )
+    return vizFromApi(data)
+  } catch (e) {
+    console.log(e)
+    return null
   }
 }
 

@@ -18,7 +18,7 @@
     },
     {
       "method": "GET",
-      "path": "/vizualizations/:id",
+      "path": "/vizualizations/:slug",
       "handler": "vizualization.findOne",
       "config": {
         "policies": []

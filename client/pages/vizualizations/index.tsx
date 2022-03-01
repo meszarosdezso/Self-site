@@ -4,10 +4,12 @@ import Layout from '../../components/Layout/Layout'
 import Vizualization from '../../models/viz'
 import { fetchVizualizations } from '../../utils/api'
 import Nav from '../../components/Nav/Nav'
+import Link from 'next/link'
 
 const meta = {
   title: 'Vizualizations',
-  description: 'Generative vizualizations based on public data.',
+  description:
+    "Generative vizualizations based on Budapest's public transport database.",
 }
 
 interface Props {
@@ -28,11 +30,16 @@ export default function VizualizationsPage({ vizualizations }: Props) {
           {vizualizations.map(viz => (
             <div key={viz.slug} className={styles.VizualizationCard}>
               <div className={styles.preview}>
-                <img src={viz.preview} alt={viz.title} />
+                <img
+                  src={`/assets/vizualizations/${viz.slug}.png`}
+                  alt={viz.title}
+                />
               </div>
-              <div className={styles.details}>
-                <h3>{viz.title}</h3>
-              </div>
+              <Link href={`/vizualizations/${viz.slug}`}>
+                <div className={styles.details}>
+                  <h3>{viz.title}</h3>
+                </div>
+              </Link>
             </div>
           ))}
         </section>

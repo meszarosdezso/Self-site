@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "vizualizations",
   "info": {
-    "name": "vizualization"
+    "name": "vizualization",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -24,7 +25,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "description": {
       "type": "richtext"
