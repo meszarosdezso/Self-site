@@ -20,6 +20,23 @@
     }
   }
 
+  .config {
+    margin-bottom: 5rem;
+    .option-picker {
+      margin-bottom: 1rem;
+      span {
+        opacity: 0.4;
+        padding: 0.4rem 0.5rem;
+        transition: opacity 100ms ease-out;
+        cursor: pointer;
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
   .visualization-cards {
     display: flex;
     flex-flow: row wrap;
@@ -29,6 +46,8 @@
     padding: 0 2rem;
 
     .VisualizationCard {
+      $color: rgb(0, 0, 0);
+
       background: white;
       justify-self: center;
       overflow: hidden;
@@ -37,6 +56,47 @@
       height: 500px;
       position: relative;
       cursor: pointer;
+      transition: all 150ms ease-out;
+
+      &.active {
+        border-color: var(--text-color);
+      }
+
+      &.x50_70 {
+        height: 448px;
+      }
+
+      &.x30_40 {
+        height: 425px;
+      }
+
+      &.x32_32 {
+        height: 320px;
+      }
+
+      &.bordered {
+        box-shadow: 0.1rem 0.2rem 0.4rem #0005;
+        border: 0.5rem solid lighten($color: $color, $amount: 50);
+        border-left-color: lighten($color: $color, $amount: 40);
+        border-right-color: lighten($color: $color, $amount: 30);
+        border-bottom-color: lighten($color: $color, $amount: 20);
+
+        .preview {
+          box-shadow: inset 0.1rem 0.1rem 0.2rem #0003;
+        }
+
+        &.x50_70 {
+          border-width: 5px;
+        }
+
+        &.x30_40 {
+          border-width: 11px;
+        }
+
+        &.x32_32 {
+          border-width: 10px;
+        }
+      }
 
       &:hover {
         .preview {
@@ -62,6 +122,7 @@
           object-fit: cover;
           object-position: left;
           transition: all 150ms ease-out;
+          mix-blend-mode: multiply;
         }
       }
 
@@ -84,6 +145,35 @@
       }
     }
   }
+
+  .finish-comment {
+    margin-top: 6rem;
+    padding: 0 2rem;
+
+    button {
+      background: var(--text-color);
+      color: var(--bg-color);
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.2rem;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: var(--font-sans);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+
+      &:active {
+        opacity: 0.5;
+      }
+
+      svg {
+        margin-right: 0.7rem;
+        width: 1.1rem;
+      }
+    }
+  }
 }
 
 html[data-theme='dark'] {
@@ -92,11 +182,14 @@ html[data-theme='dark'] {
 
     .visualization-cards {
       .VisualizationCard {
-        border: #101010;
+        border-color: #101010;
 
         .preview {
+          background: black;
+
           img {
             filter: invert(1);
+            mix-blend-mode: unset;
           }
         }
       }
