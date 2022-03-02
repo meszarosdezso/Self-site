@@ -15,18 +15,6 @@ export async function fetchVisualizations(): Promise<Visualization[]> {
   }
 }
 
-export async function fetchViz(slug: string): Promise<Visualization | null> {
-  try {
-    const { data } = await axios.get(
-      `${process.env.API_URL}/vizualizations/${slug}`
-    )
-    return vizFromApi(data)
-  } catch (e) {
-    console.log(e)
-    return null
-  }
-}
-
 export const fetchBioPage = async () => {
   try {
     const { data } = await axios.get(`${process.env.API_URL}/bio-page`)
