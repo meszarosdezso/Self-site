@@ -103,7 +103,7 @@ export default function VisualizationsPage({ visualizations }: Props) {
                 onClick={_ => setSize(s as Size)}
                 key={s}
               >
-                {s.split('_').join('cm * ')} cm
+                {s.split('_').join(' cm x ')} cm
               </span>
             ))}
           </div>
