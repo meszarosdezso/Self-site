@@ -59,9 +59,9 @@ const WorkPage: React.FC<Props> = ({ viz }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async _ => {
-  const works = await fetchVisualizations()
+  const visualizations = await fetchVisualizations()
 
-  const paths = works.map(({ slug }) => ({ params: { slug } }))
+  const paths = visualizations.map(({ slug }) => ({ params: { slug } }))
 
   return {
     paths,
