@@ -87,13 +87,13 @@ export default function VisualizationsPage({ visualizations }: Props) {
               onClick={_ => setBordered(true)}
               className={bordered ? styles.active : ''}
             >
-              bordered
+              framed
             </span>
             <span
               onClick={_ => setBordered(false)}
               className={!bordered ? styles.active : ''}
             >
-              borderless
+              print only
             </span>
           </div>
           <div className={styles['option-picker']}>
