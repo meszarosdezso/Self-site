@@ -18,7 +18,7 @@ interface Props {
   visualizations: Visualization[]
 }
 
-type Size = '50_70' | '30_40' | '32_32'
+type Size = '50_70' | '30_40' | '32_32' | '60_90'
 type VizType = 'stops' | 'trips' | 'abstract'
 type ImageFit = 'cover' | 'contain'
 
@@ -98,14 +98,14 @@ export default function VisualizationsPage({ visualizations }: Props) {
             </span>
           </div>
           <div className={styles['option-picker']}>
-            {['50_70', '30_40', '32_32'].map(s => (
-              <span
+            {['60_90', '50_70', '30_40', '32_32'].map(s => (
+              <div
                 className={size === s ? styles.active : ''}
                 onClick={_ => setSize(s as Size)}
                 key={s}
               >
                 {s.split('_').join(' cm x ')} cm
-              </span>
+              </div>
             ))}
           </div>
         </div>
@@ -126,13 +126,13 @@ export default function VisualizationsPage({ visualizations }: Props) {
             >
               <div
                 style={{
-                  width: fit === 'cover' ? '110%' : '100%',
+                  width: fit === 'contain' ? '100%' : '',
                   height:
                     fit === 'cover'
                       ? size === '32_32'
-                        ? '130%'
+                        ? '140%'
                         : '110%'
-                      : '110%',
+                      : '100%',
                 }}
                 className={styles.preview}
               >
@@ -140,7 +140,7 @@ export default function VisualizationsPage({ visualizations }: Props) {
                   style={{
                     objectFit: fit,
                     objectPosition:
-                      fit === 'contain' || size === '32_32' ? 'center' : 'left',
+                      fit === 'contain' ? '' : size === '32_32' ? '35%' : '15%',
                   }}
                   src={`/assets/visualizations/${viz.slug}.png`}
                   alt={viz.title}
