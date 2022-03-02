@@ -41,7 +41,7 @@ export default function VisualizationsPage({ visualizations }: Props) {
       const [selected, size, bordered, fit] = data.split(';')
       setSize(size as Size)
       setBordered(bordered === 'true')
-      setSelected(selected as VizType)
+      setSelected(selected === 'null' ? null : (selected as VizType))
       setFit(fit as ImageFit)
     }
   }, [])
