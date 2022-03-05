@@ -98,7 +98,7 @@ export default function VisualizationsPage({ visualizations }: Props) {
             </span>
           </div>
           <div className={styles['option-picker']}>
-            {['60_90', '50_70', '30_40', '32_32'].map(s => (
+            {['60_90', '50_70', '30_40'].map(s => (
               <div
                 className={size === s ? styles.active : ''}
                 onClick={_ => setSize(s as Size)}
