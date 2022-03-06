@@ -1,0 +1,17 @@
+{
+  "kind": "singleType",
+  "collectionName": "catch_me_bp_instructions",
+  "info": {
+    "name": "Catch Me BP Instructions"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
