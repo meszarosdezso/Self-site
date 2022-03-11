@@ -1,10 +1,16 @@
 import styles from './Nav.module.scss'
 import LightSwitch from '../LightSwitch/LightSwitch'
-import { Mail, User } from 'react-feather'
+import { Mail, User, Image } from 'react-feather'
 import NavItem, { NavItemType } from './NavItem'
 import Link from 'next/link'
 
 const NAV_ITEMS: NavItemType[] = [
+  {
+    id: 'viz',
+    title: 'Visualizations',
+    link: '/visualizations',
+    Icon: Image,
+  },
   {
     id: 'bio',
     title: 'Bio',
