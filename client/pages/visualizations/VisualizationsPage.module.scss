@@ -65,6 +65,19 @@
       cursor: pointer;
       transition: all 150ms ease-out;
 
+      &.dark {
+        border-color: #101010;
+
+        .preview {
+          background: black;
+
+          img {
+            filter: invert(1);
+            mix-blend-mode: unset;
+          }
+        }
+      }
+
       &.active {
         border-color: var(--text-color);
       }
@@ -194,20 +207,5 @@
 html[data-theme='dark'] {
   #VisualizationsPage {
     background: #0a0a0a !important;
-
-    .visualization-cards {
-      .VisualizationCard {
-        border-color: #101010;
-
-        .preview {
-          background: black;
-
-          img {
-            filter: invert(1);
-            mix-blend-mode: unset;
-          }
-        }
-      }
-    }
   }
 }

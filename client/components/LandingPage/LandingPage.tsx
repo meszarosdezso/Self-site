@@ -17,16 +17,7 @@ const LandingPage: React.FC = () => {
         }}
         id={styles['name-hero']}
       >
-        <div
-          style={{
-            transform: `translate(
-            ${-50 - dx / 80}%,
-            ${-50 + dy / 100}%
-            ) rotateZ(-61deg)`,
-          }}
-          id={styles['cross-line']}
-        ></div>
-        Dezso <span id={styles.z}>Z</span>
+        Dezso
         <br />
         Meszaros
       </h1>

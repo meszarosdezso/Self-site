@@ -27,6 +27,7 @@ export default function VisualizationsPage({ visualizations }: Props) {
 
   const [size, setSize] = useState<Size>('50_70')
   const [bordered, setBordered] = useState(false)
+  const [light, setLight] = useState(true)
   const [fit, setFit] = useState<ImageFit>('cover')
   const [selected, setSelected] = useState<VizType | null>(null)
 
@@ -34,15 +35,15 @@ export default function VisualizationsPage({ visualizations }: Props) {
 
   useEffect(() => {
     const rawData = router.query['code'] as string
-    console.log(rawData)
 
     if (rawData) {
       const data = Buffer.from(rawData, 'hex').toString()
-      const [selected, size, bordered, fit] = data.split(';')
+      const [selected, size, bordered, fit, light] = data.split(';')
       setSize(size as Size)
       setBordered(bordered === 'true')
       setSelected(selected === 'null' ? null : (selected as VizType))
       setFit(fit as ImageFit)
+      setLight(light === 'true')
     }
   }, [router.query])
 
@@ -51,10 +52,12 @@ export default function VisualizationsPage({ visualizations }: Props) {
     if (router.query['code'] !== key) {
       router.replace({ query: { code: key } }, undefined, { shallow: true })
     }
-  }, [size, bordered, selected, fit])
+  }, [size, bordered, selected, fit, light])
 
   const createConfigKey = useCallback(() => {
-    return Buffer.from(`${selected};${size};${bordered};${fit}`).toString('hex')
+    return Buffer.from(
+      `${selected};${size};${bordered};${fit};${light}`
+    ).toString('hex')
   }, [size, bordered, selected, fit])
 
   return (
@@ -108,6 +111,20 @@ export default function VisualizationsPage({ visualizations }: Props) {
               </div>
             ))}
           </div>
+          <div className={styles['option-picker']}>
+            <span
+              onClick={_ => setLight(true)}
+              className={light ? styles.active : ''}
+            >
+              light
+            </span>
+            <span
+              onClick={_ => setLight(false)}
+              className={!light ? styles.active : ''}
+            >
+              dark
+            </span>
+          </div>
         </div>
 
         <h2>Select the one you like</h2>
@@ -119,7 +136,9 @@ export default function VisualizationsPage({ visualizations }: Props) {
               onClick={_ => setSelected(viz.slug as VizType)}
               className={`${styles.VisualizationCard} ${styles['x' + size]} ${
                 bordered ? styles.bordered : ''
-              } ${selected === viz.slug ? styles.active : ''}`}
+              } ${selected === viz.slug ? styles.active : ''} ${
+                !light ? styles.dark : ''
+              }`}
               style={{
                 opacity: selected !== null && selected !== viz.slug ? 0.4 : 1,
               }}

@@ -8,36 +8,9 @@
   position: relative;
 
   #name-hero {
-    font-size: clamp(3rem, 15vw, 5rem);
-    line-height: 0.9;
+    font-size: clamp(2.5rem, 15vw, 4.5rem);
+    line-height: 0.8;
     text-transform: uppercase;
-
-    #cross-line {
-      position: absolute;
-      width: 0px;
-      height: 2px;
-      background: var(--text-color);
-      left: calc(50% - 1vw - 3px);
-      top: 50%;
-      opacity: 0.2;
-      transform: translate(-50%, -50%) rotateZ(-61deg);
-      animation: openLine 500ms ease-out forwards;
-
-      @keyframes openLine {
-        from {
-          width: 0;
-        }
-        to {
-          width: clamp(10rem, 30vw, 50vw);
-        }
-      }
-    }
-
-    #z {
-      opacity: 0.1;
-      display: inline;
-      position: relative;
-    }
   }
 
   h3 {
