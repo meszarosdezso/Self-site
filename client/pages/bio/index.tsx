@@ -79,7 +79,6 @@ const BioPage: React.FC<BioProps> = ({ bio }) => {
             className={styles.text}
           >
             <BlockContent blocks={bio} />
-            {/* <ReactMarkdown linkTarget="_blank">{rawBio}</ReactMarkdown> */}
           </div>
           <Social showLabels={false} />
           <Footer centered />
