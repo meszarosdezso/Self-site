@@ -1,14 +1,18 @@
 import axios from 'axios'
-import { vizFromApi, workFromApi } from './convert'
+import { workFromApi } from './convert'
 import { Work } from '../models/work'
 import { InstagramPost, InstagramResponse } from '../models/instagram'
 import { readFileSync, existsSync, writeFileSync, createWriteStream } from 'fs'
 import Visualization from '../models/viz'
+import sanity from '../config/sanity'
 
 export async function fetchVisualizations(): Promise<Visualization[]> {
   try {
-    const { data } = await axios.get(`${process.env.API_URL}/vizualizations`)
-    return data.map(vizFromApi)
+    const data = await sanity.fetch<{ name: string; image_url: string }[]>(
+      `*[ _type == "visualization" ]{ name, "image_url": image.asset->.url }`
+    )
+    return data
+    return []
   } catch (e) {
     console.log(e)
     return []
@@ -17,13 +21,16 @@ export async function fetchVisualizations(): Promise<Visualization[]> {
 
 export const fetchBioPage = async () => {
   try {
-    const { data } = await axios.get(`${process.env.API_URL}/bio-page`)
-    return data
+    const { content: bio } = await sanity.fetch(
+      `*[ _type == "bio" ][0]{ content }`
+    )
+    return bio
   } catch {
     return { content: 'Failed to load bio page' }
   }
 }
 
+/** @deprecated */
 export const fetchWorks = async (): Promise<Work[]> => {
   try {
     const { data } = await axios.get<any[]>(`${process.env.API_URL}/works`)
@@ -37,6 +44,7 @@ export const fetchWorks = async (): Promise<Work[]> => {
   }
 }
 
+/** @deprecated */
 export const fetchWork = async (id: string): Promise<Work> => {
   const { data } = await axios.get(`${process.env.API_URL}/works/${id}`)
 

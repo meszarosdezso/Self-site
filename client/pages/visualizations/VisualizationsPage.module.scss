@@ -76,6 +76,9 @@
             mix-blend-mode: unset;
           }
         }
+        .details {
+          color: white;
+        }
       }
 
       &.active {
@@ -166,6 +169,7 @@
         top: 0;
         left: 0;
         padding: 2rem;
+        color: black;
 
         h3 {
           margin: 0;

@@ -1,5 +1,13 @@
 import Head from 'next/head'
 import { ReactNode } from 'react'
+import {
+  FAVICON_URL,
+  META_DESCRIPTION,
+  META_TITLE,
+  OG_IMAGE,
+  OG_URL,
+  TITLE_BASE,
+} from '../../constants/meta'
 import Footer from '../Footer/Footer'
 
 type Props = {
@@ -10,22 +18,21 @@ type Props = {
 
 const Layout: React.FC<Props> = ({
   title,
-  description = 'I am a Budapest based Hungarian developer, creating web and cross platform mobile apps, user interfaces and experiences.',
+  description = META_DESCRIPTION,
   children,
 }) => {
   return (
     <div className="page">
       <Head>
-        <title>{title} | Dezso Meszaros - Front-end developer 👨🏽‍💻</title>
+        <title>
+          {title} | {TITLE_BASE}
+        </title>
         <meta name="description" content={description} />
-        <meta name="og:title" content="Dezso Meszaros" />
+        <meta name="og:title" content={META_TITLE} />
         <meta name="og:description" content={description} />
-        <meta name="og:url" content={'https://meszarosdezso.com/'} />
-        <meta
-          name="og:image"
-          content={'https://meszarosdezso.com/littler_me.jpg'}
-        />
-        <link rel="icon" type="image/png" href="/logo120.png" />
+        <meta name="og:url" content={OG_URL} />
+        <meta name="og:image" content={OG_IMAGE} />
+        <link rel="icon" type="image/png" href={FAVICON_URL} />
       </Head>
       <div className="body">{children}</div>
       <Footer />

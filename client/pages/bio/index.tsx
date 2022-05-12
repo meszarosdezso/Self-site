@@ -4,18 +4,26 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { ChevronDown } from 'react-feather'
-import ReactMarkdown from 'react-markdown'
 import Footer from '../../components/Footer/Footer'
 import Social from '../../components/Social/Social'
 import { fetchBioPage } from '../../utils/api'
 import { rangeMap } from '../../utils/math'
 import styles from './Bio.module.scss'
+import BlockContent from '@sanity/block-content-to-react'
+import {
+  FAVICON_URL,
+  META_DESCRIPTION,
+  META_TITLE,
+  OG_IMAGE,
+  OG_URL,
+  TITLE_BASE,
+} from '../../constants/meta'
 
 type BioProps = {
-  rawBio: string
+  bio: string
 }
 
-const BioPage: React.FC<BioProps> = ({ rawBio }) => {
+const BioPage: React.FC<BioProps> = ({ bio }) => {
   const [headerOpacity, setHeaderOpacity] = useState(1)
 
   useScrollPosition(
@@ -29,22 +37,13 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
   return (
     <div className="page">
       <Head>
-        <title>Biography | Dezso Meszaros - Front-end developer 👨🏽‍💻</title>
-        <meta
-          name="description"
-          content="I am a Budapest based Hungarian developer, creating web and cross platform mobile apps, user interfaces and experiences."
-        />
-        <meta name="og:title" content="Dezso Meszaros" />
-        <meta
-          name="og:description"
-          content="I am a Budapest based Hungarian developer, creating web and cross platform mobile apps, user interfaces and experiences."
-        />
-        <meta name="og:url" content={'https://meszarosdezso.com/'} />
-        <meta
-          name="og:image"
-          content={'https://meszarosdezso.com/littler_me.jpg'}
-        />
-        <link rel="icon" type="image/png" href="/logo120.png" />
+        <title>Biography | {TITLE_BASE}</title>
+        <meta name="description" content={META_DESCRIPTION} />
+        <meta name="og:title" content={META_TITLE} />
+        <meta name="og:description" content={META_DESCRIPTION} />
+        <meta name="og:url" content={OG_URL} />
+        <meta name="og:image" content={OG_IMAGE} />
+        <link rel="icon" type="image/png" href={FAVICON_URL} />
       </Head>
 
       <div id={styles.BioPage}>
@@ -79,7 +78,8 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
             style={{ opacity: rangeMap(headerOpacity, 1, 0, 0, 1) }}
             className={styles.text}
           >
-            <ReactMarkdown linkTarget="_blank">{rawBio}</ReactMarkdown>
+            <BlockContent blocks={bio} />
+            {/* <ReactMarkdown linkTarget="_blank">{rawBio}</ReactMarkdown> */}
           </div>
           <Social showLabels={false} />
           <Footer centered />
@@ -92,11 +92,11 @@ const BioPage: React.FC<BioProps> = ({ rawBio }) => {
 export default BioPage
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { content: rawBio } = await fetchBioPage()
+  const bio = await fetchBioPage()
 
   return {
     props: {
-      rawBio,
+      bio,
     },
   }
 }

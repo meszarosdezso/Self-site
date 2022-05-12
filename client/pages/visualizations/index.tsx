@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { Check, Copy } from 'react-feather'
 
 const meta = {
-  title: 'Visualizations',
+  title: `Visualizations`,
   description:
     'Generative illustrations based on the public transport of Budapest.',
 }
@@ -132,15 +132,15 @@ export default function VisualizationsPage({ visualizations }: Props) {
         <section className={styles['visualization-cards']}>
           {visualizations.map(viz => (
             <div
-              key={viz.slug}
-              onClick={_ => setSelected(viz.slug as VizType)}
+              key={viz.name.toLowerCase()}
+              onClick={_ => setSelected(viz.name as VizType)}
               className={`${styles.VisualizationCard} ${styles['x' + size]} ${
                 bordered ? styles.bordered : ''
-              } ${selected === viz.slug ? styles.active : ''} ${
+              } ${selected === viz.name ? styles.active : ''} ${
                 !light ? styles.dark : ''
               }`}
               style={{
-                opacity: selected !== null && selected !== viz.slug ? 0.4 : 1,
+                opacity: selected !== null && selected !== viz.name ? 0.4 : 1,
               }}
             >
               <div
@@ -161,13 +161,13 @@ export default function VisualizationsPage({ visualizations }: Props) {
                     objectPosition:
                       fit === 'contain' ? '' : size === '32_32' ? '35%' : '15%',
                   }}
-                  src={`/assets/visualizations/${viz.slug}.png`}
-                  alt={viz.title}
+                  src={viz.image_url}
+                  alt={viz.name}
                 />
               </div>
 
               <div className={styles.details}>
-                <h3>{viz.title}</h3>
+                <h3>{viz.name}</h3>
               </div>
             </div>
           ))}
