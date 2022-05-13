@@ -26,6 +26,7 @@
     "react": "^17.0",
     "react-dom": "^17.0",
     "react-icons": "^4.3.1",
+    "sanity-plugin-dark-mode": "^0.0.33",
     "styled-components": "^5.2.0"
   }
 }
