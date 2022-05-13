@@ -22,7 +22,7 @@ const WorkPage: React.FC<Props> = ({ work }) => {
         <meta name="og:description" content={work.short_description} />
         <meta
           name="og:url"
-          content={`https://meszarosdezso.com/works/${work.uid}`}
+          content={`https://meszarosdezso.com/works/${work.slug}`}
         />
         <meta name="og:image" content={work.cover} />
         <link rel="icon" type="image/png" href="/logo120.png" />
@@ -32,17 +32,17 @@ const WorkPage: React.FC<Props> = ({ work }) => {
 
         <h1 className={styles.title}>{work.title}</h1>
 
-        <h2 className={styles.date}>{work.year}</h2>
+        <h2 className={styles.date}>{work.date}</h2>
 
         <ReactMarkdown
           linkTarget="_blank"
           className={`sans ${styles.description}`}
         >
-          {work.long_description}
+          {work.description}
         </ReactMarkdown>
 
         <div className={styles.images}>
-          {work.images.map(url => (
+          {work.images.map(({ url }) => (
             <div key={url} className={styles.image}>
               <img src={url} alt={work.title} />
             </div>
@@ -59,8 +59,7 @@ const WorkPage: React.FC<Props> = ({ work }) => {
 
 export const getStaticPaths: GetStaticPaths = async _ => {
   const works = await fetchWorks()
-
-  const paths = works.map(work => ({ params: { workId: work.uid } }))
+  const paths = works.map(({ slug }) => ({ params: { slug } }))
 
   return {
     paths,
@@ -69,9 +68,9 @@ export const getStaticPaths: GetStaticPaths = async _ => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { workId } = params!
+  const { slug } = params!
 
-  const work = await fetchWork(workId as string)
+  const work = await fetchWork(slug as string)
 
   return {
     props: {

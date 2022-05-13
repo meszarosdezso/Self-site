@@ -1,11 +1,12 @@
 export type Work = {
-  uid: string
+  slug: string
   title: string
-  year: string
-  categories: string[]
+  date: string
+  tags: string[]
   short_description: string
-  long_description: string
+  description: string
   cover: string
-  images: string[]
-  link?: string
+  images: { url: string }[]
+  url: string | null
+  stack: string[]
 }

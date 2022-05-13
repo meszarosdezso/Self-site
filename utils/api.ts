@@ -12,9 +12,7 @@ export async function fetchVisualizations(): Promise<Visualization[]> {
       `*[ _type == "visualization" ]{ name, "image_url": image.asset->.url }`
     )
     return data
-    return []
   } catch (e) {
-    console.log(e)
     return []
   }
 }
@@ -33,9 +31,17 @@ export const fetchBioPage = async () => {
 /** @deprecated */
 export const fetchWorks = async (): Promise<Work[]> => {
   try {
-    const { data } = await axios.get<any[]>(`${process.env.API_URL}/works`)
+    const works = await sanity.fetch<Work[]>(`*[ _type == "work" ]{
+	title,
+    	date,
+    	"slug": slug.current,
+	short_description,
+	url,
+	"cover": images[0].asset->.url,
+	tags
+    }`)
 
-    return data.map(workFromApi).sort((a, b) => b.year.localeCompare(a.year))
+    return works
   } catch (e) {
     if (e instanceof Error) {
       console.error(e.message)
@@ -75,7 +81,7 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
     'timestamp',
     'thumbnail_url',
     'permalink',
-    'caption',
+    'caption'
   ]
 
   const access_token = process.env.INSTAGRAM_ACCESS_TOKEN
@@ -96,7 +102,7 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
 
       const stream = createWriteStream(`public/${localUrl}`)
       const { data } = await axios.get(post.media_url, {
-        responseType: 'stream',
+        responseType: 'stream'
       })
 
       data.pipe(stream)

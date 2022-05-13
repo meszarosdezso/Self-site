@@ -3,7 +3,6 @@ import { Work } from '../../models/work'
 import { MutableRefObject, useRef, useState } from 'react'
 import { isBrowser } from '../../utils/window'
 import Link from 'next/link'
-import { sizedImage } from '../../utils/convert'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 const WorkTile: React.FC<{
@@ -22,9 +21,9 @@ const WorkTile: React.FC<{
       <div className={styles.image}>
         <img
           style={{
-            transform: `translateY(${scrollTop / 3}px) scale(1.2)`,
+            transform: `translateY(${scrollTop / 3}px) scale(1.2)`
           }}
-          src={sizedImage(work.cover, 1080)}
+          src={work.cover}
           alt={work.title}
         />
       </div>
@@ -33,9 +32,9 @@ const WorkTile: React.FC<{
         style={{ top: `${40 + scrollTop * 0.8}px` }}
       >
         <span className={styles.tag}>
-          {work.year} <div className={styles.line} /> {work.categories[0]}
+          {work.date.substring(0, 4)} <div className={styles.line} /> {work.tags[0]}
         </span>
-        <Link href={work.uid === 'self-site' ? '/' : `/works/${work.uid}`}>
+        <Link href={work.slug === 'self-site' ? '/' : `/works/${work.slug}`}>
           <a>
             <h1 className={styles.title}>{work.title}</h1>
           </a>
@@ -79,7 +78,7 @@ const Works: React.FC<{ works: Work[] }> = ({ works }) => {
         return (
           <WorkTile
             firstRef={ref as MutableRefObject<HTMLDivElement>}
-            key={work.uid}
+            key={work.slug}
             visible={getTileVisibility(i)}
             work={work}
             scrollTop={scrollTop}
