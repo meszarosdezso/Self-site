@@ -4,8 +4,9 @@ import content from './content'
 import bio from './bio'
 import work from './work'
 import viz from './viz'
+import catchme from './catchme'
 
 export default createSchema({
   name: 'default',
-  types: schemaTypes.concat([content, bio, work, viz]),
+  types: schemaTypes.concat([content, bio, work, viz, catchme]),
 })

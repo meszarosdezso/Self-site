@@ -11,6 +11,11 @@ export default () =>
         .icon(() => '🥹')
         .child(S.document().schemaType('bio').documentId('bio').title('Bio')),
       ...S.documentTypeListItems().filter(
-        doc => !['bio'].includes(doc.getId())
+        doc => !['bio', 'catchme'].includes(doc.getId())
       ),
+       S.listItem()
+        .id('catchme')
+        .title('Catch Me')
+        .icon(() => '🚍')
+        .child(S.document().schemaType('catchme').documentId('catchme').title('Catch Me')),
     ])

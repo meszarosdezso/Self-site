@@ -6,7 +6,7 @@ import LightSwitch from '../../../components/LightSwitch/LightSwitch'
 import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import ReactMarkdown from 'react-markdown'
+import { PortableText } from '@portabletext/react'
 
 type Props = {
   work: Work
@@ -34,15 +34,12 @@ const WorkPage: React.FC<Props> = ({ work }) => {
 
         <h2 className={styles.date}>{work.date}</h2>
 
-        <ReactMarkdown
-          linkTarget="_blank"
-          className={`sans ${styles.description}`}
-        >
-          {work.description}
-        </ReactMarkdown>
+        <div className={`sans ${styles.description}`}>
+          <PortableText value={work.description} />
+        </div>
 
         <div className={styles.images}>
-          {work.images.map(({ url }) => (
+          {work.images?.map(({ url }) => (
             <div key={url} className={styles.image}>
               <img src={url} alt={work.title} />
             </div>

@@ -4,7 +4,7 @@ export type Work = {
   date: string
   tags: string[]
   short_description: string
-  description: string
+  description: any[]
   cover: string
   images: { url: string }[]
   url: string | null

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { workFromApi } from './convert'
 import { Work } from '../models/work'
 import { InstagramPost, InstagramResponse } from '../models/instagram'
 import { readFileSync, existsSync, writeFileSync, createWriteStream } from 'fs'
@@ -28,7 +27,6 @@ export const fetchBioPage = async () => {
   }
 }
 
-/** @deprecated */
 export const fetchWorks = async (): Promise<Work[]> => {
   try {
     const works = await sanity.fetch<Work[]>(`*[ _type == "work" ]{
@@ -50,11 +48,18 @@ export const fetchWorks = async (): Promise<Work[]> => {
   }
 }
 
-/** @deprecated */
-export const fetchWork = async (id: string): Promise<Work> => {
-  const { data } = await axios.get(`${process.env.API_URL}/works/${id}`)
+export const fetchWork = async (slug: string): Promise<Work> => {
+  const work =
+    await sanity.fetch(`*[ _type == "work" && slug.current == '${slug}'][0]{
+      title,
+      description,
+      "images": images[1...100].asset->{ url },
+      date,
+      stack,
+      tags
+    }`)
 
-  return workFromApi(data)
+  return work
 }
 
 export const fetchInstagram = async (): Promise<InstagramPost[]> => {
@@ -81,7 +86,7 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
     'timestamp',
     'thumbnail_url',
     'permalink',
-    'caption'
+    'caption',
   ]
 
   const access_token = process.env.INSTAGRAM_ACCESS_TOKEN
@@ -102,7 +107,7 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
 
       const stream = createWriteStream(`public/${localUrl}`)
       const { data } = await axios.get(post.media_url, {
-        responseType: 'stream'
+        responseType: 'stream',
       })
 
       data.pipe(stream)
