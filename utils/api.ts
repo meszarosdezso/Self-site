@@ -29,7 +29,7 @@ export const fetchBioPage = async () => {
 
 export const fetchWorks = async (): Promise<Work[]> => {
   try {
-    const works = await sanity.fetch<Work[]>(`*[ _type == "work" ]{
+    const works = await sanity.fetch<Work[]>(`*[ _type == "work" ] | order(order asc) {
 	title,
     	date,
     	"slug": slug.current,

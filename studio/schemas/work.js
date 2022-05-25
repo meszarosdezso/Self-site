@@ -56,5 +56,10 @@ export default {
       title: 'Technologies used',
       of: [{ type: 'string' }],
     },
+    {
+      type: 'number',
+      name: 'order',
+      hidden: true,
+    },
   ],
 }

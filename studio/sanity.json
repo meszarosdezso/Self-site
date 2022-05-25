@@ -12,6 +12,7 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
+    "order-documents",
     "dark-mode"
   ],
   "env": {

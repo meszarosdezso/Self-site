@@ -9,7 +9,7 @@ import Social from '../../components/Social/Social'
 import { fetchBioPage } from '../../utils/api'
 import { rangeMap } from '../../utils/math'
 import styles from './Bio.module.scss'
-import BlockContent from '@sanity/block-content-to-react'
+import { PortableText } from '@portabletext/react'
 import {
   FAVICON_URL,
   META_DESCRIPTION,
@@ -78,7 +78,7 @@ const BioPage: React.FC<BioProps> = ({ bio }) => {
             style={{ opacity: rangeMap(headerOpacity, 1, 0, 0, 1) }}
             className={styles.text}
           >
-            <BlockContent blocks={bio} />
+            <PortableText value={bio} />
           </div>
           <Social showLabels={false} />
           <Footer centered />

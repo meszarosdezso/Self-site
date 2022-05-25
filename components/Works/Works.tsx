@@ -34,7 +34,7 @@ const WorkTile: React.FC<{
         <span className={styles.tag}>
           {work.date.substring(0, 4)} <div className={styles.line} /> {work.tags[0]}
         </span>
-        <Link href={work.slug === 'self-site' ? '/' : `/works/${work.slug}`}>
+        <Link href={work.url ? work.url : `/works/${work.slug}`}>
           <a>
             <h1 className={styles.title}>{work.title}</h1>
           </a>
