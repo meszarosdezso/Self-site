@@ -58,7 +58,26 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        offset-position: center;
+        object-position: center;
+      }
+    }
+  }
+
+  .tags {
+    margin-bottom: 4rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    opacity: .7;
+
+    span {
+      font-weight: 500;
+      font-size: .8rem;
+
+      &:before {
+	content: "#";
+	opacity: .5;
       }
     }
   }
