@@ -34,10 +34,12 @@ const BioPage: React.FC<BioProps> = ({ bio }) => {
     [headerOpacity]
   )
 
+  const title = `Biography | ${TITLE_BASE}`
+
   return (
     <div className="page">
       <Head>
-        <title>Biography | {TITLE_BASE}</title>
+        <title>{title}</title>
         <meta name="description" content={META_DESCRIPTION} />
         <meta name="og:title" content={META_TITLE} />
         <meta name="og:description" content={META_DESCRIPTION} />

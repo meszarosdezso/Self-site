@@ -21,12 +21,11 @@ const Layout: React.FC<Props> = ({
   description = META_DESCRIPTION,
   children,
 }) => {
+  const titleContent = title ? `${title} | ${TITLE_BASE}` : TITLE_BASE
   return (
     <div className="page">
       <Head>
-        <title>
-          {title} | {TITLE_BASE}
-        </title>
+        <title>{titleContent}</title>
         <meta name="description" content={description} />
         <meta name="og:title" content={META_TITLE} />
         <meta name="og:description" content={description} />

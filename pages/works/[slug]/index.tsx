@@ -7,16 +7,18 @@ import React from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import { PortableText } from '@portabletext/react'
+import { TITLE_BASE } from '../../../constants/meta'
 
 type Props = {
   work: Work
 }
 
 const WorkPage: React.FC<Props> = ({ work }) => {
+  const title = `${work.title} | ${TITLE_BASE}`
   return (
     <div className="page">
       <Head>
-        <title>{work.title} | Dezso Meszaros - Front-end developer 👨🏽‍💻</title>
+        <title>{title}</title>
         <meta name="description" content={work.short_description} />
         <meta name="og:title" content={work.title} />
         <meta name="og:description" content={work.short_description} />
