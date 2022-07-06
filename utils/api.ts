@@ -29,14 +29,16 @@ export const fetchBioPage = async () => {
 
 export const fetchWorks = async (): Promise<Work[]> => {
   try {
-    const works = await sanity.fetch<Work[]>(`*[ _type == "work" ] | order(order asc) {
-	title,
-    	date,
-    	"slug": slug.current,
-	short_description,
-	url,
-	"cover": images[0].asset->.url,
-	tags
+    const works = await sanity.fetch<
+      Work[]
+    >(`*[ _type == "work" ] | order(order asc) {
+        title,
+            date,
+            "slug": slug.current,
+        short_description,
+        url,
+        "cover": images[0].asset->.url,
+        tags
     }`)
 
     return works
@@ -111,6 +113,8 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
       })
 
       data.pipe(stream)
+
+      stream.close()
 
       return post
     })

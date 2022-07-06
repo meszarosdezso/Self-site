@@ -1,9 +1,10 @@
-export const isBrowser = () => !(typeof window === "undefined")
+export const isBrowser = () => !(typeof window === 'undefined')
 
-export const useWindow = () => {
+export const useWindowSize = () => {
+  const isB = isBrowser()
   return {
-    innerWidth: isBrowser() ? innerWidth : 0,
-    innerHeight: isBrowser() ? innerHeight : 0,
+    width: isB ? innerWidth : 0,
+    height: isB ? innerHeight : 0,
   }
 }
 

@@ -1,8 +1,8 @@
+import Link from 'next/link'
 import styles from './Works.module.scss'
 import { Work } from '../../models/work'
 import { MutableRefObject, useRef, useState } from 'react'
-import { isBrowser } from '../../utils/window'
-import Link from 'next/link'
+import { isBrowser, useWindowSize } from '../../utils/window'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 const WorkTile: React.FC<{
@@ -21,65 +21,78 @@ const WorkTile: React.FC<{
       <div className={styles.image}>
         <img
           style={{
-            transform: `translateY(${scrollTop / 3}px) scale(1.2)`
+            transform: `translateY(${scrollTop / 3}px) scale(1.2)`,
           }}
           src={work.cover}
           alt={work.title}
         />
       </div>
-      <div
-        className={styles.details}
-        style={{ top: `${40 + scrollTop * 0.8}px` }}
-      >
-        <span className={styles.tag}>
-          {work.date.substring(0, 4)} <div className={styles.line} /> {work.tags[0]}
-        </span>
-        <Link href={work.url ? work.url : `/works/${work.slug}`}>
-          <a>
-            <h1 className={styles.title}>{work.title}</h1>
-          </a>
-        </Link>
-        <p className={`sans ${styles.description}`}>{work.short_description}</p>
-      </div>
+      {visible && (
+        <div
+          className={styles.details}
+          style={{
+            transform: `translate(-50%, ${50 + scrollTop * 0.8}px)`,
+          }}
+        >
+          <span className={styles.tag}>
+            {work.date.substring(0, 4)} <div className={styles.line} />{' '}
+            {work.tags[0]}
+          </span>
+          <Link href={work.url ? work.url : `/works/${work.slug}`}>
+            <a>
+              <h1 className={styles.title}>{work.title}</h1>
+            </a>
+          </Link>
+          <p className={`sans ${styles.description}`}>
+            {work.short_description}
+          </p>
+        </div>
+      )}
     </div>
+  )
+}
+
+function getTileVisibility(
+  index: number,
+  scrollPx: number,
+  offsetTop: number
+): boolean {
+  if (!isBrowser()) return false
+
+  const top = scrollPx - offsetTop
+
+  return (
+    Math.floor(
+      (top + window.innerHeight * 0.45) / (window.innerHeight * 0.9)
+    ) === index
   )
 }
 
 const Works: React.FC<{ works: Work[] }> = ({ works }) => {
   const [scrollPx, setScrollPx] = useState(0)
+  const { height } = useWindowSize()
 
-  useScrollPosition(({ currPos: { y } }) => setScrollPx(-y), [scrollPx])
+  useScrollPosition(({ currPos: { y } }) => {
+    setScrollPx(-y)
+  }, [])
 
   const firstTileRef = useRef<HTMLDivElement>()
-  const { offsetTop } = firstTileRef.current || { offsetTop: 1000 }
-
-  const getTileVisibility = (index: number): boolean => {
-    if (isBrowser()) {
-      const top = scrollPx - offsetTop
-
-      const isVisible =
-        Math.floor(
-          (top + window.innerHeight * 0.4) / (window.innerHeight * 0.9)
-        ) === index
-
-      return isVisible
-    } else return false
-  }
+  const offsetTop = firstTileRef.current?.offsetTop || 1000
 
   return (
     <div id={styles.Works}>
       {works.map((work, i) => {
         const ref = i === 0 ? firstTileRef : null
         const scrollTop =
-          !isBrowser() || scrollPx < offsetTop - window.innerHeight
+          !isBrowser() || scrollPx < offsetTop - height
             ? 0
-            : scrollPx - offsetTop - i * (window.innerHeight * 0.9)
+            : scrollPx - offsetTop - i * (height * 0.9)
 
         return (
           <WorkTile
             firstRef={ref as MutableRefObject<HTMLDivElement>}
             key={work.slug}
-            visible={getTileVisibility(i)}
+            visible={getTileVisibility(i, scrollPx, offsetTop)}
             work={work}
             scrollTop={scrollTop}
           />

@@ -58,7 +58,7 @@ export default function VisualizationsPage({ visualizations }: Props) {
     return Buffer.from(
       `${selected};${size};${bordered};${fit};${light}`
     ).toString('hex')
-  }, [size, bordered, selected, fit])
+  }, [size, bordered, selected, fit, light])
 
   return (
     <Layout {...meta}>

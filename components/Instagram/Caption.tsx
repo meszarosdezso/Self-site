@@ -1,6 +1,10 @@
 import React from 'react'
 import styles from './Instagram.module.scss'
 
+function parseCaption(text: string) {
+  return text.replace(/#(\w+)/g, '').replace(/\.\n/g, ' ')
+}
+
 const InstagramCaption: React.FC = ({ children }) => {
   return (
     <>
@@ -24,10 +28,6 @@ const InstagramCaption: React.FC = ({ children }) => {
         })}
     </>
   )
-}
-
-const parseCaption = (text: string) => {
-  return text.replace(/#(\w+)/g, '').replace(/\.\n/g, ' ')
 }
 
 export default InstagramCaption

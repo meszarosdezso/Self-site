@@ -46,9 +46,13 @@ const WorkPage: React.FC<Props> = ({ work }) => {
           ))}
         </div>
 
-	<div className={styles.tags}>
-	  {work.tags.map(tag => <span className='sans' key={tag}>{tag}</span>)}
-	</div>
+        <div className={styles.tags}>
+          {work.tags.map(tag => (
+            <span className="sans" key={tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
 
         <Link href="/">
           <a className={`sans ${styles['go-back']}`}>Go back</a>

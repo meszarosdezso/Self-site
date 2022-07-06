@@ -16,7 +16,6 @@
 
     .details {
       opacity: 1;
-      transform: translate(-50%, 0);
     }
   }
 
@@ -36,7 +35,6 @@
   }
 
   .details {
-    padding: 0 2rem;
     position: absolute;
     left: 50%;
     top: 0;
@@ -51,8 +49,8 @@
     z-index: 2;
     color: white;
     opacity: 0;
-    transform: translate(-50%, 100px);
-    transition: translate 250ms ease-out, opacity 100ms ease-out;
+    transition: opacity 100ms ease-out;
+    transform: translate(-50%, 0px);
 
     .tag {
       text-transform: uppercase;

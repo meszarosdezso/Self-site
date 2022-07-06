@@ -56,6 +56,7 @@
       width: 100%;
       height: 70vh;
       position: relative;
+
       h1 {
         margin: 0;
         font-size: 14vw;
@@ -94,9 +95,10 @@
 
       h3 {
         font-size: 3rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         margin-top: 3rem;
-        width: max-content;
+        margin-right: 2rem;
+        line-height: 1;
       }
 
       h5 {

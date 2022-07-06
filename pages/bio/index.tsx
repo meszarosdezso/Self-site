@@ -20,7 +20,7 @@ import {
 } from '../../constants/meta'
 
 type BioProps = {
-  bio: string
+  bio: any[]
 }
 
 const BioPage: React.FC<BioProps> = ({ bio }) => {

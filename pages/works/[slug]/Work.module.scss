@@ -69,15 +69,15 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    opacity: .7;
+    opacity: 0.7;
 
     span {
       font-weight: 500;
-      font-size: .8rem;
+      font-size: 0.8rem;
 
       &:before {
-	content: "#";
-	opacity: .5;
+        content: '#';
+        opacity: 0.5;
       }
     }
   }
