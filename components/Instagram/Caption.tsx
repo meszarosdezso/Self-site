@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import styles from './Instagram.module.scss'
 
 function parseCaption(text: string) {
   return text.replace(/#(\w+)/g, '').replace(/\.\n/g, ' ')
 }
 
-const InstagramCaption: React.FC = ({ children }) => {
+const InstagramCaption: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
       {parseCaption(children!.toString())
