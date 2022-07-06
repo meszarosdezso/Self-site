@@ -1,0 +1,46 @@
+{
+  "name": "meszarosdezso",
+  "description": "My online portfolio.",
+  "version": "2.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@n8tb1t/use-scroll-position": "^2.0.3",
+    "@portabletext/react": "^1.0.6",
+    "@sanity/client": "^3.3.2",
+    "@types/nodemailer": "^6.4.4",
+    "@types/p5": "^1.4.2",
+    "@types/react-lazy-load-image-component": "^1.5.2",
+    "axios": "^0.27.2",
+    "googleapis": "^105.0.0",
+    "next": "^12.2.0",
+    "nodemailer": "^6.7.7",
+    "p5": "^1.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
+    "react-lazy-load-image-component": "^1.5.4",
+    "react-markdown": "^8.0.3",
+    "react-p5-wrapper": "^3.3.0",
+    "sass": "^1.53.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "typescript": "4.7.4"
+  },
+  "license": "ISC",
+  "volta": {
+    "node": "16.13.1",
+    "npm": "8.3.0"
+  }
+}
