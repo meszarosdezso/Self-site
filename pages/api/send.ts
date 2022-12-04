@@ -37,6 +37,8 @@ const send = async (
 
   const access_token = await OAuth2Client.getAccessToken()
 
+  console.log({ access_token })
+
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -45,13 +47,14 @@ const send = async (
       clientId: process.env.OAUTH_ID,
       clientSecret: process.env.OAUTH_SECRET,
       refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-      accessToken: access_token, //access token variable we defined earlier
+      accessToken: access_token,
     },
   } as any)
 
   return new Promise((res, rej) => {
     transport.sendMail(mailOptions, (err, info) => {
       if (err) {
+        console.log({ err })
         return rej(err)
       } else {
         transport.close()
@@ -68,6 +71,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const response = await send(fullName, email, message, subject, comeAtMeBots)
     return res.send({ statusCode: 200, response })
   } catch (e) {
+    console.log(e)
     if (e instanceof Error) {
       return res.status(500).send({ statusCode: 500, error: e.message })
     }

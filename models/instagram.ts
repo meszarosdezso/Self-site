@@ -11,7 +11,7 @@ export type InstagramPost = {
 }
 
 export type InstagramResponse = {
-  data: []
+  data: InstagramPost[]
   paging: {
     cursors: {
       before: string

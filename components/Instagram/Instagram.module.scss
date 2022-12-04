@@ -43,19 +43,17 @@
         position: absolute;
         z-index: 3;
         top: 0%;
-        left: 50%;
-        transform: translate(-50%, 0%);
+        left: 0%;
         width: 100%;
-        height: 98%;
-        padding: 1rem;
+        height: 100%;
+        padding: 2rem;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
         overflow: hidden;
-        background: #0007;
-        backdrop-filter: blur(5px) saturate(0);
-        -webkit-backdrop-filter: blur(5px) saturate(0);
+        background: linear-gradient(0deg, #000a, #0007, #0000);
+        backdrop-filter: saturate(0);
+        -webkit-backdrop-filter: blur(10px) saturate(0);
         scrollbar-width: none;
 
         &::-webkit-scrollbar {
@@ -67,13 +65,15 @@
         overflow: scroll;
 
         p {
+          margin: 0;
           color: #fffd;
-          margin: auto;
           line-height: 180%;
-          max-width: 300px;
         }
 
         a {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
           font-weight: 100;
           color: var(--accent-color);
         }

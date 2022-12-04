@@ -1,88 +1,21 @@
 #BioPage {
   padding: 0;
-  background: black;
-
-  #logo {
-    filter: invert(1);
-    width: 4rem;
-    position: fixed;
-    opacity: 0.3;
-    z-index: 2;
-    cursor: pointer;
-    left: 1rem;
-    top: 1rem;
-
-    &:hover {
-      opacity: 0.8;
-    }
-  }
-
-  .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.3;
-    pointer-events: none;
-    img {
-      width: 105%;
-      height: 105%;
-      object-fit: cover;
-    }
-  }
-
-  .Social {
-    svg {
-      color: white;
-
-      &:hover {
-        color: var(--accent-color);
-      }
-    }
-  }
-
-  #Footer {
-    p {
-      color: white;
-    }
-  }
 
   .content {
-    width: 100%;
-    color: white;
-
     header {
-      width: 100%;
-      height: 70vh;
       position: relative;
+      height: 100vh;
+      z-index: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       h1 {
         margin: 0;
-        font-size: 14vw;
-        color: #fff3;
-        position: absolute;
-        left: 7vw;
-        top: 50%;
+        font-size: 10vw;
+        color: var(--text-light);
+        font-family: lust-display;
         animation: reveal 1s ease-out forwards;
-      }
-
-      .subtitle {
-        font-size: 2rem;
-        position: absolute;
-        left: 10vw;
-        top: 68%;
-        opacity: 0;
-        animation: reveal 750ms ease-out 500ms forwards;
-      }
-
-      #scrollIcon {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: -20vh;
-        opacity: 0;
-        animation: reveal 450ms ease-out 800ms forwards;
       }
     }
 
@@ -91,9 +24,12 @@
       margin: auto;
       max-width: 700px;
       text-align: left;
-      padding-top: 75vh;
+      padding-top: 0;
+      font-weight: 400;
 
       h3 {
+        font-family: lust-sans;
+        font-weight: 500;
         font-size: 3rem;
         margin-bottom: 2rem;
         margin-top: 3rem;
@@ -112,14 +48,13 @@
 
       p {
         font-family: var(--sans-font);
-        color: #fffb;
+        color: var(--text-light);
         max-width: 600px;
       }
 
       code {
         padding: 0.2rem 0.4rem;
-        background-color: #fffa;
-        color: black;
+        background-color: var(--bg-light);
         font-family: var(--mono-font);
         border-radius: 0.3rem;
       }
@@ -138,8 +73,12 @@
           margin-bottom: 1rem;
           padding: 0.4rem 0.6rem;
           border-radius: 0.3rem;
-          background-color: #fffc;
-          color: black;
+          border: 1px solid var(--bg-lighter);
+          background: linear-gradient(
+            35deg,
+            var(--bg-light),
+            var(--bg-lighter)
+          );
           font-family: var(--mono-font);
         }
       }

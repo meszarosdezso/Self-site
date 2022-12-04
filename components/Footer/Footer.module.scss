@@ -6,9 +6,24 @@
   flex-flow: row wrap;
   width: 100%;
 
+  p {
+    font-weight: 400;
+  }
+
   #copyright {
     margin: 0;
     font-size: 0.8rem;
     opacity: 0.4;
+  }
+
+  @media screen and (max-width: 600px) {
+    text-align: center;
+    margin: auto;
+    max-width: 300px;
+    margin-bottom: 2rem;
+
+    .github {
+      display: none;
+    }
   }
 }

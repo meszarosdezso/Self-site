@@ -14,11 +14,13 @@ const Footer: React.FC<Props> = ({ centered }) => {
       <p id={styles.copyright}>
         Design, code and rights reserved by Dezso Meszaros
       </p>
+
       {!centered && (
         <a
           title="Edit this page on Github"
           href="https://github.com/meszarosdezso/Self-site.git"
           target="_blank"
+          className={styles.github}
           rel="noopener noreferrer"
         >
           <GitHub />

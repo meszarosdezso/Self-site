@@ -7,6 +7,7 @@ import Nav from '../../components/Nav/Nav'
 import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Check, Copy } from 'react-feather'
+import PrimaryButton from '../../components/PrimaryButton/PrimaryButton'
 
 const meta = {
   title: `Visualizations`,
@@ -176,7 +177,7 @@ export default function VisualizationsPage({ visualizations }: Props) {
         <p className={`sans ${styles['finish-comment']}`}>
           If you're happy with your config, send me the URL of the page! <br />
           <br />
-          <button
+          <PrimaryButton
             onClick={_ => {
               navigator.clipboard
                 .writeText(location.href)
@@ -189,9 +190,9 @@ export default function VisualizationsPage({ visualizations }: Props) {
                 .catch(console.error)
             }}
           >
-            {!copied ? <Copy /> : <Check />}
+            {!copied ? <Copy width={16} /> : <Check />}
             {copied ? 'Copied' : 'Copy'} to clipboard
-          </button>
+          </PrimaryButton>
         </p>
       </div>
     </Layout>

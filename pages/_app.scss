@@ -3,20 +3,35 @@
 
 :root {
   --bg-color: #ffffff;
-  --bg-light: #eeeeee;
+  --bg-light: #ffffff;
+  --bg-lighter: #fafafa;
+
   --text-color: #000000;
+  --text-light: #333333;
+
+  --shine-color: #0004;
+  --border-color: #0001;
+
   --body-color: #444444;
   --accent-color: #00fff2;
   --error: #c70035;
-  --sans-font: 'Work Sans';
+  --error--a-10: #c7003533;
+  --error-bg: #0b0608;
+  --error-bg-light: #1a0d11;
+  --sans-font: work-sans;
   --mono-font: 'Inconsolata';
 }
 
 html[data-theme='dark'] {
   --bg-color: #080808;
-  --bg-light: #333333;
+  --bg-light: #121212;
+  --bg-lighter: #242424;
   --text-color: #ffffff;
+  --text-light: #ffffffaa;
   --body-color: #eaeaea;
+
+  --shine-color: #fffd;
+  --border-color: #fff3;
 
   .canvas-wrapper {
     filter: invert(1);
@@ -41,12 +56,17 @@ html[data-theme='dark'] {
 }
 
 body {
-  background-color: var(--bg-color);
+  background: linear-gradient(35deg, var(--bg-color), var(--bg-light));
   color: var(--text-color);
-  font-family: DM Serif Display, sans-serif;
+  font-family: lust-display, sans-serif;
+  font-weight: 700;
   margin: 0;
   padding: 0;
   transition: background-color 200ms ease-out;
+}
+
+.display {
+  font-family: lust-display;
 }
 
 h1,

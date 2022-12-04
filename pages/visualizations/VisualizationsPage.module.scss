@@ -181,30 +181,6 @@
   .finish-comment {
     margin-top: 6rem;
     padding: 0 2rem;
-
-    button {
-      background: var(--text-color);
-      color: var(--bg-color);
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 0.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-      font-family: var(--font-sans);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-
-      &:active {
-        opacity: 0.5;
-      }
-
-      svg {
-        margin-right: 0.7rem;
-        width: 1.1rem;
-      }
-    }
   }
 }
 
