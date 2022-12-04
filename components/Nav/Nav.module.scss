@@ -5,7 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem 1rem 1rem;
+  font-family: work-sans;
 
   #logo {
     width: 4rem;
@@ -28,6 +29,7 @@
       margin-right: 2rem;
       position: relative;
       transition: transform 150ms ease-out;
+      font-weight: 500;
 
       a {
         &:hover {

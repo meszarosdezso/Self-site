@@ -34,14 +34,12 @@ const WorkTile: React.FC<{
             transform: `translate(-50%, ${50 + scrollTop * 0.8}px)`,
           }}
         >
-          <span className={styles.tag}>
+          <span className={`${styles.tag} sans`}>
             {work.date.substring(0, 4)} <div className={styles.line} />{' '}
             {work.tags[0]}
           </span>
           <Link href={work.url ? work.url : `/works/${work.slug}`}>
-            <a>
-              <h1 className={styles.title}>{work.title}</h1>
-            </a>
+            <h1 className={styles.title}>{work.title}</h1>
           </Link>
           <p className={`sans ${styles.description}`}>
             {work.short_description}

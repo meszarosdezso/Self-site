@@ -1,28 +1,19 @@
 .Social {
   margin: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   margin-top: 4rem;
-  display: flex;
-  justify-content: space-evenly;
-  max-width: 400px;
+  width: max-content;
 
-  @media screen and (max-width: 600px) {
-    flex-flow: column wrap;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1rem;
 
   .social {
-    text-align: center;
-    padding: 0.5rem;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-
-    .value {
-      margin: 0.5rem;
-      white-space: nowrap;
-      width: 130px;
-      color: var(--text-color);
+    button {
+      width: 200px;
+      margin: 0;
     }
   }
 }

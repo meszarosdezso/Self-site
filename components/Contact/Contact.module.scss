@@ -1,111 +1,16 @@
 .Contact {
   width: 90%;
   max-width: 800px;
-  margin: 5rem auto;
+  margin: auto;
+  margin-top: 15rem;
+  margin-bottom: 10rem;
   overflow: hidden;
-
-  h3 {
-    margin: 0rem;
-    letter-spacing: 0.2rem;
-    margin-bottom: 0.5rem;
-  }
+  text-align: center;
 
   h1 {
-    margin: 0;
     line-height: 0.85;
-    margin-bottom: 3rem;
-    font-size: 4rem;
-    letter-spacing: -0.1rem;
-  }
-
-  #ContactForm {
-    margin: auto;
-    line-height: 3;
-
-    label {
-      margin-right: 0.5rem;
-    }
-
-    input,
-    textarea {
-      border: none;
-      margin: 0;
-      border-bottom: 1px solid var(--text-color);
-      font-size: 1rem;
-      font-family: var(--sans-font);
-      background-color: var(--bg-color);
-      transition: all 100ms ease-out;
-      resize: none;
-      padding-bottom: 0.25rem;
-      width: 55%;
-      max-width: 180px;
-      color: var(--text-color);
-
-      &:focus {
-        &::placeholder {
-          color: var(--accent-color);
-        }
-      }
-    }
-
-    textarea {
-      margin-top: 2rem;
-      max-width: unset;
-      width: 100%;
-      border-bottom: none;
-    }
-
-    .iamarobot {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-
-      &:active {
-        #robot-checkbox {
-          transform: scale(0);
-        }
-      }
-
-      code {
-        user-select: none;
-        -webkit-user-select: none;
-      }
-
-      #robot-checkbox {
-        width: 1.2rem;
-        height: 1.2rem;
-        border: 2px solid var(--text-color);
-        border-radius: 0.3rem;
-        margin-right: 0.75rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 200ms ease-out;
-        color: var(--bg-color);
-
-        svg {
-          opacity: 0;
-          pointer-events: none;
-        }
-
-        &.checked {
-          color: var(--text-color);
-          opacity: 1;
-          border: none;
-
-          svg {
-            opacity: 1;
-          }
-        }
-      }
-    }
-
-    .error {
-      width: 80%;
-      margin: auto;
-      line-height: 1.6;
-      color: var(--error);
-      text-align: center;
-    }
+    font-weight: 100;
+    font-family: lust-sans;
+    font-weight: 400;
   }
 }

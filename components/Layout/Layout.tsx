@@ -32,6 +32,10 @@ const Layout: React.FC<Props> = ({
         <meta name="og:url" content={OG_URL} />
         <meta name="og:image" content={OG_IMAGE} />
         <link rel="icon" type="image/png" href={FAVICON_URL} />
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/jpp1qyx.css"
+        ></link>
       </Head>
       <div className="body">{children}</div>
       <Footer />

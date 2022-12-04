@@ -1,25 +1,13 @@
 .SubmitButton {
-  background-color: var(--text-color);
-  border-radius: 0.2rem;
-  padding: 0.7rem 1.4rem 0.7rem 1rem;
-  margin: 3rem auto;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 200ms ease-out;
-  color: var(--bg-color);
-  font-size: 0.9rem;
-  overflow: visible;
-  text-align: center;
   width: 9.8rem;
-  white-space: nowrap;
 
-  svg {
-    width: 1.5rem;
-    stroke-width: 1px;
-    margin-right: 1rem;
-    transition: all 100ms ease-out, width 0ms ease-out;
+  .content {
+    svg {
+      width: 1.5rem;
+      stroke-width: 1px;
+      margin-right: 1rem;
+      transition: all 100ms ease-out, width 0ms ease-out;
+    }
   }
 
   &.SENT {
@@ -34,6 +22,7 @@
   &.SENDING {
     padding-right: 1.1rem;
     width: 3.5rem;
+
     svg {
       animation: sendMsg 1000ms ease-out infinite 500ms;
       margin-right: 0;
@@ -65,20 +54,9 @@
     }
   }
 
-  &:hover,
   &.SENDING {
     svg {
-      stroke-width: 2px;
-      transform: translateX(-2px) rotateZ(45deg);
+      transform: translateX(2px) rotateZ(45deg);
     }
-  }
-
-  &.ERROR {
-    color: var(--error);
-  }
-
-  &:active:not(:disabled) {
-    transform: scale(0.95);
-    color: var(--bg-color);
   }
 }

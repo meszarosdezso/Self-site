@@ -57,8 +57,6 @@ const Post: React.FC<{ post: InstagramPost }> = ({ post }) => {
       <div className={`${styles.caption} sans`}>
         <p>
           <InstagramCaption>{post.caption}</InstagramCaption>
-          <br />
-          <br />
           {/* 👆 Please don't tell my boss */}
           <a target="_blank" rel="noopener noreferrer" href={post.permalink}>
             <ExternalLink />

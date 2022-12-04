@@ -28,6 +28,10 @@ const WorkPage: React.FC<Props> = ({ work }) => {
         />
         <meta name="og:image" content={work.cover} />
         <link rel="icon" type="image/png" href="/logo120.png" />
+        <link
+          rel="stylesheet"
+          href="https://use.typekit.net/jpp1qyx.css"
+        ></link>
       </Head>
       <div className={styles.WorkPage}>
         <LightSwitch id={styles.LightSwitch} />
@@ -56,8 +60,8 @@ const WorkPage: React.FC<Props> = ({ work }) => {
           ))}
         </div>
 
-        <Link href="/">
-          <a className={`sans ${styles['go-back']}`}>Go back</a>
+        <Link href="/" className={styles['go-back']}>
+          Go back
         </Link>
       </div>
     </div>

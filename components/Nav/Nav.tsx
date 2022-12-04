@@ -1,26 +1,26 @@
-import styles from './Nav.module.scss'
-import LightSwitch from '../LightSwitch/LightSwitch'
-import { Mail, User, Image } from 'react-feather'
-import NavItem, { NavItemType } from './NavItem'
-import Link from 'next/link'
+import styles from "./Nav.module.scss"
+import LightSwitch from "../LightSwitch/LightSwitch"
+import { Mail, User, Image } from "react-feather"
+import NavItem, { NavItemType } from "./NavItem"
+import Link from "next/link"
 
 const NAV_ITEMS: NavItemType[] = [
   {
-    id: 'viz',
-    title: 'Visualizations',
-    link: '/visualizations',
+    id: "viz",
+    title: "Visualizations",
+    link: "/visualizations",
     Icon: Image,
   },
   {
-    id: 'bio',
-    title: 'Bio',
-    link: '/bio',
+    id: "bio",
+    title: "Bio",
+    link: "/bio",
     Icon: User,
   },
   {
-    id: 'contact',
-    title: 'Contact',
-    link: '#contact',
+    id: "contact",
+    title: "Contact",
+    link: "#contact",
     Icon: Mail,
   },
 ]
@@ -33,11 +33,9 @@ const Nav: React.FC<Props> = ({ hideMenu = false }) => {
   return (
     <nav id={styles.Nav}>
       <Link href="/">
-        <a>
-          <div id={styles.logo}>
-            <img src="/logo240.png" alt="logo" />
-          </div>
-        </a>
+        <div id={styles.logo}>
+          <img src="/logo240.png" alt="logo" />
+        </div>
       </Link>
 
       <ul id={styles.navItems}>

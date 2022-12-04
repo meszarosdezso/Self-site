@@ -1,5 +1,6 @@
 import styles from './Social.module.scss'
-import { GitHub, Instagram, Phone } from 'react-feather'
+import { GitHub, Instagram, Linkedin, Phone } from 'react-feather'
+import PrimaryButton from '../PrimaryButton/PrimaryButton'
 
 type Props = {
   showLabels?: boolean
@@ -13,6 +14,11 @@ const SOCIALS = [
   },
   {
     label: 'meszarosdezso',
+    link: 'https://www.linkedin.com/in/meszarosdezso/',
+    Icon: Linkedin,
+  },
+  {
+    label: 'meszarosdezso',
     link: 'https://instagram.com/meszarosdezso',
     Icon: Instagram,
   },
@@ -21,7 +27,7 @@ const SOCIALS = [
     link: 'tel:+36308396751',
     Icon: Phone,
   },
-]
+] as const
 
 const Social: React.FC<Props> = ({ showLabels = true }) => {
   return (
@@ -34,8 +40,10 @@ const Social: React.FC<Props> = ({ showLabels = true }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Icon />
-          {showLabels && <span className={styles.value}>{label}</span>}
+          <PrimaryButton>
+            <Icon />
+            {showLabels && <span>{label}</span>}
+          </PrimaryButton>
         </a>
       ))}
     </div>

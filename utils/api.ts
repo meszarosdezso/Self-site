@@ -1,7 +1,13 @@
 import axios from 'axios'
 import { Work } from '../models/work'
-import { InstagramPost, InstagramResponse } from '../models/instagram'
-import { readFileSync, existsSync, writeFileSync, createWriteStream } from 'fs'
+import { InstagramResponse } from '../models/instagram'
+import {
+  readFileSync,
+  existsSync,
+  writeFileSync,
+  createWriteStream,
+  WriteStream,
+} from 'fs'
 import Visualization from '../models/viz'
 import sanity from '../config/sanity'
 
@@ -64,21 +70,12 @@ export const fetchWork = async (slug: string): Promise<Work> => {
   return work
 }
 
-export const fetchInstagram = async (): Promise<InstagramPost[]> => {
+export const fetchInstagram = async (): Promise<any> => {
   const hasCached = existsSync('data/post_cache.json')
 
   if (hasCached) {
     return JSON.parse(readFileSync('data/post_cache.json').toString())
   }
-
-  const postIds = await axios
-    .get<InstagramResponse>(
-      `https://graph.instagram.com/me/media?fields=id&access_token=${process.env.INSTAGRAM_ACCESS_TOKEN}&limit=8`
-    )
-    .then(data => data.data)
-    .catch(_ => console.log(`Did you forget to update your instagram token?`))
-
-  if (!postIds) return []
 
   const fields = [
     'id',
@@ -93,34 +90,42 @@ export const fetchInstagram = async (): Promise<InstagramPost[]> => {
 
   const access_token = process.env.INSTAGRAM_ACCESS_TOKEN
 
-  if (!access_token) throw new Error('Missing Instagram token.')
+  const posts = await axios
+    .get<InstagramResponse>(
+      `https://graph.instagram.com/me/media?fields=${fields.join(
+        ','
+      )}&access_token=${access_token}&limit=8`
+    )
+    .then(data => data.data.data)
+    .catch(_ => console.log(`Did you forget to update your instagram token?`))
 
-  const params = new URLSearchParams({ fields: fields.join(','), access_token })
+  console.log({ posts })
 
-  const posts = await Promise.all(
-    postIds.data.map(async ({ id }, i) => {
-      const { data: post } = await axios.get<InstagramPost>(
-        `https://graph.instagram.com/${id}?${params}`
-      )
+  if (!posts) return []
 
+  const localPosts = await Promise.all(
+    posts.map(async (post, i) => {
       const localUrl = `/assets/instagram_${i}.jpg`
 
-      post.local_url = localUrl
-
       const stream = createWriteStream(`public/${localUrl}`)
-      const { data } = await axios.get(post.media_url, {
+      const { data } = await axios.get<WriteStream>(post.media_url, {
         responseType: 'stream',
       })
 
-      data.pipe(stream)
-
-      stream.close()
-
-      return post
+      return new Promise(resolve => {
+        const pipe = data.pipe(stream)
+        pipe.addListener('finish', () => {
+          resolve({ ...post, local_url: localUrl })
+        })
+      })
     })
   )
 
-  writeFileSync('data/post_cache.json', JSON.stringify(posts, null, 2), 'utf8')
+  writeFileSync(
+    'data/post_cache.json',
+    JSON.stringify(localPosts, null, 2),
+    'utf8'
+  )
 
-  return posts
+  return localPosts
 }
