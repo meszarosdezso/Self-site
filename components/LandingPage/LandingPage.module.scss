@@ -13,18 +13,39 @@
     text-transform: uppercase;
   }
 
-  h3 {
-    opacity: 0.3;
+  .titles {
+    opacity: 0.4;
     text-transform: uppercase;
     letter-spacing: 0.5rem;
+    font-weight: 100;
     position: absolute;
     top: 25vh;
     font-size: 1rem;
+    text-align: center;
+    white-space: nowrap;
+
+    code {
+      position: absolute;
+      line-height: 1.4;
+      left: 50%;
+      top: 0;
+      transform: translateY(30%) translateX(-50%);
+      transition: all 350ms ease-out;
+      opacity: 0;
+      pointer-events: none;
+
+      &.active {
+        transform: translateX(-50%) translateY(0%);
+        opacity: 1;
+        pointer-events: unset;
+      }
+    }
   }
 
   #imadethese {
+    padding: 2rem 3rem;
     position: absolute;
-    bottom: clamp(2rem, 7vw, 3rem);
+    bottom: clamp(0rem, 7vw, 1rem);
     text-transform: uppercase;
     letter-spacing: 2px;
     cursor: pointer;
@@ -41,7 +62,7 @@
       position: absolute;
       height: 10rem;
       width: 2px;
-      top: 2rem;
+      top: 5rem;
       left: 50%;
     }
   }

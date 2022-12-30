@@ -10,6 +10,7 @@ import {
 } from 'fs'
 import Visualization from '../models/viz'
 import sanity from '../config/sanity'
+import { Experiment } from '../models/experiment'
 
 export async function fetchVisualizations(): Promise<Visualization[]> {
   try {
@@ -48,6 +49,26 @@ export const fetchWorks = async (): Promise<Work[]> => {
     }`)
 
     return works
+  } catch (e) {
+    if (e instanceof Error) {
+      console.error(e.message)
+    }
+    return []
+  }
+}
+
+export const fetchExperiments = async (): Promise<Experiment[]> => {
+  try {
+    const experiments = await sanity.fetch<
+      Experiment[]
+    >(`*[ _type == "experiment" ] | order(date asc) {
+        title,
+        date,
+        "file": file.asset->,
+        description
+    }`)
+
+    return experiments
   } catch (e) {
     if (e instanceof Error) {
       console.error(e.message)

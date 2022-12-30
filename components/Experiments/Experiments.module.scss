@@ -1,0 +1,59 @@
+#Experiments {
+  position: relative;
+  margin: 10rem 0;
+
+  .title {
+    padding-left: 4rem;
+    display: flex;
+    align-items: flex-end;
+    flex-flow: row wrap;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-right: 3rem;
+      margin-top: 0;
+      margin-bottom: 0.2rem;
+    }
+
+    p {
+      padding-right: 4rem;
+      max-width: 600px;
+      color: var(--text-light);
+
+      a {
+        color: var(--text-color);
+      }
+    }
+  }
+
+  .experiments {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0.3rem;
+    overflow-x: auto;
+    padding-left: 4rem;
+    padding-right: 1rem;
+
+    div.experiment {
+      min-width: 300px;
+      max-width: 300px;
+      height: 300px;
+      transition: all 200ms ease-out;
+      filter: saturate(0) brightness(0.6);
+
+      &:hover {
+        z-index: 3;
+        filter: saturate(1) brightness(1);
+      }
+
+      video,
+      img {
+        width: 100%;
+        display: block;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+}

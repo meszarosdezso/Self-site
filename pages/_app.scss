@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:600|DM+Serif+Display&display=swap&subset=latin-ext');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
   --bg-color: #ffffff;
@@ -7,7 +7,7 @@
   --bg-lighter: #fafafa;
 
   --text-color: #000000;
-  --text-light: #333333;
+  --text-light: #777777;
 
   --shine-color: #0004;
   --border-color: #0001;
@@ -100,7 +100,8 @@ p {
   font-size: clamp(2rem, 5vw, 4rem);
 }
 
-code {
+code,
+pre {
   font-family: var(--mono-font), monospace;
 }
 

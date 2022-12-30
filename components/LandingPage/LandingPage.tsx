@@ -1,9 +1,33 @@
 import styles from './LandingPage.module.scss'
 import Nav from '../Nav/Nav'
 import { useMouse } from '../../utils/useMouse'
+import { useEffect, useState } from 'react'
+
+const titles = [
+  'UX/UI Developer',
+  <span>
+    Currently at <br />
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href="https://uxstudioteam.com"
+    >
+      UX Studio
+    </a>
+  </span>,
+]
 
 const LandingPage: React.FC = () => {
   const { dx, dy } = useMouse()
+  const [activeTitle, setActiveTitle] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTitle(title => (title + 1) % titles.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div id={styles.LandingPage}>
@@ -22,13 +46,16 @@ const LandingPage: React.FC = () => {
         Meszaros
       </h1>
 
-      <h3>
-        <code>
-          Front end
-          <br />
-          developer
-        </code>
-      </h3>
+      <p className={styles.titles}>
+        {titles.map((title, i) => (
+          <code
+            className={activeTitle === i ? styles.active : ''}
+            key={'title-' + i}
+          >
+            {title}
+          </code>
+        ))}
+      </p>
 
       <h4
         style={{

@@ -2,7 +2,7 @@ export default {
   name: 'bio',
   type: 'document',
   title: 'Bio',
-  icon: '🫠',
+  icon: () => '🫠',
   fields: [
     {
       type: 'content',
