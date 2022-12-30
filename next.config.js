@@ -1,5 +1,4 @@
-module.exports = {
-  cssLoaderOptions: {
-    url: false,
-  },
-}
+/** @type {import("next").NextConfig} */
+const config = {}
+
+module.exports = config
