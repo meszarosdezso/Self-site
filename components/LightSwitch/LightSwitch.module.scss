@@ -1,7 +1,17 @@
 #LightSwitch {
   transform: translateY(2px);
+
+  &:active {
+    svg {
+      transform: scale(0.5);
+      opacity: 0 !important;
+    }
+  }
+
   svg {
+    transition: all 200ms ease-out;
     cursor: pointer;
+
     &:hover {
       opacity: 0.6;
     }

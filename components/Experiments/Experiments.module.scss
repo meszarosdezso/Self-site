@@ -1,0 +1,106 @@
+.ExperimentsSection {
+  position: relative;
+  margin: 10rem 0;
+  scroll-margin: 5rem;
+
+  .title {
+    padding-left: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-flow: row wrap;
+    margin-bottom: 3rem;
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-right: 3rem;
+      margin-top: 0;
+      margin-bottom: 0.2rem;
+    }
+
+    p {
+      padding-right: 4rem;
+      max-width: 420px;
+      color: var(--text-light);
+
+      a {
+        color: var(--text-color);
+      }
+    }
+  }
+
+  .experiments {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0.3rem;
+    overflow-x: auto;
+    padding-left: 4rem;
+    padding-right: 1rem;
+    position: relative;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    div.experiment {
+      position: relative;
+
+      .media {
+        position: relative;
+        min-width: 300px;
+        max-width: 300px;
+        height: 300px;
+        transition: all 200ms ease-out;
+        filter: saturate(0) brightness(0.6);
+      }
+
+      &:hover {
+        z-index: 3;
+
+        .media {
+          filter: saturate(1) brightness(1);
+        }
+
+        .meta {
+          opacity: 0;
+        }
+      }
+
+      video,
+      img {
+        width: 100%;
+        display: block;
+        padding: 0;
+        margin: 0;
+      }
+
+      .meta {
+        color: white;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        padding: 1.5rem;
+        padding-bottom: 1rem;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-end;
+        background: linear-gradient(0deg, #0003, #0000);
+
+        h3 {
+          margin: 0;
+          opacity: 0.7;
+        }
+
+        p {
+          margin: 0;
+          color: white;
+          font-size: 0.75rem;
+          opacity: 0.5;
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+}

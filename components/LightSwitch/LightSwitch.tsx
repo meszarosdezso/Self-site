@@ -5,12 +5,12 @@ import { useState, useEffect, DetailedHTMLProps, HTMLAttributes } from 'react'
 const LightSwitch: React.FC<
   DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 > = ({ id }) => {
-  const [state, setState] = useState<'dark' | 'light'>('light')
+  const [state, setState] = useState<'dark' | 'light'>('dark')
 
   useEffect(() => {
     const newState = localStorage.getItem('md-theme-mode')
 
-    if (newState === 'dark') {
+    if (newState === 'light') {
       setState(newState)
       document.documentElement.setAttribute('data-theme', newState)
     }
