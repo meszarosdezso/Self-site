@@ -35,7 +35,7 @@ export function Experiments({ experiments }: Props) {
             {exp.file.mimeType.includes('image') ? (
               <img src={exp.file.url} alt={exp.title} />
             ) : (
-              <video loop autoPlay muted src={exp.file.url} />
+              <video loop playsInline muted autoPlay src={exp.file.url} />
             )}
           </div>
         ))}

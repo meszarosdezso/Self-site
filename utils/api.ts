@@ -61,7 +61,7 @@ export const fetchExperiments = async (): Promise<Experiment[]> => {
   try {
     const experiments = await sanity.fetch<
       Experiment[]
-    >(`*[ _type == "experiment" ] | order(date asc) {
+    >(`*[ _type == "experiment" ] | order(date desc) {
         title,
         date,
         "file": file.asset->,
