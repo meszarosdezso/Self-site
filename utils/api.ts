@@ -11,6 +11,7 @@ import {
 import Visualization from '../models/viz'
 import sanity from '../config/sanity'
 import { Experiment } from '../models/experiment'
+import { Photo } from '../models/photo'
 
 export async function fetchVisualizations(): Promise<Visualization[]> {
   try {
@@ -31,6 +32,33 @@ export const fetchBioPage = async () => {
     return bio
   } catch {
     return { content: 'Failed to load bio page' }
+  }
+}
+
+export const fetchPhotos = async () => {
+  try {
+    const photos = await sanity.fetch<Photo[]>(`
+      *[ _type == 'photo' ] | order(image.asset->.metadata.exif.DateTimeOriginal desc) {
+        title,
+        "url": image.asset->.url,
+        "meta": image.asset->.metadata {
+          blurHash,
+          lqip,
+          exif {
+            "date": DateTimeOriginal,
+            "f": FNumber,
+            "lens": LensModel,
+            "shutter": round(1 / ExposureTime),
+            "focal": FocalLength,
+          },
+          dimensions
+        }
+      }
+    `)
+
+    return photos
+  } catch {
+    return []
   }
 }
 

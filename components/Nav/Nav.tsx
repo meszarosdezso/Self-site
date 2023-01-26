@@ -1,23 +1,28 @@
-import styles from "./Nav.module.scss"
-import LightSwitch from "../LightSwitch/LightSwitch"
-import { User, Image } from "react-feather"
-import NavItem, { NavItemType } from "./NavItem"
-import Link from "next/link"
+import styles from './Nav.module.scss'
+import LightSwitch from '../LightSwitch/LightSwitch'
+import { User, Image, Camera } from 'react-feather'
+import NavItem, { NavItemType } from './NavItem'
+import Link from 'next/link'
 
 const NAV_ITEMS: NavItemType[] = [
   {
-    id: "viz",
-    title: "Visualizations",
-    link: "/visualizations",
+    id: 'viz',
+    title: 'Visualizations',
+    link: '/visualizations',
     Icon: Image,
   },
   {
-    id: "bio",
-    title: "Bio",
-    link: "/bio",
+    id: 'photos',
+    title: 'Photos',
+    link: '/photos',
+    Icon: Camera,
+  },
+  {
+    id: 'bio',
+    title: 'Bio',
+    link: '/bio',
     Icon: User,
   },
-  
 ]
 
 interface Props {
