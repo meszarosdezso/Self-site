@@ -23,8 +23,6 @@ export default function Gallery({ photos = [] }: { photos: Photo[] }) {
     }, [] as Photo[][])
   }, [cols])
 
-  console.log(layout)
-
   return (
     <div
       style={{
@@ -45,8 +43,8 @@ export default function Gallery({ photos = [] }: { photos: Photo[] }) {
                 width={photo.meta.dimensions.width}
                 height={photo.meta.dimensions.height}
                 loading="lazy"
-                // placeholder="blur"
-                // blurDataURL={photo.meta.lqip}
+                placeholder="blur"
+                blurDataURL={photo.meta.lqip}
               />
 
               <div className={styles.meta}>
