@@ -4,7 +4,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en" data-theme="dark">
-        <Head />
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://use.typekit.net/jpp1qyx.css"
+          ></link>
+        </Head>
         <body>
           <Main />
           <NextScript />
