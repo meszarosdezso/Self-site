@@ -43,7 +43,7 @@ export default function Gallery({ photos = [] }: { photos: Photo[] }) {
                 width={photo.meta.dimensions.width}
                 height={photo.meta.dimensions.height}
                 loading="lazy"
-                placeholder="blur"
+                placeholder={photo.meta.lqip ? 'blur' : 'empty'}
                 blurDataURL={photo.meta.lqip}
               />
 
