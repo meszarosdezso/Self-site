@@ -33,12 +33,12 @@ html[data-theme='dark'] {
   --shine-color: #fffd;
   --border-color: #fff3;
 
-  // .canvas-wrapper {
-  //   filter: invert(1);
-  // }
-
   #logo {
     filter: invert(1);
+  }
+
+  .canvas-wrapper {
+    filter: invert(0);
   }
 }
 
@@ -155,6 +155,7 @@ pre {
   z-index: -1;
   height: 100vh;
   opacity: 0.3;
+  filter: invert(1);
 
   * {
     z-index: -1;
