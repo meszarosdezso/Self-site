@@ -56,7 +56,7 @@ const sketch = (filled: boolean) => (p: P5) => {
       p.background(0, 0)
     }
 
-    p.background(255, filled ? 0 : 255)
+    p.background(0, filled ? 0 : 255)
 
     particles.forEach((particle, idx) => {
       particle.update()
@@ -102,7 +102,7 @@ const sketch = (filled: boolean) => (p: P5) => {
     }
 
     checkParticles(particlesToCheck: Particle[]) {
-      particlesToCheck.forEach((other) => {
+      particlesToCheck.forEach(other => {
         const d = this.pos.dist(other.pos)
         if (d < 200) {
           if (filled) {

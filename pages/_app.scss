@@ -20,6 +20,10 @@
   --error-bg-light: #1a0d11;
   --sans-font: work-sans;
   --mono-font: 'Inconsolata';
+
+  .canvas-wrapper {
+    filter: invert(1);
+  }
 }
 
 html[data-theme='dark'] {
@@ -32,10 +36,6 @@ html[data-theme='dark'] {
 
   --shine-color: #fffd;
   --border-color: #fff3;
-
-  .canvas-wrapper {
-    filter: invert(1);
-  }
 
   #logo {
     filter: invert(1);
