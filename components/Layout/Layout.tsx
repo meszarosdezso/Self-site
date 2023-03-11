@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { ReactNode } from 'react'
 import {
-  FAVICON_URL,
   META_DESCRIPTION,
   META_TITLE,
   OG_IMAGE,
@@ -33,7 +32,18 @@ const Layout: React.FC<Props> = ({
         <meta name="og:description" content={description} />
         <meta name="og:url" content={OG_URL} />
         <meta name="og:image" content={OG_IMAGE} />
-        <link rel="icon" type="image/png" href={FAVICON_URL} />
+        <link
+          rel="icon"
+          media="(prefers-color-scheme: light)"
+          type="image/png"
+          href="/favicon_light.png"
+        />
+        <link
+          rel="icon"
+          media="(prefers-color-scheme: dark)"
+          type="image/png"
+          href="/favicon_dark.png"
+        />
       </Head>
       <div className="body">{children}</div>
       {!hideFooter && <Footer />}

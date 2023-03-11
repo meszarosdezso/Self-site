@@ -3,5 +3,4 @@ export const META_DESCRIPTION =
 export const META_TITLE = 'Dezso Meszaros'
 export const OG_URL = 'https://meszarosdezso.com'
 export const OG_IMAGE = 'https://meszarosdezso.com/littler_me.jpg'
-export const FAVICON_URL = '/logo120.png'
 export const TITLE_BASE = 'Dezso Meszaros - Front-end developer 👨🏽‍💻'
