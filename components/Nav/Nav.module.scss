@@ -26,16 +26,23 @@
     display: flex;
 
     li {
+      a {
+        cursor: none;
+
+        &:hover {
+          color: var(--text-color);
+        }
+      }
+
+      &:active {
+        opacity: 0.5;
+      }
+
       margin-right: 2rem;
       position: relative;
       transition: transform 150ms ease-out;
       font-weight: 500;
-
-      a {
-        &:hover {
-          color: inherit;
-        }
-      }
+      cursor: none;
 
       .icon {
         position: absolute;
@@ -51,10 +58,11 @@
         position: absolute;
         width: 0%;
         height: 2px;
-        background: var(--accent-color);
+        background: var(--text-color);
         left: 50%;
         transform: translateX(-50%);
         bottom: 1rem;
+        cursor: none;
         transition: width 100ms ease-out;
       }
 

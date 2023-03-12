@@ -11,6 +11,9 @@
     font-size: clamp(2.5rem, 15vw, 4.5rem);
     line-height: 0.8;
     text-transform: uppercase;
+    font-family: 'lust-display';
+    font-weight: 900;
+    text-shadow: 0 0 2rem #fff1;
   }
 
   .titles {
@@ -48,12 +51,17 @@
     bottom: clamp(0rem, 7vw, 1rem);
     text-transform: uppercase;
     letter-spacing: 2px;
-    cursor: pointer;
+    cursor: none;
     opacity: 0.2;
     transition: all 150ms ease-out;
 
     &:hover {
       opacity: 1;
+      text-shadow: 0 0 0.4rem #fffa;
+
+      &::after {
+        box-shadow: 0 0 10px #fffa;
+      }
     }
 
     &::after {
@@ -63,7 +71,9 @@
       height: 10rem;
       width: 2px;
       top: 5rem;
+      transform: translateX(-50%);
       left: 50%;
+      transition: all 100ms ease-out;
     }
   }
 }

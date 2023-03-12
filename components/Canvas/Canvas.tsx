@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import { isBrowser } from '../../utils/window'
 import P5 from 'p5'
 
-const sketch = (filled: boolean) => (p: P5) => {
+const sketch = () => (p: P5) => {
   const particles: Particle[] = []
 
   let startX: number, startY: number
@@ -12,7 +12,7 @@ const sketch = (filled: boolean) => (p: P5) => {
   p.setup = function () {
     if (window) p.createCanvas(window.innerWidth, window.innerHeight)
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 24; i++) {
       const { x, y } = {
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
@@ -50,13 +50,7 @@ const sketch = (filled: boolean) => (p: P5) => {
       p.translate(offsetX, offsetY)
     }
 
-    if (!filled) {
-      p.background(0, 0)
-    } else {
-      p.background(0, 0)
-    }
-
-    p.background(0, filled ? 0 : 255)
+    p.background(0, 255)
 
     particles.forEach((particle, idx) => {
       particle.update()
@@ -74,7 +68,7 @@ const sketch = (filled: boolean) => (p: P5) => {
     constructor(x?: any, y?: any) {
       this.pos = p.createVector(x || p.random(p.width), y || p.random(p.height))
       this.vel = p.createVector(p.random(-2, 2), p.random(-2, 2))
-      this.size = filled ? 1 : 2
+      this.size = 2
     }
 
     update() {
@@ -83,12 +77,8 @@ const sketch = (filled: boolean) => (p: P5) => {
 
     draw() {
       p.noStroke()
-      if (filled) {
-        p.fill(0, 200, 150, 30)
-      } else {
-        p.fill(188, 255)
-      }
-      p.circle(this.pos.x, this.pos.y, this.size * 2)
+      p.fill(255, 255)
+      p.circle(this.pos.x, this.pos.y, 3)
     }
 
     edges() {
@@ -105,11 +95,7 @@ const sketch = (filled: boolean) => (p: P5) => {
       particlesToCheck.forEach(other => {
         const d = this.pos.dist(other.pos)
         if (d < 200) {
-          if (filled) {
-            p.stroke(0, 255, 242, 50)
-          } else {
-            p.stroke(188, 255)
-          }
+          p.stroke(188, 255)
           p.line(this.pos.x, this.pos.y, other.pos.x, other.pos.y)
         }
       })
@@ -128,9 +114,7 @@ const Canvas: React.FC = () => {
     }
   )
 
-  const filled = window.innerWidth > 700 ? Math.random() < 0.5 : false
-
-  const s = sketch(filled)
+  const s = sketch()
 
   return <ReactP5Wrapper sketch={s} />
 }

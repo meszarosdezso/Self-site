@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata:600|DM+Serif+Display&display=swap&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:600&display=swap&subset=latin-ext');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -18,13 +18,14 @@
   --error--a-10: #c7003533;
   --error-bg: #0b0608;
   --error-bg-light: #1a0d11;
-  --sans-font: work-sans;
+
+  --sans-font: 'Work Sans';
   --mono-font: 'Inconsolata';
 }
 
 html[data-theme='dark'] {
-  --bg-color: #080808;
-  --bg-light: #121212;
+  --bg-color: #070707;
+  --bg-light: #0a0a0a;
   --bg-lighter: #242424;
   --text-color: #ffffff;
   --text-light: #ffffffaa;
@@ -39,6 +40,7 @@ html[data-theme='dark'] {
 
   .canvas-wrapper {
     filter: invert(0);
+    mix-blend-mode: screen;
   }
 }
 
@@ -58,7 +60,7 @@ html[data-theme='dark'] {
 body {
   background: linear-gradient(35deg, var(--bg-color), var(--bg-light));
   color: var(--text-color);
-  font-family: lust-display, sans-serif;
+  font-family: 'lust-display', sans-serif;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -66,7 +68,7 @@ body {
 }
 
 .display {
-  font-family: lust-display;
+  font-family: 'lust-display', serif;
 }
 
 h1,
@@ -81,7 +83,7 @@ h6 {
 a {
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
+
   &:active {
     opacity: 0.7;
   }
@@ -154,7 +156,7 @@ pre {
   overflow: hidden;
   z-index: -1;
   height: 100vh;
-  opacity: 0.3;
+  opacity: 0.34;
   filter: invert(1);
 
   * {
