@@ -20,6 +20,9 @@ const LightSwitch: React.FC<
     const newState = state === 'dark' ? 'light' : 'dark'
 
     setState(newState)
+    document.head
+      .querySelector('[name="theme-color"]')
+      ?.setAttribute('content', newState === 'dark' ? '#0a0a0a' : '#ffffff')
     document.documentElement.setAttribute('data-theme', newState)
     localStorage.setItem('md-theme-mode', newState)
   }

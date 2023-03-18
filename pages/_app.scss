@@ -4,6 +4,7 @@
 :root {
   --bg-color: #ffffff;
   --bg-light: #ffffff;
+  --bg-light--a50: #ffffff88;
   --bg-lighter: #fafafa;
 
   --text-color: #000000;
@@ -26,6 +27,7 @@
 html[data-theme='dark'] {
   --bg-color: #070707;
   --bg-light: #0a0a0a;
+  --bg-light--a50: #0a0a0a88;
   --bg-lighter: #242424;
   --text-color: #ffffff;
   --text-light: #ffffffaa;
