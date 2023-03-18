@@ -6,6 +6,10 @@
   flex-flow: row wrap;
   width: 100%;
 
+  &.no-padding {
+    padding: 0rem !important;
+  }
+
   p {
     font-weight: 400;
   }
@@ -16,14 +20,16 @@
     opacity: 0.4;
   }
 
-  @media screen and (max-width: 600px) {
-    text-align: center;
-    margin: auto;
-    max-width: 300px;
-    margin-bottom: 2rem;
+  &:not(.no-padding) {
+    @media screen and (max-width: 600px) {
+      text-align: center;
+      margin: auto;
+      max-width: 300px;
+      margin-bottom: 2rem;
 
-    .github {
-      display: none;
+      .github {
+        display: none;
+      }
     }
   }
 }
