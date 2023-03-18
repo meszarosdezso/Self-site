@@ -26,6 +26,12 @@
     display: flex;
 
     li {
+      margin-right: 2rem;
+      position: relative;
+      transition: transform 150ms ease-out;
+      font-weight: 500;
+      cursor: none;
+
       a {
         cursor: none;
 
@@ -37,12 +43,6 @@
       &:active {
         opacity: 0.5;
       }
-
-      margin-right: 2rem;
-      position: relative;
-      transition: transform 150ms ease-out;
-      font-weight: 500;
-      cursor: none;
 
       .icon {
         position: absolute;
@@ -67,7 +67,7 @@
       }
 
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.15);
         .icon {
           top: 20%;
           opacity: 1;

@@ -23,6 +23,12 @@ const Layout: React.FC<Props> = ({
   hideFooter,
 }) => {
   const titleContent = title ? `${title} | ${TITLE_BASE}` : TITLE_BASE
+
+  const isDark =
+    typeof localStorage === 'undefined'
+      ? true
+      : localStorage.getItem('md-theme-mode') === 'dark'
+
   return (
     <div className="page">
       <Head>
@@ -44,6 +50,7 @@ const Layout: React.FC<Props> = ({
           type="image/png"
           href="/favicon_dark.png"
         />
+        <meta name="theme-color" content={isDark ? '#0a0a0a' : '#ffffff'} />
       </Head>
       <div className="body">{children}</div>
       {!hideFooter && <Footer />}

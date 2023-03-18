@@ -13,7 +13,6 @@
     text-transform: uppercase;
     font-family: 'lust-display';
     font-weight: 900;
-    text-shadow: 0 0 2rem #fff1;
   }
 
   .titles {
@@ -53,7 +52,7 @@
     letter-spacing: 2px;
     cursor: none;
     opacity: 0.2;
-    transition: all 150ms ease-out;
+    transition: opacity 150ms ease-out;
 
     &:hover {
       opacity: 1;
