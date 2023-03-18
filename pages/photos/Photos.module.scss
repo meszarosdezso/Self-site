@@ -1,3 +1,61 @@
 .PhotosPage {
   background: var(--bg-light);
+
+  .gear {
+    background: var(--bg-lighter);
+    margin-top: 5rem;
+    padding: 5rem 5rem;
+    color: var(--text-light);
+    opacity: 0.6;
+
+    h4 {
+      font-size: 0.8rem;
+      margin-bottom: 4rem;
+      opacity: 0.5;
+    }
+
+    ul {
+      text-align: left;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-flow: row wrap;
+      gap: 6rem;
+
+      div {
+        min-width: 180px;
+      }
+
+      li {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      #phoneIcon {
+        transform: rotateZ(180deg) scaleX(0.8);
+      }
+    }
+
+    p {
+      opacity: 0.5;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      margin-top: 5rem;
+      margin-bottom: -2rem;
+      text-align: left;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    .gear {
+      margin-top: 0;
+      ul {
+        flex-flow: column nowrap;
+        gap: 3rem;
+      }
+    }
+  }
 }
