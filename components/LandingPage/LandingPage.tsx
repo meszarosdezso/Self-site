@@ -2,6 +2,7 @@ import styles from './LandingPage.module.scss'
 import Nav from '../Nav/Nav'
 import { useMouse } from '../../utils/useMouse'
 import { useEffect, useState } from 'react'
+import { GradientTitle } from '../GradientTitle/GradientTitle'
 
 const titles = [
   'UX/UI Developer',
@@ -18,7 +19,7 @@ const titles = [
 ]
 
 const LandingPage: React.FC = () => {
-  const { dx, dy } = useMouse()
+  const { dy } = useMouse()
   const [activeTitle, setActiveTitle] = useState(0)
 
   useEffect(() => {
@@ -32,19 +33,14 @@ const LandingPage: React.FC = () => {
   return (
     <div id={styles.LandingPage}>
       <Nav />
-      <h1
-        style={{
-          transform: `translate(
-            ${dx / -20}px,
-            ${dy / -20}px
-            )`,
-        }}
-        id={styles['name-hero']}
-      >
-        Dezso
-        <br />
-        Meszaros
-      </h1>
+
+      <div id={styles['name-hero']}>
+        <GradientTitle>
+          Dezso
+          <br />
+          Meszaros
+        </GradientTitle>
+      </div>
 
       <p className={styles.titles}>
         {titles.map((title, i) => (

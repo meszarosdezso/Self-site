@@ -165,3 +165,13 @@ pre {
     z-index: -1;
   }
 }
+
+#fourohfour {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+}

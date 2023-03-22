@@ -9,6 +9,7 @@ import { PortableText } from '@portabletext/react'
 import { TITLE_BASE } from '../../constants/meta'
 import Layout from '../../components/Layout/Layout'
 import Nav from '../../components/Nav/Nav'
+import { GradientTitle } from '../../components/GradientTitle/GradientTitle'
 
 type BioProps = {
   bio: any[]
@@ -38,7 +39,7 @@ const BioPage: React.FC<BioProps> = ({ bio }) => {
                 opacity: headerOpacity,
               }}
             >
-              <h1>Biography</h1>
+              <GradientTitle>Biography</GradientTitle>
             </header>
             <div
               style={{ opacity: rangeMap(headerOpacity, 1, 0, 0, 1) }}
