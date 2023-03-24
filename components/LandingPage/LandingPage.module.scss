@@ -8,11 +8,14 @@
   position: relative;
 
   #name-hero {
-    font-size: clamp(2.5rem, 15vw, 4.5rem);
-    line-height: 0.8;
-    text-transform: uppercase;
-    font-family: 'lust-display';
-    font-weight: 900;
+
+    h1 {
+      line-height: 0.8;
+      text-transform: uppercase;
+      font-family: 'lust-display';
+      font-weight: 100;
+      font-size: clamp(2.5rem, 15vw, 4.5rem);
+    }
   }
 
   .titles {
