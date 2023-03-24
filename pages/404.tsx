@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <Layout hideFooter title="Nothing to see here">
       <main id="fourohfour">
-        <GradientTitle>404</GradientTitle>
+        <GradientTitle className="sans">404</GradientTitle>
       </main>
     </Layout>
   )
