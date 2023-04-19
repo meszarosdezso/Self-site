@@ -23,8 +23,6 @@ export default function Page({ photos }: Props) {
         <Gallery photos={photos} />
 
         <div className={`${styles.gear} sans`}>
-          {/* <h4>Behind the pictures</h4>   */}
-
           <ul>
             <div>
               <li>
