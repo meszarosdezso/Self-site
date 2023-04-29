@@ -7,6 +7,7 @@ import styles from './Photos.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCamera,
+  faCameraRetro,
   faLaptop,
   faMobilePhone,
 } from '@fortawesome/free-solid-svg-icons'
@@ -24,6 +25,13 @@ export default function Page({ photos }: Props) {
 
         <div className={`${styles.gear} sans`}>
           <ul>
+            <div>
+              <li>
+                <FontAwesomeIcon width={'.9em'} icon={faCameraRetro} />
+              </li>
+              <li>Sony Alpha 7C</li>
+              <li>Sony 85mm F1.8</li>
+            </div>
             <div>
               <li>
                 <FontAwesomeIcon width={'.9em'} icon={faCamera} />
