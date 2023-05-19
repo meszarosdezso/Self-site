@@ -31,6 +31,7 @@ export default function Page({ photos }: Props) {
               </li>
               <li>Sony Alpha 7C</li>
               <li>Sony 85mm F1.8</li>
+              <li>Sony 35mm F1.8</li>
             </div>
             <div>
               <li>
