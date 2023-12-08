@@ -1,6 +1,6 @@
 import styles from './Nav.module.scss'
 import LightSwitch from '../LightSwitch/LightSwitch'
-import { User, Camera } from 'react-feather'
+import { Camera } from 'react-feather'
 import NavItem, { NavItemType } from './NavItem'
 import Link from 'next/link'
 
@@ -17,12 +17,12 @@ const NAV_ITEMS: NavItemType[] = [
     link: '/photos',
     Icon: Camera,
   },
-  {
-    id: 'bio',
-    title: 'Bio',
-    link: '/bio',
-    Icon: User,
-  },
+  // {
+  //   id: 'bio',
+  //   title: 'Bio',
+  //   link: '/bio',
+  //   Icon: User,
+  // },
 ]
 
 interface Props {
