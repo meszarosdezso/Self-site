@@ -16,5 +16,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022"
-  }
+  },
+  "include": ["../../packages/types/**.d.ts"]
 }
