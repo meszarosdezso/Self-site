@@ -1,5 +1,5 @@
 {
-  "name": "Self-site",
+  "name": "md",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -8,8 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@md/eslint-config": "*",
+    "@md/typescript-config": "*",
     "prettier": "^3.1.0",
     "turbo": "latest"
   },
