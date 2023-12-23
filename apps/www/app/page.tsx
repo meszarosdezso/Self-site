@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Logo } from '../components/Logo'
+import { AnimatedText } from '../components/AnimatedText'
 
 function Card() {
   return (
@@ -13,11 +14,30 @@ function Card() {
   )
 }
 
-export default function Page() {
+function Carousel() {
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 1])
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [32, 32, 0])
 
+  return (
+    <motion.div
+      style={{ opacity, y }}
+      transition={{ staggerChildren: 10 }}
+      className="absolute bg-dirt dark:bg-midnight overflow-x-auto py-4 px-20 flex w-full space-x-20"
+    >
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </motion.div>
+  )
+}
+
+export default function Page() {
   return (
     <main className="min-h-screen">
       <div className="h-screen"></div>
@@ -25,63 +45,21 @@ export default function Page() {
         <Logo />
 
         <motion.div className="absolute translate-y-1/2 right-32 bottom-32 w-max">
-          <motion.p>
-            {'UI Engineer, based in Budapest.'.split('').map((word, i) => (
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: i * 0.02 + 1,
-                  duration: 0.5,
-                  ease: 'circOut',
+          <AnimatedText
+            text="UI Engineer, based in Budapest."
+            baseDelay={1}
+            transition={{ repeatDelay: 5.5 }}
+          />
 
-                  repeat: 10,
-                  repeatType: 'mirror',
-                  repeatDelay: 5.5,
-                }}
-                key={word + i}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
-
-          <motion.p className="absolute right-0 top-0 whitespace-nowrap">
-            {'Currently at UX Studio.'.split('').map((word, i) => (
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: i * 0.02 + 7,
-                  duration: 0.5,
-                  ease: 'circOut',
-
-                  repeat: 10,
-                  repeatType: 'mirror',
-                  repeatDelay: 5.5,
-                }}
-                key={word + i}
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
+          <AnimatedText
+            text="Currently at UX Studio"
+            baseDelay={7}
+            transition={{ repeatDelay: 5.5 }}
+            className="absolute right-0 top-0"
+          />
         </motion.div>
 
-        <motion.div
-          style={{ opacity, y }}
-          transition={{ staggerChildren: 10 }}
-          className="absolute bg-dirt dark:bg-midnight overflow-x-auto py-4 px-20 flex w-full space-x-20"
-        >
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-        </motion.div>
+        <Carousel />
       </motion.div>
 
       <div className="p-6 pointer-events-none z-10 h-60 relative text-sm font-display rounded-lg m-10 mt-0"></div>
