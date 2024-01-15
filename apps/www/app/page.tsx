@@ -1,40 +1,49 @@
-'use client'
+"use client";
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { Logo } from '../components/Logo'
-import { AnimatedText } from '../components/AnimatedText'
-
-function Card() {
-  return (
-    <div className="flex-1 min-w-[300px] flex flex-col justify-end p-8 ring-2 group h-96 overflow-hidden ring-body-dark relative">
-      <h1 className="font-display relative z-10 dark:text-white text-black text-3xl">
-        Photos
-      </h1>
-    </div>
-  )
-}
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Logo } from "../components/Logo";
+import { AnimatedText } from "../components/AnimatedText";
+import { useState } from "react";
 
 function Carousel() {
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 1])
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [32, 32, 0])
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [32, 32, 0]);
+
+  const [activeYear, setActiveYear] = useState(2023);
 
   return (
     <motion.div
-      style={{ opacity, y }}
-      transition={{ staggerChildren: 10 }}
-      className="absolute bg-dirt dark:bg-midnight overflow-x-auto py-4 px-20 flex w-full space-x-20"
+      style={{ y, opacity }}
+      className="flex h-[80vh] w-[70vw] left-[15vw] absolute"
     >
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      <div className="w-1 h-full absolute left-0 inset-y-0 bg-black dark:bg-white/20 text-white">
+        <div className="space-y-0 absolute -translate-x-full">
+          {[2020, 2021, 2022, 2023].toReversed().map((year) => (
+            <div
+              onClick={() => setActiveYear(year)}
+              className="h-12 cursor-pointer flex items-center translate-x-1 relative justify-center"
+              key={year}
+            >
+              <span
+                style={{ opacity: activeYear === year ? 1 : 0.2 }}
+                className="mr-4 transition-opacity"
+              >
+                {year}
+              </span>
+
+              {activeYear === year && (
+                <motion.div
+                  layoutId="active-year-indicator"
+                  className="w-1 bg-white h-full absolute right-0"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </motion.div>
-  )
+  );
 }
 
 export default function Page() {
@@ -64,5 +73,5 @@ export default function Page() {
 
       <div className="p-6 pointer-events-none z-10 h-60 relative text-sm font-display rounded-lg m-10 mt-0"></div>
     </main>
-  )
+  );
 }
