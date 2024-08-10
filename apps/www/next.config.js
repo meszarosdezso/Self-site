@@ -1,12 +1,15 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  transpilePackages: ['@md/ui'],
+  transpilePackages: ["@md/ui"],
+  images: {
+    remotePatterns: [{ hostname: "cdn.sanity.io" }],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
-      use: ['@svgr/webpack'],
-    })
+      use: ["@svgr/webpack"],
+    });
 
-    return config
+    return config;
   },
-}
+};

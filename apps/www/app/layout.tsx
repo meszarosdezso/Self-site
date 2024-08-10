@@ -17,9 +17,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/irc1jnn.css" />
       </head>
-      <body
-        className={`${GeistMono.className} overflow-x-hidden bg-dirt dark:bg-midnight text-body dark:text-body-light`}
-      >
+      <body className={`${GeistMono.className} overflow-x-hidden bg-midnight`}>
         {children}
       </body>
     </html>

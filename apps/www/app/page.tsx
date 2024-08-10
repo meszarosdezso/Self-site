@@ -1,77 +1,73 @@
-"use client";
+import { ProjectList } from "../components/ProjectList";
+import { Title } from "../components/Title";
+import { client, Project } from "../lib/sanity";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Logo } from "../components/Logo";
-import { AnimatedText } from "../components/AnimatedText";
-import { useState } from "react";
+const customProjects: Project[] = [
+  {
+    id: "photos",
+    slug: "photos",
+    title: "Photography",
+    image:
+      "https://cdn.sanity.io/images/p24wvwgb/production/f90027f038de6e0810bfa12da1334bf31ce43fdf-3240x2160.jpg",
+  },
+  {
+    id: "experiments",
+    slug: "#experiments",
+    title: "Accidents",
+    image:
+      "https://cdn.sanity.io/files/p24wvwgb/production/1a21ab3019acb26f0715096c5024ced4d31c8bda.gif",
+  },
+];
 
-function Carousel() {
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 1]);
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], [32, 32, 0]);
+export default async function Page() {
+  const sanityProjects: Project[] =
+    await client.fetch(`*[ _type == "work" ] | order(date desc) {
+      "id": _id,
+      title,
+      "image": images[0].asset->.url,
+      "slug": slug.current,
+    }`);
 
-  const [activeYear, setActiveYear] = useState(2023);
+  const projects = [...sanityProjects, ...customProjects];
 
   return (
-    <motion.div
-      style={{ y, opacity }}
-      className="flex h-[80vh] w-[70vw] left-[15vw] absolute"
-    >
-      <div className="w-1 h-full absolute left-0 inset-y-0 bg-black dark:bg-white/20 text-white">
-        <div className="space-y-0 absolute -translate-x-full">
-          {[2020, 2021, 2022, 2023].toReversed().map((year) => (
-            <div
-              onClick={() => setActiveYear(year)}
-              className="h-12 cursor-pointer flex items-center translate-x-1 relative justify-center"
-              key={year}
-            >
-              <span
-                style={{ opacity: activeYear === year ? 1 : 0.2 }}
-                className="mr-4 transition-opacity"
-              >
-                {year}
-              </span>
+    <main className="relative snap-mandatory snap-y overflow-y-auto selection:text-dirt h-screen selection:bg-none text-white">
+      {/* <div className="fixed w-56 h-1 bg-dirt top-1/2 -translate-y-1/2 left-0"></div> */}
 
-              {activeYear === year && (
-                <motion.div
-                  layoutId="active-year-indicator"
-                  className="w-1 bg-white h-full absolute right-0"
-                />
-              )}
-            </div>
-          ))}
-        </div>
+      <div
+        style={{
+          background: `linear-gradient(0deg, #000 20%, #0000 40%, #0000 60%, #000 80%)`,
+        }}
+        className="fixed inset-0 pointer-events-none z-20 backdrop-blur-sm"
+      />
+
+      <div className="space-y-10 py-[calc(50vh_-_100px)]">
+        <Snapper>
+          <Title />
+        </Snapper>
+        <Snapper>
+          <p className="absolute left-32 max-w-[400px]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
+            id enim accusamus asperiores aliquid quae quod magni sit veniam
+            maxime, voluptates assumenda architecto distinctio illo dignissimos!
+            Quis voluptatem suscipit fugiat blanditiis dolore dignissimos
+            delectus ut ex repellat.
+          </p>
+        </Snapper>
+        <Snapper />
+        <Snapper />
+        <Snapper />
       </div>
-    </motion.div>
+
+      <ProjectList projects={projects} />
+    </main>
   );
 }
 
-export default function Page() {
+function Snapper({ children }: React.PropsWithChildren) {
   return (
-    <main className="min-h-screen">
-      <div className="h-screen"></div>
-      <motion.div className="h-screen bg-dirt dark:bg-midnight flex text-sm top-0 flex-col justify-center items-center fixed w-full">
-        <Logo />
-
-        <motion.div className="absolute translate-y-1/2 right-32 bottom-32 w-max">
-          <AnimatedText
-            text="UI Engineer, based in Budapest."
-            baseDelay={1}
-            transition={{ repeatDelay: 5.5 }}
-          />
-
-          <AnimatedText
-            text="Currently at UX Studio"
-            baseDelay={7}
-            transition={{ repeatDelay: 5.5 }}
-            className="absolute right-0 top-0"
-          />
-        </motion.div>
-
-        <Carousel />
-      </motion.div>
-
-      <div className="p-6 pointer-events-none z-10 h-60 relative text-sm font-display rounded-lg m-10 mt-0"></div>
-    </main>
+    <div className="size-[200px] flex items-center justify-center snap-always snap-center ring-0 ring-dirt">
+      {children}
+    </div>
   );
 }

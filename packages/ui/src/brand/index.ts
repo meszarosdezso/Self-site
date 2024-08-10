@@ -1,2 +1,2 @@
-export * from './Logo'
-export * from './404'
+export * from "./Logo";
+export * from "./404";

@@ -2,6 +2,6 @@
   "name": "@md/tailwind-config",
   "main": "index.js",
   "devDependencies": {
-    "tailwindcss": "3.3.6"
+    "tailwindcss": "3.4.9"
   }
 }
