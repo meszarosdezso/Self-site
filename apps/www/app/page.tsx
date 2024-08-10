@@ -36,22 +36,18 @@ export default async function Page() {
 
       <div
         style={{
-          background: `linear-gradient(0deg, #000 20%, #0000 40%, #0000 60%, #000 80%)`,
+          background: `linear-gradient(0deg, #000 20%, #0000 48%, #0000 52%, #000 80%)`,
         }}
-        className="fixed inset-0 pointer-events-none z-20 backdrop-blur-sm"
+        className="fixed inset-0 pointer-events-none z-20"
       />
 
-      <div className="space-y-10 py-[calc(50vh_-_100px)]">
+      <div className="space-y-10 py-[calc(50vh_-_100px)] text-white/60">
         <Snapper>
           <Title />
         </Snapper>
         <Snapper>
           <p className="absolute left-32 max-w-[400px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            id enim accusamus asperiores aliquid quae quod magni sit veniam
-            maxime, voluptates assumenda architecto distinctio illo dignissimos!
-            Quis voluptatem suscipit fugiat blanditiis dolore dignissimos
-            delectus ut ex repellat.
+            You can find some of my <span className="text-dirt">photos</span>.
           </p>
         </Snapper>
         <Snapper />
