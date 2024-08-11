@@ -25,11 +25,16 @@ export default {
     },
     animation: {
       reveal: "reveal 1s ease-out forwards",
-      "slide-in-right": "slideRight 150ms ease-out forwards",
+      "slide-in-right": "slideRight 250ms ease-out forwards",
+      "fade-in": "fadeIn 150ms ease-out forwards",
     },
     keyframes: {
+      fadeIn: {
+        "0%": { opacity: 0 },
+        "100%": { opacity: 1 },
+      },
       slideRight: {
-        "0%": { opacity: 0, transform: "translateX(0px)" },
+        "0%": { opacity: 0, transform: "translateX(40px)" },
         "100%": { opacity: 1, transform: "translateX(0px)" },
       },
       reveal: {

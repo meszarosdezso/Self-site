@@ -4,7 +4,13 @@ import { GeistMono } from "geist/font/mono";
 
 export const metadata: Metadata = {
   title: "Dezso Meszaros",
-  description: "?",
+  description: "UI Engineer, based in Budapest.",
+  openGraph: {
+    type: "website",
+    images: ["/littler_me.jpg"],
+    siteName: "Dezso Meszaros",
+    url: "https://meszarosdezso.com",
+  },
 };
 
 export default function RootLayout({
@@ -17,7 +23,9 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/irc1jnn.css" />
       </head>
-      <body className={`${GeistMono.className} overflow-x-hidden bg-midnight`}>
+      <body
+        className={`${GeistMono.className} overflow-x-hidden selection:bg-none selection:text-dirt bg-midnight`}
+      >
         {children}
       </body>
     </html>

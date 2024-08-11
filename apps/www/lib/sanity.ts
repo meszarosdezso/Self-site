@@ -1,4 +1,6 @@
+import { PortableTextBlock } from "@portabletext/react";
 import { createClient, SanityImageAssetDocument } from "@sanity/client";
+import { SanityAsset } from "@sanity/image-url/lib/types/types";
 
 export const client = createClient({
   dataset: "production",
@@ -10,7 +12,10 @@ export const client = createClient({
 export type Project = {
   id: string;
   title: string;
-  image: string;
+  description: PortableTextBlock[];
+  date: string;
+  image: SanityAsset;
+  images: SanityAsset[];
   slug: string;
 };
 
@@ -21,4 +26,11 @@ export type Photo = {
     SanityImageAssetDocument["metadata"],
     "blurHash" | "exif" | "dimensions" | "lqip"
   >;
+};
+
+export type Experiment = {
+  id: string;
+  title: string;
+  description: string;
+  asset: SanityAsset;
 };
