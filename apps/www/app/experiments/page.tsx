@@ -15,11 +15,13 @@ export default async function Page() {
 
   return (
     <main className="text-white flex items-center justify-center h-screen">
-      <div className="fixed z-10 left-20 py-20 md:py-0 top-0 md:left-32 md:top-24 space-y-2 text-sm bg-gradient-to-b from-midnight to-midnight/0 md:bg-none">
+      <div className="fixed z-10 left-0 px-14 md:px-0 py-20 md:py-0 top-0 md:left-32 md:top-24 space-y-2 text-sm bg-gradient-to-b from-midnight to-midnight/0 md:bg-none">
         <BackLink />
         <p className="text-sm text-white/60 leading-6">
           Generative art experiments{" "}
-          <i className="text-white/40 not-italic">(and accidents)</i>
+          <i className="text-white/40 whitespace-nowrap not-italic">
+            (and accidents)
+          </i>
           <br />
           using Nannou and Processing.
         </p>

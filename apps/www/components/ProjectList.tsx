@@ -12,7 +12,7 @@ export function ProjectList({ projects }: ProjectListProps) {
       {projects.map((project, i) => (
         <Link
           key={project.title}
-          href={project.slug}
+          href={project.slug === "www" ? "/" : project.slug}
           className="group/project py-4 md:py-2 group-hover/projects:py-4 pl-10 transition-all w-full flex justify-end cursor-pointer"
         >
           <div
