@@ -28,7 +28,12 @@ export function Gallery({ photos }: GalleryProps) {
                 <ul className="space-y-2">
                   <li>{photo.meta.exif?.focal}mm</li>
                   <li>F{photo.meta.exif?.f}</li>
-                  <li>1/{photo.meta.exif?.shutter}</li>
+                  <li>
+                    {photo.meta.exif?.shutterSpeed < 1
+                      ? `1/${Math.floor(1 / photo.meta.exif?.shutterSpeed)}`
+                      : photo.meta.exif?.shutterSpeed}
+                    s
+                  </li>
                 </ul>
 
                 <span>

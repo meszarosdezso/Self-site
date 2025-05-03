@@ -14,7 +14,7 @@ export default async function Page() {
             "date": DateTimeOriginal,
             "f": FNumber,
             "lens": LensModel,
-            "shutter": round(1 / ExposureTime),
+            "shutterSpeed": ExposureTime,
             "focal": FocalLength,
             },
             dimensions,

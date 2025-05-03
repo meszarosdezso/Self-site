@@ -20,6 +20,12 @@ export const photoSchema: SchemaTypeDefinition = {
       },
     },
     {
+      type: 'geopoint',
+      name: 'location',
+      title: 'Location',
+      description: 'The location of the photo',
+    },
+    {
       type: 'number',
       name: 'order',
       hidden: true,
