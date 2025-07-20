@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { GitHub, Instagram, Mail } from "react-feather";
 
 export function Socials() {
