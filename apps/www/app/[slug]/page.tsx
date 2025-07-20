@@ -6,10 +6,12 @@ import { Asset } from "../../components/Asset";
 import { notFound } from "next/navigation";
 
 export default async function Page({
-  params: { slug },
+  params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   const project = await client.fetch<Project>(
     `*[ _type == "work" && slug.current == $slug ][0]{
       title,
