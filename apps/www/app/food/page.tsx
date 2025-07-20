@@ -28,7 +28,7 @@ export default async function Page() {
             {menu.map((item) => (
               <li key={item._id} className="items-end flex-wrap flex gap-6">
                 {item.images.map((image) => (
-                  <div className="w-[300px] shrink-0 h-[300px]">
+                  <div className="w-[260px] h-[300px] shrink-0">
                     <Asset
                       key={image._key}
                       asset={image}
