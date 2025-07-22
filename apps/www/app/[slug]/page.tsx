@@ -3,7 +3,6 @@ import { client, Project } from "../../lib/sanity";
 import { BackLink } from "../../components/BackLink";
 import React from "react";
 import { Asset } from "../../components/Asset";
-import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
