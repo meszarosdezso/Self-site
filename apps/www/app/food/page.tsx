@@ -1,7 +1,6 @@
 import { client } from "../../lib/sanity";
 import { Asset } from "../../components/Asset";
 import { SanityAsset } from "@sanity/image-url/lib/types/types";
-import { Clock } from "react-feather";
 
 type Food = {
   _id: string;
@@ -39,7 +38,7 @@ export default async function Page() {
   return (
     <main className="bg-white px-20 py-9 min-h-screen text-black">
       <div className="flex">
-        <div className="w-[300px] h-full inset-0 flex items-end justify-end fixed">
+        <div className="w-[300px] pointer-events-none h-full inset-0 flex items-end justify-end fixed">
           <h1 className="text-9xl font-light tracking-tighter origin-bottom-left translate-x-full -translate-y-6 -rotate-90">
             Edibles
           </h1>
