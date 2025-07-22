@@ -13,10 +13,10 @@ function MenuList({ menu }: { menu: Food[] }) {
   return (
     <ul className="space-y-6">
       {menu.map((item) => (
-        <li key={item._id} className="items-end flex-wrap flex gap-2 relative">
+        <li key={item._id} className="items-end flex-wrap flex gap-6 relative">
           <div className="flex gap-6">
             {item.images.map((image) => (
-              <div key={image._id} className="w-[260px] h-[300px] shrink-0">
+              <div key={image._id} className="w-[260px] h-[260px] shrink-0">
                 <Asset asset={image} className="w-full h-full object-cover" />
               </div>
             ))}
