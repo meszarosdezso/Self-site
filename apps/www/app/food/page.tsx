@@ -38,7 +38,7 @@ export default async function Page() {
   }`);
 
   return (
-    <main className="bg-white text-black px-20 py-9 min-h-screen dark:bg-midnight">
+    <main className="bg-white text-black px-20 py-9 min-h-screen dark:bg-midnight selection:!text-[#ffdd33]">
       <div className="flex">
         <div className="w-[300px] pointer-events-none inset-0 flex items-end justify-end fixed print:absolute">
           <h1 className="text-9xl text-[#ffdd33] font-light tracking-tighter origin-bottom-left translate-x-full -translate-y-6 -rotate-90">
