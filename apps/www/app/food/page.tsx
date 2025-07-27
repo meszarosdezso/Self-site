@@ -20,7 +20,9 @@ function MenuList({ menu }: { menu: Food[] }) {
               </div>
             ))}
           </div>
-          <h4 className="font-bold text-4xl max-w-[200px]">{item.name}</h4>
+          <h4 className="font-bold text-4xl max-w-[200px] dark:text-white">
+            {item.name}
+          </h4>
         </li>
       ))}
     </ul>
@@ -36,10 +38,10 @@ export default async function Page() {
   }`);
 
   return (
-    <main className="bg-white px-20 py-9 min-h-screen text-black">
+    <main className="bg-white text-black px-20 py-9 min-h-screen dark:bg-midnight">
       <div className="flex">
-        <div className="w-[300px] pointer-events-none h-full inset-0 flex items-end justify-end fixed">
-          <h1 className="text-9xl font-light tracking-tighter origin-bottom-left translate-x-full -translate-y-6 -rotate-90">
+        <div className="w-[300px] pointer-events-none inset-0 flex items-end justify-end fixed print:absolute">
+          <h1 className="text-9xl text-[#ffdd33] font-light tracking-tighter origin-bottom-left translate-x-full -translate-y-6 -rotate-90">
             Edibles
           </h1>
         </div>
