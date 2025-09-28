@@ -50,7 +50,10 @@ export const workSchema: SchemaTypeDefinition = {
       name: 'images',
       description: 'The first will be used as cover image!',
       type: 'array',
-      of: [{type: 'image'}, {type: 'file'}],
+      of: [
+        {type: 'image'},
+        {type: 'file', fields: [{type: 'boolean', name: 'background', title: 'Background'}]},
+      ],
     },
     {
       title: 'Cover',
@@ -69,4 +72,10 @@ export const workSchema: SchemaTypeDefinition = {
       hidden: true,
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'images.0.asset',
+    },
+  },
 }

@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono";
+import type React from "react";
 
 export const metadata: Metadata = {
   title: "Dezso Meszaros",
@@ -17,7 +18,7 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}): JSX.Element {
+}): React.JSX.Element {
   return (
     <html lang="en">
       <head>

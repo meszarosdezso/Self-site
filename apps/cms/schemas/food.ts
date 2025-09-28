@@ -22,4 +22,10 @@ export const foodSchema: SchemaTypeDefinition = {
       name: 'order',
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'images.0.asset',
+    },
+  },
 }

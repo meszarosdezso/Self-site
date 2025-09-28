@@ -10,13 +10,13 @@
   "devDependencies": {
     "@md/eslint-config": "*",
     "@md/typescript-config": "*",
-    "prettier": "^3.1.0",
+    "prettier": "^3.6.2",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "npm@8.15.0",
+  "packageManager": "npm@11.4.2",
   "workspaces": [
     "apps/*",
     "packages/*"

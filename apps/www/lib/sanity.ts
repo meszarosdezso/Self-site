@@ -15,8 +15,12 @@ export type Project = {
   description: PortableTextBlock[];
   date: string;
   image: SanityAsset;
-  images: SanityAsset[];
+  images: {
+    asset: SanityAsset;
+    background: boolean;
+  }[];
   slug: string;
+  stack?: string[];
 };
 
 export type Photo = {
