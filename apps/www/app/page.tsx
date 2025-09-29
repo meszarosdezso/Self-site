@@ -10,7 +10,7 @@ const customProjects: Project[] = [
     title: "Photography",
     image: {
       extension: "jpg",
-      url: "https://cdn.sanity.io/images/p24wvwgb/production/f90027f038de6e0810bfa12da1334bf31ce43fdf-3240x2160.jpg",
+      url: "https://cdn.sanity.io/images/p24wvwgb/production/873c27b84d3a1b96a52a478be8b0b2858efe0d5b-1440x1080.jpg?w=800",
     },
     date: "",
     description: [],
