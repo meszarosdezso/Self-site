@@ -1,12 +1,48 @@
 import Link from "next/link";
-import { Project } from "../lib/sanity";
+import { client, Project } from "../lib/sanity";
 import { Asset } from "./Asset";
 
-type ProjectListProps = {
-  projects: Project[];
-};
+const customProjects: Project[] = [
+  {
+    id: "photos",
+    slug: "photos",
+    title: "Photography",
+    image: {
+      extension: "jpg",
+      url: "https://cdn.sanity.io/images/p24wvwgb/production/873c27b84d3a1b96a52a478be8b0b2858efe0d5b-1440x1080.jpg?w=800",
+    },
+    date: "",
+    description: [],
+    images: [],
+  },
+  {
+    id: "experiments",
+    slug: "experiments",
+    title: "Generative art",
+    image: {
+      extension: "gif",
+      url: "https://cdn.sanity.io/files/p24wvwgb/production/1a21ab3019acb26f0715096c5024ced4d31c8bda.gif",
+    },
+    images: [],
+    description: [],
+    date: "",
+  },
+];
 
-export function ProjectList({ projects }: ProjectListProps) {
+export async function ProjectList() {
+  const sanityProjects: Project[] =
+    await client.fetch(`*[ _type == "work" ] | order(date desc) {
+    "id": _id,
+    title,
+    "image": select(
+      cover != null => cover,
+      images[0] != null => images[0]
+    ).asset->,
+    "slug": slug.current,
+  }`);
+
+  const projects = [...sanityProjects, ...customProjects];
+
   return (
     <div className="fixed bottom-20 z-20 md:bottom-[unset] right-6 flex group/projects pl-6 pr-6 py-6 md:top-1/2 md:hover:bg-midnight-5/40 md:hover:ring-1 transition-all ring-midnight-10/50 rounded-lg flex-col flex-nowrap items-end md:-translate-y-1/2">
       {projects.map((project, i) => (

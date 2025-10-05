@@ -1,49 +1,8 @@
 import { ProjectList } from "../components/ProjectList";
 import { Title } from "../components/Title";
-import { client, Project } from "../lib/sanity";
 import { Socials } from "../components/Socials";
 
-const customProjects: Project[] = [
-  {
-    id: "photos",
-    slug: "photos",
-    title: "Photography",
-    image: {
-      extension: "jpg",
-      url: "https://cdn.sanity.io/images/p24wvwgb/production/873c27b84d3a1b96a52a478be8b0b2858efe0d5b-1440x1080.jpg?w=800",
-    },
-    date: "",
-    description: [],
-    images: [],
-  },
-  {
-    id: "experiments",
-    slug: "experiments",
-    title: "Generative art",
-    image: {
-      extension: "gif",
-      url: "https://cdn.sanity.io/files/p24wvwgb/production/1a21ab3019acb26f0715096c5024ced4d31c8bda.gif",
-    },
-    images: [],
-    description: [],
-    date: "",
-  },
-];
-
 export default async function Page() {
-  const sanityProjects: Project[] =
-    await client.fetch(`*[ _type == "work" ] | order(date desc) {
-      "id": _id,
-      title,
-      "image": select(
-        cover != null => cover,
-        images[0] != null => images[0]
-      ).asset->,
-      "slug": slug.current,
-    }`);
-
-  const projects = [...sanityProjects, ...customProjects];
-
   return (
     <main className="relative snap-mandatory snap-y overflow-y-auto h-screen text-white">
       <div
@@ -70,7 +29,7 @@ export default async function Page() {
         <Title />
       </div>
 
-      <ProjectList projects={projects} />
+      <ProjectList />
     </main>
   );
 }

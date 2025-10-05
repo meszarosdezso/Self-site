@@ -14,13 +14,13 @@ export function Title() {
         <AnimatedText
           baseDelay={0}
           repeat={10}
-          text="UI Engineer, based in Budapest"
+          text="Full-stack Engineer, based in Budapest"
         />
 
         <AnimatedText
           baseDelay={4}
           repeat={9}
-          text="Currently at UX Studio"
+          text="Currently Engineering lead at UX Studio"
           className="absolute left-0 top-0"
         />
       </div>

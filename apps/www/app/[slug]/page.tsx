@@ -4,6 +4,7 @@ import { BackLink } from "../../components/BackLink";
 import React from "react";
 import { Asset } from "../../components/Asset";
 import clsx from "clsx";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
@@ -25,6 +26,8 @@ export default async function Page({
     }`,
     { slug: slug }
   );
+
+  if (!project) notFound();
 
   return (
     <main className="pt-20 md:px-32 lg:px-16 px-8 text-sm text-white flex flex-col items-center justify-center min-h-screen">
