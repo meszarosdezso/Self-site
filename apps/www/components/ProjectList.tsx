@@ -49,6 +49,8 @@ export async function ProjectList() {
         <Link
           key={project.title}
           href={project.slug === "www" ? "/" : project.slug}
+          title={project.title}
+          aria-label={project.title}
           className="group/project py-4 md:py-2 group-hover/projects:py-4 pl-10 transition-all w-full flex justify-end cursor-pointer"
         >
           <div

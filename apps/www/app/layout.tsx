@@ -5,7 +5,9 @@ import type React from "react";
 
 export const metadata: Metadata = {
   title: "Dezso Meszaros",
-  description: "UI Engineer, based in Budapest.",
+  description:
+    "Full-stack Product Engineer with 7+ years of experience in building products using TypeScript and a strong passion for UX and interaction design.",
+  category: "portfolio",
   openGraph: {
     type: "website",
     images: ["/littler_me.jpg"],
