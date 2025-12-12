@@ -1,7 +1,7 @@
-import config from '@md/tailwind-config'
+import config from "@md/tailwind-config";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./**/*.tsx'],
+  content: ["./**/*.tsx"],
   presets: [config],
-}
+};
