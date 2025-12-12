@@ -1,8 +1,0 @@
-{
-  "extends": "@md/typescript-config/react-library.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
-  "include": ["src", "../types/**/*.d.ts"],
-  "exclude": ["node_modules", "dist"]
-}

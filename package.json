@@ -11,7 +11,7 @@
     "@md/eslint-config": "*",
     "@md/typescript-config": "*",
     "prettier": "^3.7.4",
-    "turbo": "latest"
+    "turbo": "^2.6.3"
   },
   "engines": {
     "node": ">=18"

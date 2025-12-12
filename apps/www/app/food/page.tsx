@@ -1,6 +1,6 @@
 import { client } from "../../lib/sanity";
 import { Asset } from "../../components/Asset";
-import { SanityAsset } from "@sanity/image-url/lib/types/types";
+import { SanityAsset } from "@sanity/image-url";
 
 type Food = {
   _id: string;

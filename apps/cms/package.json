@@ -16,19 +16,19 @@
   ],
   "dependencies": {
     "@sanity/orderable-document-list": "^1.4",
-    "@sanity/vision": "^4.10.1",
-    "react": "^19.1",
-    "react-dom": "^19.1",
-    "react-is": "^19.1",
-    "sanity": "^4.10.1",
-    "styled-components": "^6.1.18"
+    "@sanity/vision": "^4.21.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-is": "^19.2.3",
+    "sanity": "^4.21.0",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
-    "@types/react": "^19.1.15",
+    "@types/react": "^19.2.7",
     "eslint": "^9",
-    "prettier": "^3.6.2",
-    "typescript": "^5.9.2"
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3"
   },
   "prettier": {
     "semi": false,

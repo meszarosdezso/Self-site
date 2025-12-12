@@ -1,6 +1,6 @@
 import { PortableTextBlock } from "@portabletext/react";
 import { createClient, SanityImageAssetDocument } from "@sanity/client";
-import { SanityAsset } from "@sanity/image-url/lib/types/types";
+import { SanityAsset } from "@sanity/image-url";
 
 export const client = createClient({
   dataset: "production",
