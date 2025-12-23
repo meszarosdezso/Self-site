@@ -30,7 +30,7 @@ export default async function Page() {
         </Snapper>
         <Snapper>
           <p className="text-xl leading-8 text-dirt selection:bg-dirt selection:text-midnight">
-            I've been building products using TypeScript for the last 7+ years,
+            Building products with TypeScript for 7+ years,
             with a strong passion for UX and interaction design.{" "}
             {/* <ReadMoreLink /> */}
           </p>
