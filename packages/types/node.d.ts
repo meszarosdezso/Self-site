@@ -1,5 +1,5 @@
 declare namespace NodeJS {
-  interface ProcessEnv {
-    INSTAGRAM_TOKEN: string;
-  }
+	interface ProcessEnv {
+		INSTAGRAM_TOKEN: string;
+	}
 }

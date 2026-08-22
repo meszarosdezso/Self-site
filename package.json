@@ -1,28 +1,26 @@
 {
-  "name": "md",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@md/eslint-config": "*",
-    "@md/typescript-config": "*",
-    "prettier": "^3.7.4",
-    "turbo": "^2.6.3"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "npm@11.7.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "volta": {
-    "node": "24.12.0",
-    "npm": "11.7.0"
-  }
+	"name": "md",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"lint": "turbo lint",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\""
+	},
+	"devDependencies": {
+		"@md/typescript-config": "*",
+		"turbo": "^2.10.11"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"packageManager": "npm@12.0.2",
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"volta": {
+		"node": "24.19.0",
+		"npm": "12.0.2"
+	}
 }

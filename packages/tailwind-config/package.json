@@ -1,7 +1,7 @@
 {
-  "name": "@md/tailwind-config",
-  "main": "index.js",
-  "devDependencies": {
-    "tailwindcss": "3.4.9"
-  }
+	"name": "@md/tailwind-config",
+	"main": "index.js",
+	"devDependencies": {
+		"tailwindcss": "^4.3.3"
+	}
 }
